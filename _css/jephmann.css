@@ -1,0 +1,37 @@
+@font-face 
+{
+    /* use fontFamily instead of font-family */
+    src:            url('CAMBRIA.TTC');
+    fontFamily:     "Cambria";
+}
+
+body
+{
+    font-family:    Cambria, "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+}
+
+.credits
+{
+    height:         250px;
+    width:          100%;
+    overflow:       auto;
+    border-bottom:  silver 1px dotted;
+    padding-bottom: 1em;
+}
+
+footer
+{
+    clear:          both;
+    border-top:     silver 1pt solid;
+    margin-top:     1em;
+    padding-top:    1em;
+    margin-bottom:  1em;
+}
+
+#galleria
+{   
+    margin-top:     1em; 
+    margin-bottom:  1em;
+    height:         460px;
+    width:          100%;
+}
