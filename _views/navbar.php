@@ -31,7 +31,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a target="_blank" href="<?php echo $path ?>resume.pdf">Resume</a>
+                        <a target="_blank" href="<?php echo $path ?>resume.pdf">My Resume</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                           href="https://github.com/jephmann">My GitHub</a>
                     </li>
                     <li>
                         <a href="#" data-toggle="dropdown">Resources <span class="caret"></span></a>
