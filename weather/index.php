@@ -120,28 +120,9 @@
 
             </div>
             <div class="col-lg-8 col-md-8 col-sm-8">        
-                <h3>Current Conditions for 
+                <h2>Current Conditions for 
                         <?php echo $city; ?>,
-                        <?php echo $state; ?></h3>
-                <img alt=""
-                     src="<?php echo $current_icon; ?>">
-                <p>Weather: <?php echo $current_weather; ?></p>
-                <p>Temperatures: <?php echo $current_temperature; ?></p>
-                <p>Winds: <?php echo $current_wind; ?></p>
-                <p>Precipitation: <?php echo $current_precip; ?></p>
-                <p>Humidity: <?php echo $current_humidity; ?></p>
-                <p>Feels Like: <?php echo $current_feel; ?></p>
-            </div>                
-        </div>
-    </div>        
-        
-
-    <?php require_once $path . '_views/close-jumbotron.php'; ?>
-
-    <div class="container">
-        <div class="row">                       
-
-            <div class="col-lg-4 col-md-4 col-sm-4">
+                        <?php echo $state; ?></h2>
                 
                 <?php if ( $ctAlerts != 0 ) : ?>
                 <?php for ( $a=0; $a<$ctAlerts; $a++ ) :
@@ -160,13 +141,33 @@
                     </div>
                     <div class="panel-body">
                         <h4>Expires: <?php echo $alert_expires; ?></h4>
-                        <p style="font-family: 'Lucida Console', monospace"><?php echo $alert_message; ?></p>
+                        <p style="font-family: 'Lucida Console', monospace; font-size: small;"><?php echo $alert_message; ?></p>
                     </div>
                 </div>
                 <?php
                 endfor;
                 endif;
-                ?>
+                ?>                
+                
+                <img alt=""
+                     src="<?php echo $current_icon; ?>">
+                <p>Weather: <?php echo $current_weather; ?></p>
+                <p>Temperatures: <?php echo $current_temperature; ?></p>
+                <p>Winds: <?php echo $current_wind; ?></p>
+                <p>Precipitation: <?php echo $current_precip; ?></p>
+                <p>Humidity: <?php echo $current_humidity; ?></p>
+                <p>Feels Like: <?php echo $current_feel; ?></p>
+            </div>                
+        </div>
+    </div>        
+        
+
+    <?php require_once $path . '_views/close-jumbotron.php'; ?>
+
+    <div class="container">
+        <div class="row">                       
+
+            <div class="col-lg-4 col-md-4 col-sm-4">              
                 
                 <div class="panel panel-success">
                    <div class="panel-heading">
