@@ -49,20 +49,20 @@
     $almanac                = (array) $arrayAlmanac['almanac'];    
     $almanacHigh            = (array) $almanac['temp_high'];    
     $almanacHighNormal      = (array) $almanacHigh['normal'];
-    $almanacHighNormalF     = $almanacHighNormal['F'];
-    $almanacHighNormalC     = $almanacHighNormal['C'];    
+    $almanacHighNormalF     = (int) $almanacHighNormal['F'];
+    $almanacHighNormalC     = (int) $almanacHighNormal['C'];    
     $almanacHighRecord      = (array) $almanacHigh['record'];
-    $almanacHighRecordF     = $almanacHighRecord['F'];
-    $almanacHighRecordC     = $almanacHighRecord['C'];    
-    $almanacHighRecordYear  = $almanacHigh['recordyear'];    
+    $almanacHighRecordF     = (int) $almanacHighRecord['F'];
+    $almanacHighRecordC     = (int) $almanacHighRecord['C'];    
+    $almanacHighRecordYear  = (int) $almanacHigh['recordyear'];    
     $almanacLow             = (array) $almanac['temp_low'];    
     $almanacLowNormal       = (array) $almanacLow['normal'];
-    $almanacLowNormalF      = $almanacLowNormal['F'];
-    $almanacLowNormalC      = $almanacLowNormal['C'];    
+    $almanacLowNormalF      = (int) $almanacLowNormal['F'];
+    $almanacLowNormalC      = (int) $almanacLowNormal['C'];    
     $almanacLowRecord       = (array) $almanacLow['record'];
-    $almanacLowRecordF      = $almanacLowRecord['F'];
-    $almanacLowRecordC      = $almanacLowRecord['C'];    
-    $almanacLowRecordYear   = $almanacLow['recordyear'];
+    $almanacLowRecordF      = (int) $almanacLowRecord['F'];
+    $almanacLowRecordC      = (int) $almanacLowRecord['C'];    
+    $almanacLowRecordYear   = (int) $almanacLow['recordyear'];
 
     // forecast feature
     $arrayForecast = $weatherAPI->arrayReport(
@@ -71,6 +71,9 @@
     $forecast       = (array) $arrayForecast[ 'forecast' ];
     $forecastDay    = (array) $forecast['txt_forecast']['forecastday'];
     $ctForecastDay  = (int) count( $forecastDay );
+    
+    // radar
+    $urlRadar       = (string) $weatherAPI->urlRadar( $city, $state );
     
     // HTML start
     require_once $path . '_views/head.php';
@@ -84,6 +87,12 @@
             <div class="col-lg-4 col-md-4 col-sm-4">
 
                 <h2>The Weather Section</h2>
+                <a target="blank"
+                     href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">
+                    <img alt="" title="Weather Underground"
+                        src="../_images/logos/iw63kb1u.bmp"
+                     style="display:block;margin:auto;">
+                </a>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
@@ -110,19 +119,9 @@
                     </div>                            
                 </div>
 
-
-                <a target="blank"
-                     href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">
-                    <img alt="" title="Weather Underground"
-                        src="../_images/logos/iw63kb1u.bmp"
-                     style="display:block;margin:auto;">
-                </a>
-
             </div>
             <div class="col-lg-8 col-md-8 col-sm-8">        
-                <h2>Current Conditions for 
-                        <?php echo $city; ?>,
-                        <?php echo $state; ?></h2>
+                <h2>Weather for <?php echo "{$city}, {$state}"; ?></h2>
                 
                 <?php if ( $ctAlerts != 0 ) : ?>
                 <?php for ( $a=0; $a<$ctAlerts; $a++ ) :
@@ -147,16 +146,27 @@
                 <?php
                 endfor;
                 endif;
-                ?>                
+                ?>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <h3>Radar:</h3>
+                        <img width="100%" alt="Radar" title="Radar for <?php
+                            echo "{$city}, {$state}"; ?>"
+                            src="<?php echo $urlRadar; ?>">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <h3>Current Conditions:</h3>
+                        <img alt=""
+                            src="<?php echo $current_icon; ?>">
+                       <p>Weather: <?php echo $current_weather; ?></p>
+                       <p>Temperatures: <?php echo $current_temperature; ?></p>
+                       <p>Winds: <?php echo $current_wind; ?></p>
+                       <p>Precipitation: <?php echo $current_precip; ?></p>
+                       <p>Humidity: <?php echo $current_humidity; ?></p>
+                       <p>Feels Like: <?php echo $current_feel; ?></p>          
+                    </div>
+                </div>
                 
-                <img alt=""
-                     src="<?php echo $current_icon; ?>">
-                <p>Weather: <?php echo $current_weather; ?></p>
-                <p>Temperatures: <?php echo $current_temperature; ?></p>
-                <p>Winds: <?php echo $current_wind; ?></p>
-                <p>Precipitation: <?php echo $current_precip; ?></p>
-                <p>Humidity: <?php echo $current_humidity; ?></p>
-                <p>Feels Like: <?php echo $current_feel; ?></p>
             </div>                
         </div>
     </div>        
