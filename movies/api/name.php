@@ -322,7 +322,7 @@ require_once $path . '_views/open-jumbotron.php';
                 </pre>
                 -->
                 
-                <?php require_once $path . '_views/movies/search-again.php'; ?>
+                <?php require_once $path . '_views/movies/search.php'; ?>
             </div>
 
         </div>

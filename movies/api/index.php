@@ -114,8 +114,7 @@ require_once $path . '_views/open-jumbotron.php';
     </div>
     
     <div class="col-lg-4 col-md-4 col-sm-4">
-
-                <?php require_once $path . '_views/movies/search-again.php'; ?>
+        <?php require_once $path . '_views/movies/search.php'; ?>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4">
