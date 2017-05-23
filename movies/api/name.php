@@ -263,64 +263,56 @@ require_once $path . '_views/open-jumbotron.php';
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4">
-                <?php require_once $path . '_views/movies/search-again.php'; ?>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-lg-4 col-md-4 col-sm-4"> 
+                
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Gallery</h3>
                     </div>
                     <div class="panel-body">
-                <!-- galleria test -->
 
-                <?php
-                    if( !empty( $name_profile_path ) ):
-                    if( $ct_profiles > 0 ):
-                    $name_profile = $moviesAPI->urlImage( $name_profile_path );
-                ?>      
+                        <?php
+                            if( !empty( $name_profile_path ) ):
+                            if( $ct_profiles > 0 ):
+                            $name_profile = $moviesAPI->urlImage( $name_profile_path );
+                        ?>      
 
-                <div id="galleria" width="100%">
+                        <div id="galleria" width="100%">
 
-                    <?php
-                        // Profile images
-                        $x = 0;
-                        foreach ( $images_profiles as $profile )
-                        {
-                            $x++;
-                            $profile_image = $moviesAPI->urlImage( $profile[ 'file_path' ] );
-                            $profile_description = '<ul>'
-                                . $biography_birthplace
-                                . $biography_birthday
-                                . $biography_deathday
-                                . '</ul>'
-                                . "<p>(Profile {$x} of {$ct_profiles})</p>";
-                            echo Galleria::img(
-                                $profile_image,
-                                $name_name,
-                                $profile_description
-                            );
-                        }
-                    ?>
+                            <?php
+                                // Profile images
+                                $x = 0;
+                                foreach ( $images_profiles as $profile )
+                                {
+                                    $x++;
+                                    $profile_image = $moviesAPI->urlImage( $profile[ 'file_path' ] );
+                                    $profile_description = '<ul>'
+                                        . $biography_birthplace
+                                        . $biography_birthday
+                                        . $biography_deathday
+                                        . '</ul>'
+                                        . "<p>(Profile {$x} of {$ct_profiles})</p>";
+                                    echo Galleria::img(
+                                        $profile_image,
+                                        $name_name,
+                                        $profile_description
+                                    );
+                                }
+                            ?>
 
-                </div>
+                        </div>
 
-                <?php
-                    endif;  // re count( $images_profiles ) 
-                    else:   // re main profile image
-                ?>
+                        <?php
+                            endif;  // re count( $images_profiles ) 
+                            else:   // re main profile image
+                        ?>
 
-                <h4>
-                    <em>Gallery Unavailable</em>
-                </h4>
+                        <h4>
+                            <em>Gallery Unavailable</em>
+                        </h4>
 
-                <?php
-                    endif;  // re main profile image
-                ?>
+                        <?php
+                            endif;  // re main profile image
+                        ?>
                     </div>
                 </div>
 
@@ -329,11 +321,12 @@ require_once $path . '_views/open-jumbotron.php';
                     <?php print_r( $images ); ?>
                 </pre>
                 -->
+                
+                <?php require_once $path . '_views/movies/search-again.php'; ?>
             </div>
 
-        </div> 
-
-            
+        </div>
+        
     </div>
 
 <?php
