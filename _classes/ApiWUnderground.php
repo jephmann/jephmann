@@ -34,6 +34,14 @@ class ApiWUnderground extends Api
             'state' => 'TX'
             ),
         array(
+            'city' => 'Arlington Heights',
+            'state' => 'IL'
+            ),
+        array(
+            'city' => 'Ashburn',
+            'state' => 'VA'
+            ),
+        array(
             'city' => 'Atlanta',
             'state' => 'GA'
             ), 
@@ -44,6 +52,10 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Austin',
             'state' => 'TX'
+            ), 
+        array(
+            'city' => 'Aurora',
+            'state' => 'IL'
             ),
         array(
             'city' => 'Baltimore',
@@ -64,6 +76,10 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Berwyn',
             'state' => 'IL'
+            ),
+        array(
+            'city' => 'Beverly Hills',
+            'state' => 'CA'
             ),    
         array(
             'city' => 'Billings',
@@ -83,6 +99,10 @@ class ApiWUnderground extends Api
             ),
         array(
             'city' => 'Burbank',
+            'state' => 'CA'
+            ),
+        array(
+            'city' => 'Chatsworth',
             'state' => 'CA'
             ),
         array(
@@ -110,19 +130,31 @@ class ApiWUnderground extends Api
             'state' => 'IL'
             ),
         array(
+            'city' => 'Denton',
+            'state' => 'TX'
+            ),
+        array(
             'city' => 'Detroit',
             'state' => 'MI'
+            ),
+        array(
+            'city' => 'East Saint Louis',
+            'state' => 'IL'
             ),
         array(
             'city' => 'Evanston',
             'state' => 'IL'
             ),
         array(
+            'city' => 'Fort Lauderdale',
+            'state' => 'FL'
+            ),
+        array(
             'city' => 'Galena',
             'state' => 'IL'
             ),    
         array(
-            'city' => 'Glendate',
+            'city' => 'Glendale',
             'state' => 'CA'
             ),
         array(
@@ -131,6 +163,10 @@ class ApiWUnderground extends Api
             ),    
         array(
             'city' => 'Highland Park',
+            'state' => 'IL'
+            ),
+        array(
+            'city' => 'Homer Glen',
             'state' => 'IL'
             ),
         array(
@@ -150,11 +186,19 @@ class ApiWUnderground extends Api
             'state' => 'MO'
             ),
         array(
+            'city' => 'Kingsville',
+            'state' => 'TX'
+            ),
+        array(
             'city' => 'Las Vegas',
             'state' => 'NV'
             ),
         array(
             'city' => 'Los Angeles',
+            'state' => 'CA'
+            ),
+        array(
+            'city' => 'Malibu',
             'state' => 'CA'
             ),
         array(
@@ -172,6 +216,10 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Minneapolis',
             'state' => 'MN'
+            ),    
+        array(
+            'city' => 'Mundelein',
+            'state' => 'IL'
             ),    
         array(
             'city' => 'Muskegon',
@@ -282,16 +330,28 @@ class ApiWUnderground extends Api
             'state' => 'CA'
             ),    
         array(
+            'city' => 'Santa Clarita',
+            'state' => 'CA'
+            ),    
+        array(
             'city' => 'Santa Monica',
             'state' => 'CA'
             ),
         array(
+            'city' => 'Schiller Park',
+            'state' => 'IL'
+            ),
+        array(
             'city' => 'Seattle',
             'state' => 'WA'
-            ),    
+            ),
         array(
             'city' => 'Sherman Oaks',
             'state' => 'CA'
+            ),
+        array(
+            'city' => 'Spokane',
+            'state' => 'WA'
             ),
         array(
             'city' => 'Springfield',
@@ -304,10 +364,18 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Tampa',
             'state' => 'FL'
-            ),    
+            ),
         array(
             'city' => 'Toledo',
             'state' => 'OH'
+            ),
+        array(
+            'city' => 'Tuckahoe',
+            'state' => 'VA'
+            ),
+        array(
+            'city' => 'Wall Township',
+            'state' => 'NJ'
             ),
         array(
             'city' => 'Washington',
