@@ -282,7 +282,7 @@ require_once $path . '_views/open-jumbotron.php';
         
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Trailer</h3>
+                <h3 class="panel-title">Trailer *</h3>
             </div>
             <div class="panel-body">
                 
@@ -306,6 +306,11 @@ require_once $path . '_views/open-jumbotron.php';
                     endif;
                     endfor;
                 ?>
+            </div>
+            <div class="panel-footer">
+                * Although TheMovieDB may suggest that at least one trailer might
+                exist in YouTube for this title, YouTube might not necessarily
+                have any trailers for this title.
             </div>
         </div>
         
