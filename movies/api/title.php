@@ -24,7 +24,12 @@ $title_production_companies     = (array) $title[ 'production_companies' ];
 $ct_title_genres                = (int) count( $title_genres );
 $ct_title_production_companies  = (int) count( $title_production_companies );
 
-// images
+// main image
+$image_title                    = empty( $title_poster_path )
+                                ? "{$path}_images/no_pic.jpg"
+                                : (string) $moviesAPI->urlImage( $title_poster_path );
+
+// gallery images
 $images                         = (array) $moviesAPI->getSubTopicData(
                                     $id, 'movie', 'images'
                                 );
@@ -159,19 +164,84 @@ require_once $path . '_views/open-jumbotron.php';
                 </h2>
             </div>
             <div class="panel-body">
+                
+                <!--
                 <?php
-                    $image_title = $moviesAPI->urlImage( $title_poster_path );
-                    if( empty( $title_poster_path ) )
-                    {
-                        $image_title = $path . '_images/no_pic.jpg';
-                    }        
                 ?>
                 <img style="border: black 1px dotted;" width="100%"
                      alt="<?php echo $title_title; ?>"
                      src="<?php echo $image_title; ?>">
+                -->
+                
+                
+                <?php
+                    if( !empty( $title_poster_path ) and ( $ct_posters > 0 or $ct_backdrops > 0 ) ):
+                    $title_poster = $moviesAPI->urlImage( $title_poster_path );
+                ?>    
+                <div id="galleria" width="100%">
+
+                    <?php
+                            
+                        // Main image
+                        echo Galleria::img(
+                            $title_poster,
+                            $title_title,
+                            $overview_release
+                                . "<p>(Main Image)</p>"
+                            );
+                            
+                            
+                        // Poster images.
+                        if( $ct_posters > 0 )
+                        {
+                            $x = 0;
+                            foreach ( $images_posters as $poster )
+                            {
+                                $x++;
+                                $poster_image = $moviesAPI->urlImage( $poster[ 'file_path' ] );
+                                $poster_description = $overview_release
+                                    . "<p>(Poster {$x} of {$ct_posters})</p>";
+                                echo Galleria::img(
+                                    $poster_image,
+                                    $title_title,
+                                    $poster_description
+                                );
+                            }
+                        }
+
+                        // Backdrop images.
+                        if( $ct_backdrops > 0 )
+                        {
+                            $x = 0;
+                            foreach ( $images_backdrops as $backdrop )
+                            {
+                                $x++;
+                                $backdrop_image = $moviesAPI->urlImage( $backdrop[ 'file_path' ] );
+                                $backdrop_description = $overview_release
+                                    . "<p>(Backdrop {$x} of {$ct_backdrops})</p>";
+                                echo Galleria::img(
+                                    $backdrop_image,
+                                    $title_title,
+                                    $backdrop_description
+                                );
+                            }
+                        }
+                    ?>
+
+                </div>
+                <?php
+                    else:
+                ?>
+                <h4>
+                    <em>Gallery Unavailable</em>
+                </h4>
+                <?php
+                    endif;
+                ?>
+                
                 <!--
                 <pre>
-                    <?php print_r( $title ); ?>
+                    <?php print_r( $images ); ?>
                 </pre>
                 -->
             </div>
@@ -238,6 +308,11 @@ require_once $path . '_views/open-jumbotron.php';
                 -->
             </div>
         </div>
+        <!--
+        <pre>
+            <?php print_r( $title ); ?>
+        </pre>
+        -->
         
     </div>
 
@@ -285,82 +360,8 @@ require_once $path . '_views/open-jumbotron.php';
 
             <div class="col-lg-4 col-md-4 col-sm-4">
                 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Gallery</h3>
-                    </div>
-                    <div class="panel-body">               
-
-                        <?php
-                            if( !empty( $title_poster_path ) ):
-                            if( $ct_posters > 0 or $ct_backdrops > 0 ):
-                            $title_poster = $moviesAPI->urlImage( $title_poster_path );
-                        ?>      
-
-                        <div id="galleria" width="100%">
-
-                            <?php
-                                // Poster images.
-                                if( $ct_posters > 0 )
-                                {
-                                    $x = 0;
-                                    foreach ( $images_posters as $poster )
-                                    {
-                                        $x++;
-                                        $poster_image = $moviesAPI->urlImage( $poster[ 'file_path' ] );
-                                        $poster_description = $overview_release
-                                            . "<p>(Poster {$x} of {$ct_posters})</p>";
-                                        echo Galleria::img(
-                                            $poster_image,
-                                            $title_title,
-                                            $poster_description
-                                        );
-                                    }
-                                }
-
-                                // Backdrop images.
-                                if( $ct_backdrops > 0 )
-                                {
-                                    $x = 0;
-                                    foreach ( $images_backdrops as $backdrop )
-                                    {
-                                        $x++;
-                                        $backdrop_image = $moviesAPI->urlImage( $backdrop[ 'file_path' ] );
-                                        $backdrop_description = $overview_release
-                                            . "<p>(Backdrop {$x} of {$ct_backdrops})</p>";
-                                        echo Galleria::img(
-                                            $backdrop_image,
-                                            $title_title,
-                                            $backdrop_description
-                                        );
-                                    }
-                                }
-                            ?>
-
-                        </div>
-
-                        <?php
-                            endif;  // re count( $images_posters or $images_backdrops )
-                            else:   // re main profile image
-                        ?>
-
-                        <h4>
-                            <em>Gallery Unavailable</em>
-                        </h4>
-
-                        <?php
-                            endif;  // re main profile image
-                        ?>
-                    </div>
-                </div>
-
-                <!--
-                <pre>
-                    <?php print_r( $images ); ?>
-                </pre>
-                -->
-                
                 <?php require_once $path . '_views/movies/search.php'; ?>
+                
             </div> 
 
         </div>

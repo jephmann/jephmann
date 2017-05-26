@@ -23,7 +23,12 @@ $name_imdb              = trim( (string) $name[ 'imdb_id' ] );
 $name_aka               = (array) $name[ 'also_known_as' ];
 $ct_name_aka            = (int) count( $name_aka );
 
-// images
+// main image
+$image_name             = empty( $name_profile_path )
+                        ? "{$path}_images/no_pic.jpg"
+                        : (string) $moviesAPI->urlImage( $name_profile_path );
+
+// name images
 $images                 = (array) $moviesAPI->getSubTopicData(
                             $id, 'person', 'images'
                         );
@@ -117,25 +122,24 @@ if( $ct_credits_cast > 0 )
     }
 }
 
+/*
+ * TODO: Resolve sorting issue.
+ */
 $production_credits = '<p><em>No production credits in the system.</em></p>';
 if( $ct_credits_crew > 0 )
 {
     $production_credits = '';
     foreach( $credits_crew as $key => $row )
     {
-        $release_date[ $key ]   = $row[ 'release_date' ];
+        $release_date[ $key ]   = (string) $row[ 'release_date' ];
     }
-    array_multisort(
-        $release_date, SORT_ASC,
-        $credits_crew
-    );
     $jobs           = array();
     foreach( $credits_crew as $crew)
     {
         $jobs[]     = $crew['job'];
     }
     sort($jobs);
-    $crew_jobs = array_unique($jobs);        
+    $crew_jobs = array_unique($jobs);
     foreach( $crew_jobs as $key => $value)
     {
         $production_credits .= "<p><strong>{$value}:</strong>";
@@ -185,21 +189,69 @@ require_once $path . '_views/open-jumbotron.php';
                 </h2>
             </div>
             <div class="panel-body">
-                <?php
-                    $image_name = $moviesAPI->urlImage( $name_profile_path );
-                    if( empty( $name_profile_path ) )
-                    {
-                        $image_name = "{$path}_images/no_pic.jpg";
-                    }        
-                ?>
+                
+                <!--
                 <img style="border: black 1px dotted;" width="100%"
                      alt=""
                      src="<?php echo $image_name; ?>">
+                -->
+                
+                <?php
+                    if( !empty( $name_profile_path ) and $ct_profiles > 0 ):
+                    $name_profile = $moviesAPI->urlImage( $name_profile_path );
+                ?>
+                <div id="galleria" width="100%">
+
+                    <?php
+                            
+                        // Main image
+                        echo Galleria::img(
+                            $name_profile,
+                            $name_name,
+                            '<ul>'
+                                . $biography_birthplace
+                                . $biography_birthday
+                                . $biography_deathday
+                                . '</ul>'
+                                . '<p>(Main Image)</p>'
+                            );
+                        
+                        // Profile images
+                        $x = 0;
+                        foreach ( $images_profiles as $profile )
+                        {
+                            $x++;
+                            $profile_image = $moviesAPI->urlImage( $profile[ 'file_path' ] );
+                            $profile_description = '<ul>'
+                                . $biography_birthplace
+                                . $biography_birthday
+                                . $biography_deathday
+                                . '</ul>'
+                                . "<p>(Profile {$x} of {$ct_profiles})</p>";
+                            echo Galleria::img(
+                                $profile_image,
+                                $name_name,
+                                $profile_description
+                            );
+                        }
+                    ?>
+
+                </div>
+                <?php
+                    else:
+                ?>
+                <h4>
+                    <em>Gallery Unavailable</em>
+                </h4>
+                <?php
+                    endif;
+                ?>
+
                 <!--
                 <pre>
-                    <?php print_r( $name ); ?>
+                    <?php print_r( $images ); ?>
                 </pre>
-                -->
+                -->              
             </div>
             <div class="panel-footer">
                 <?php
@@ -222,6 +274,11 @@ require_once $path . '_views/open-jumbotron.php';
         <div>
             <p><?php echo $biography_name; ?></p>
         </div>
+        <!--
+        <pre>
+            <?php print_r( $name ); ?>
+        </pre>
+        -->
     </div>
 
     <?php require_once $path . '_views/close-jumbotron.php'; ?>
@@ -259,6 +316,7 @@ require_once $path . '_views/open-jumbotron.php';
                         <?php echo $production_credits; ?>
                     </div>
                 </div>
+                
                 <!--
                 <pre>
                     <?php print_r( $credits_crew ); ?>
@@ -268,65 +326,8 @@ require_once $path . '_views/open-jumbotron.php';
 
             <div class="col-lg-4 col-md-4 col-sm-4">
                 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Gallery</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <?php
-                            if( !empty( $name_profile_path ) ):
-                            if( $ct_profiles > 0 ):
-                            $name_profile = $moviesAPI->urlImage( $name_profile_path );
-                        ?>      
-
-                        <div id="galleria" width="100%">
-
-                            <?php
-                                // Profile images
-                                $x = 0;
-                                foreach ( $images_profiles as $profile )
-                                {
-                                    $x++;
-                                    $profile_image = $moviesAPI->urlImage( $profile[ 'file_path' ] );
-                                    $profile_description = '<ul>'
-                                        . $biography_birthplace
-                                        . $biography_birthday
-                                        . $biography_deathday
-                                        . '</ul>'
-                                        . "<p>(Profile {$x} of {$ct_profiles})</p>";
-                                    echo Galleria::img(
-                                        $profile_image,
-                                        $name_name,
-                                        $profile_description
-                                    );
-                                }
-                            ?>
-
-                        </div>
-
-                        <?php
-                            endif;  // re count( $images_profiles ) 
-                            else:   // re main profile image
-                        ?>
-
-                        <h4>
-                            <em>Gallery Unavailable</em>
-                        </h4>
-
-                        <?php
-                            endif;  // re main profile image
-                        ?>
-                    </div>
-                </div>
-
-                <!--
-                <pre>
-                    <?php print_r( $images ); ?>
-                </pre>
-                -->
-                
                 <?php require_once $path . '_views/movies/search.php'; ?>
+                
             </div>
 
         </div>
