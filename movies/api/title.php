@@ -166,13 +166,10 @@ require_once $path . '_views/open-jumbotron.php';
             <div class="panel-body">
                 
                 <!--
-                <?php
-                ?>
                 <img style="border: black 1px dotted;" width="100%"
                      alt="<?php echo $title_title; ?>"
                      src="<?php echo $image_title; ?>">
-                -->
-                
+                -->                
                 
                 <?php
                     if( !empty( $title_poster_path ) and ( $ct_posters > 0 or $ct_backdrops > 0 ) ):
@@ -267,6 +264,20 @@ require_once $path . '_views/open-jumbotron.php';
             echo $overview_genres;
             echo $overview_release;
             echo $overview_companies;
+            
+            $videos_results = (array) $videos[ 'results' ];
+            $ctVideos = (int) count($videos_results);
+            if( $ctVideos>0 ):
+                $ctTrailers = 0;
+                for( $v=0; $v<$ctVideos; $v++ )
+                {
+                    $video_type     = (string) $videos_results[ $v ][ 'type' ];
+                    if ( $video_type == "Trailer" )
+                    {
+                        $ctTrailers++;
+                    }
+                }
+                if ( $ctTrailers > 0 ):
         ?>
         
         <div class="panel panel-primary">
@@ -276,17 +287,14 @@ require_once $path . '_views/open-jumbotron.php';
             <div class="panel-body">
                 
                 <?php
-                    $videos_results = (array) $videos[ 'results' ];
-                    $ctVideos = (int) count($videos_results);
-                    if($ctVideos>0):
-                        for($v=0; $v<$ctVideos; $v++) :
-                        $video_key      = (string) $videos_results[ $v ][ 'key' ];
-                        $video_size     = (int) $videos_results[ $v ][ 'size' ];
-                        $video_type     = (string) $videos_results[ $v ][ 'type' ];
-                        if($video_type=="Trailer"):                                  
+                    for( $v=0; $v<$ctVideos; $v++ ) :
+                    $video_key      = (string) $videos_results[ $v ][ 'key' ];
+                    $video_size     = (int) $videos_results[ $v ][ 'size' ];
+                    $video_type     = (string) $videos_results[ $v ][ 'type' ];
+                    if( $video_type == "Trailer" ):                                  
 
-                            $aspect_ratio = $video_size === 360
-                                ? "4by3" : "16by9";
+                        $aspect_ratio = $video_size === 360
+                            ? "4by3" : "16by9";
                 ?>
                 <!-- based on http://scotch.io -->
                         
@@ -297,20 +305,22 @@ require_once $path . '_views/open-jumbotron.php';
                 <?php
                     endif;
                     endfor;
-                    else: ?><h3>No trailer.</h3><?php 
-
-                    endif;
                 ?>
-                <!--
-                <pre>
-                    <?php print_r( $videos ); ?>
-                </pre>
-                -->
             </div>
         </div>
+        
+        <?php
+            endif;
+            endif;
+        ?>
         <!--
         <pre>
             <?php print_r( $title ); ?>
+        </pre>
+        -->
+        <!--
+        <pre>
+            <?php print_r( $videos ); ?>
         </pre>
         -->
         
