@@ -250,9 +250,11 @@ require_once $path . '_views/open-jumbotron.php';
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Performers</h3>
+                        <h3 class="panel-title">
+                            <a data-toggle="collapse" href="#performers">Performers <span class="caret"></span></a>
+                        </h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body panel-collapse collapse" id="performers">
                         <?php echo $performance_credits; ?>
                     </div>
                 </div>
@@ -266,9 +268,11 @@ require_once $path . '_views/open-jumbotron.php';
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Production Credits</h3>
+                        <h3 class="panel-title">
+                            <a data-toggle="collapse" href="#production">Production <span class="caret"></span></a>
+                        </h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body panel-collapse collapse" id="production">
                         <?php echo $production_credits; ?>
                     </div>
                 </div>
