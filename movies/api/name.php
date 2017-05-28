@@ -1,7 +1,7 @@
 <?php
     declare( strict_types = 1 );
     $path = '../../';
-    $subtitle   = 'Movies: API';
+    $subtitle   = 'Movies (TMDB)';
 
 require_once $path . '_php/autoload.php';
 
@@ -53,19 +53,42 @@ $biography_birthplace   = !empty( $name_place_of_birth )
     : '';
 
 $biography_birthday     = NULL;
+$birthyear              = NULL;
 if( !empty( $name_birthday ) )
 {
     $birthday           = new DateTime( $name_birthday );
-    $birthdate          = $birthday->format( 'F j, Y' );
+    $birthdate          = (string) $birthday->format( 'F j, Y' );
+    $birthyear          = (int) $birthday->format( 'Y' );
     $biography_birthday = "<li><em>Born:&nbsp;</em><strong>{$birthdate}</strong></li>";
 }
 
 $biography_deathday     = NULL;
+$deathyear              = NULL;
 if( !empty( $name_deathday ) )
 {
     $deathday           = new DateTime( $name_deathday );
-    $deathdate          = $deathday->format( 'F j, Y' );
+    $deathdate          = (string) $deathday->format( 'F j, Y' );
+    $deathyear          = (int) $deathday->format( 'Y' );
     $biography_deathday = "<li><em>Died:&nbsp;</em><strong>{$deathdate}</strong></li>";        
+}
+
+$born_died              = NULL;
+if ( $birthyear and $deathyear )
+{
+   $born_died = "{$birthyear}-{$deathyear}"; 
+}
+elseif ( $birthyear and empty($deathyear) )
+{
+   $born_died = "b. {$birthyear}"; 
+}
+elseif ( empty($birthyear) and $deathyear )
+{
+   $born_died = "d. {$deathyear}"; 
+}
+
+if ( $born_died )
+{
+    $born_died = "({$born_died})";
 }
 
 $biography_aka  = '';
@@ -168,7 +191,7 @@ if( $ct_credits_crew > 0 )
     }
 }
 
-$subtitle .= " ({$name_name})";
+$subtitle .= ": {$name_name} {$born_died}";
 
 // HTML start
 require_once $path . '_views/head.php';
@@ -185,7 +208,7 @@ require_once $path . '_views/open-jumbotron.php';
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2 class="panel-title">
-                    <?php echo $name_name; ?>
+                    <?php echo $name_name . ' ' . $born_died; ?>
                 </h2>
             </div>
             <div class="panel-body">
@@ -291,7 +314,9 @@ require_once $path . '_views/open-jumbotron.php';
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <a data-toggle="collapse" href="#performances">Performances <span class="caret"></span></a>
+                            <a data-toggle="collapse" href="#performances"
+                               title="Click for Performance credits">Performances</a>
+                            <span class="caret"></span>
                         </h3>
                     </div>
                     <div class="panel-body panel-collapse collapse" id="performances">
@@ -309,7 +334,9 @@ require_once $path . '_views/open-jumbotron.php';
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <a data-toggle="collapse" href="#production">Production <span class="caret"></span></a>
+                            <a data-toggle="collapse" href="#production"
+                               title="Click for Production credits">Production</a>
+                            <span class="caret"></span>
                         </h3>
                     </div>
                     <div class="panel-body panel-collapse collapse" id="production">
