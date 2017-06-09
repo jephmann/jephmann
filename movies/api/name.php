@@ -322,6 +322,9 @@ require_once $path . '_views/open-jumbotron.php';
                     <div class="panel-body panel-collapse collapse" id="performances">
                         <?php echo $performance_credits; ?>
                     </div>
+                    <div class="panel-footer">
+                        <p>Click the heading above to see the list (if any).</p>
+                    </div>
                 </div>                    
                 <!--
                 <pre>
@@ -341,6 +344,9 @@ require_once $path . '_views/open-jumbotron.php';
                     </div>
                     <div class="panel-body panel-collapse collapse" id="production">
                         <?php echo $production_credits; ?>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Click the heading above to see the list (if any).</p>
                     </div>
                 </div>
                 
