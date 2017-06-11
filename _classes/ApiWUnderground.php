@@ -116,15 +116,19 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Cleveland',
             'state' => 'OH'
-            ),    
+            ),
+        array(
+            'city' => 'Columbia',
+            'state' => 'IL'
+            ),
         array(
             'city' => 'Dallas',
             'state' => 'TX'
-            ),    
+            ),
         array(
             'city' => 'Dayton',
             'state' => 'OH'
-            ),    
+            ),
         array(
             'city' => 'Deerfield',
             'state' => 'IL'
@@ -216,11 +220,15 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Minneapolis',
             'state' => 'MN'
-            ),    
+            ),
+        array(
+            'city' => 'Mobile',
+            'state' => 'AL'
+            ),
         array(
             'city' => 'Mundelein',
             'state' => 'IL'
-            ),    
+            ),
         array(
             'city' => 'Muskegon',
             'state' => 'MI'
@@ -228,7 +236,7 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Nashville',
             'state' => 'TN'
-            ), 
+            ),
         array(
             'city' => 'New Orleans',
             'state' => 'LA'
@@ -256,7 +264,7 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Park Ridge',
             'state' => 'IL'
-            ),     
+            ),
         array(
             'city' => 'Peoria',
             'state' => 'IL'
@@ -268,23 +276,27 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Phoenix',
             'state' => 'AZ'
-            ),    
+            ),
         array(
             'city' => 'Pigeon Forge',
             'state' => 'TN'
-            ),    
+            ),
         array(
             'city' => 'Piqua',
             'state' => 'KS'
             ),
         array(
+            'city' => 'Piscataway',
+            'state' => 'NJ'
+            ),
+        array(
             'city' => 'Pittsburgh',
             'state' => 'PA'
-            ),    
+            ),
         array(
             'city' => 'Portland',
             'state' => 'OR'
-            ),    
+            ),
         array(
             'city' => 'Portland',
             'state' => 'ME'
@@ -374,6 +386,10 @@ class ApiWUnderground extends Api
             'state' => 'VA'
             ),
         array(
+            'city' => 'Valparaiso',
+            'state' => 'IN'
+            ),
+        array(
             'city' => 'Wall Township',
             'state' => 'NJ'
             ),
@@ -384,7 +400,7 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Webster Groves',
             'state' => 'MO'
-            ),            
+            ),
     );
 
     /*
