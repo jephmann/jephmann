@@ -5,6 +5,12 @@
     
     $abouts = array(
         array(
+            "img"       => 'the-general-buster-keaton-3-540x362.jpg',
+            "alt"       => 'Buster Keaton',
+            "source"    => 'Buster Keaton',
+            "quote"     => 'Think slow, act fast.',
+        ),
+        array(
             "img"       => '3536911.jpg',
             "alt"       => 'George Carlin',
             "source"    => 'George Carlin',
