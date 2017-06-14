@@ -102,6 +102,11 @@ if ( isset( $_POST[ 'search' ] ) )
     $responseName       = "Top Name Results{$forQuery}: {$ctPersons}";
 }
 
+$searchFooter   = "In the Search form, simply type all or part of a person's
+                    name or a movie's title and click the Search button.
+                    If you see a result that you like, click on its link
+                    for its details.";
+
 // HTML start
 require_once $path . '_views/head.php';
 require_once $path . '_views/navbar.php';
@@ -111,10 +116,6 @@ require_once $path . '_views/open-jumbotron.php';
     
     <div class="col-lg-12 col-md-12 col-sm-12">
         <h2>The Movie Section: TheMovieDB Version</h2>    
-    </div>
-    
-    <div class="col-lg-4 col-md-4 col-sm-4">
-        <?php require_once $path . '_views/movies/search.php'; ?>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -129,6 +130,9 @@ require_once $path . '_views/open-jumbotron.php';
                     <?php print_r( $resultsMovies ); ?>
                 </pre>
                 -->
+            </div>
+            <div class="panel-footer">
+                <p style="font-size:small;"><?php echo $searchFooter; ?></p>
             </div>
         </div>
     </div>
@@ -146,7 +150,14 @@ require_once $path . '_views/open-jumbotron.php';
                 </pre>
                 -->
             </div>
+            <div class="panel-footer">
+                <p style="font-size:small;"><?php echo $searchFooter; ?></p>
+            </div>
         </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <?php require_once $path . '_views/movies/search.php'; ?>
     </div>
                 
 <?php

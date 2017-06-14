@@ -34,7 +34,7 @@
        </form>
     </div>
     <div class="panel-footer">
-        <p>            
+        <p style="font-size:small;">            
             For issues regarding data and images, please contact
             <a target="_blank" title="TheMovieDB"
                href="https://www.themoviedb.org">TheMovieDB</a>.
