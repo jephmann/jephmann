@@ -193,7 +193,7 @@ if( $ct_credits_crew > 0 )
 
 $subtitle .= ": {$name_name} {$born_died}";
 
-$creditFooter   = "Click the heading above to see the list (if any).";
+$creditFooter   = "Click the heading above to show or hide the list.";
 
 // HTML start
 require_once $path . '_views/head.php';
@@ -321,7 +321,7 @@ require_once $path . '_views/open-jumbotron.php';
                             <span class="caret"></span>
                         </h3>
                     </div>
-                    <div class="panel-body panel-collapse collapse" id="performances">
+                    <div class="panel-body panel-collapse collapse in" id="performances">
                         <?php echo $performance_credits; ?>
                     </div>
                     <div class="panel-footer">
@@ -344,7 +344,7 @@ require_once $path . '_views/open-jumbotron.php';
                             <span class="caret"></span>
                         </h3>
                     </div>
-                    <div class="panel-body panel-collapse collapse" id="production">
+                    <div class="panel-body panel-collapse collapse in" id="production">
                         <?php echo $production_credits; ?>
                     </div>
                     <div class="panel-footer">
