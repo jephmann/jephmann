@@ -6,6 +6,7 @@
     // Dates    
     $date           = new DateTime;
     $thisMonthYear  = $date->format('F Y');
+    $thisYear       = $date->format('Y');
 ?>
 <!DOCTYPE html>
 <html>
