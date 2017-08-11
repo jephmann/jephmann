@@ -2,9 +2,6 @@
     declare( strict_types = 1 );
     $path       = '';
     $subtitle   = "Home";
-    
-    $date           = new DateTime;
-    $thisMonthYear  = $date->format('F Y');
 
     // HTML start
     require_once '_views/head.php';

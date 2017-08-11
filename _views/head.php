@@ -1,3 +1,12 @@
+<?php
+    /*
+     * Across-the-board server-side code
+     */
+     
+    // Dates    
+    $date           = new DateTime;
+    $thisMonthYear  = $date->format('F Y');
+?>
 <!DOCTYPE html>
 <html>
     <head>

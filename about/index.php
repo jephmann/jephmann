@@ -3,9 +3,6 @@
     $path       = '../';
     $subtitle   = "About This Project";
     
-    $date           = new DateTime;
-    $thisMonthYear  = $date->format('F Y');
-    
     $abouts = array(
         array(
             "img"       => 'the-general-buster-keaton-3-540x362.jpg',
