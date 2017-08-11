@@ -3,6 +3,9 @@
     $path       = '../';
     $subtitle   = "About This Project";
     
+    $date           = new DateTime;
+    $thisMonthYear  = $date->format('F Y');
+    
     $abouts = array(
         array(
             "img"       => 'the-general-buster-keaton-3-540x362.jpg',
@@ -322,7 +325,8 @@
     Although I have plenty of ideas for this project and although I expect to
     receive many more, I have priorities above and beyond this project. So
     please forgive me if certain changes and suggestions do not come to pass
-    here as quickly as you might expect. For example, as I write this (May 2017)
+    here as quickly as you might expect. For example, as I write this
+    (<?php echo $thisMonthYear; ?>)
     I am currently seeking work; thus my job search is a priority. Also, on
     alternate weekends I run errands and do odd jobs for my Mom. Once I am truly
     and gainfully employed, I may devote more of my attention to the job at
