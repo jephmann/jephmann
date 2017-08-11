@@ -177,7 +177,7 @@ require_once $path . '_views/open-jumbotron.php';
                     if( !empty( $title_poster_path ) and ( $ct_posters > 0 or $ct_backdrops > 0 ) ):
                     $title_poster = $moviesAPI->urlImage( $title_poster_path );
                 ?>    
-                <div id="galleria" width="100%">
+                <div id="galleria" class="img100w">
 
                     <?php
                             

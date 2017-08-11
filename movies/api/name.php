@@ -225,7 +225,7 @@ require_once $path . '_views/open-jumbotron.php';
                     if( !empty( $name_profile_path ) and $ct_profiles > 0 ):
                     $name_profile = $moviesAPI->urlImage( $name_profile_path );
                 ?>
-                <div id="galleria" width="100%">
+                <div id="galleria" class="img100w">
 
                     <?php
                             
