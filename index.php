@@ -38,7 +38,7 @@
                 </p>
                 <p>
                     By the way: Not to bury the lead or anything, but as I
-                    write this (June 2017), I would not mind a full-time,
+                    write this (<?php echo date('F Y'); ?>), I would not mind a full-time,
                     permanent job. Feel free to contact me
                     <em>privately</em> via <a target="_blank"
                     title="LinkedIn: Jeffrey Hartmann"
