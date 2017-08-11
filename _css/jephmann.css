@@ -28,6 +28,12 @@ footer
     margin-bottom:  1em;
 }
 
+.img100w
+{
+    max-width:      100%;
+    height:         auto;
+}
+
 #galleria
 {   
     margin-top:     1em; 
