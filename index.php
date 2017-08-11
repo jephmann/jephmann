@@ -2,6 +2,9 @@
     declare( strict_types = 1 );
     $path       = '';
     $subtitle   = "Home";
+    
+    $date           = new DateTime;
+    $thisMonthYear  = $date->format('F Y');
 
     // HTML start
     require_once '_views/head.php';
@@ -17,7 +20,7 @@
 
                 <img src="_images/379395_2896829097182_85266811_n.jpg"
                      alt="Jeffrey Hartmann"
-                     width="100%" />
+                     class="img100w" />
                 <blockquote class="blockquote-reverse">
                     <p>Me on/about 2012. I still have most of this hair,
                     but I now have new eyeglass frames. Here's hoping
@@ -38,7 +41,7 @@
                 </p>
                 <p>
                     By the way: Not to bury the lead or anything, but as I
-                    write this (<?php echo date('F Y'); ?>), I would not mind a full-time,
+                    write this (<?php echo $thisMonthYear; ?>), I would not mind a full-time,
                     permanent job. Feel free to contact me
                     <em>privately</em> via <a target="_blank"
                     title="LinkedIn: Jeffrey Hartmann"

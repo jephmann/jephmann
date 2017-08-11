@@ -66,7 +66,7 @@
                 ?><img src="<?php echo $path ?>_images/<?php echo $about_img ?>"
                      alt="<?php echo $about_alt ?>"
                      title="<?php echo $about_alt ?>"
-                     width="100%" />
+                     class="img100w" />
                 <blockquote class="blockquote-reverse">
                     <p><em><?php echo $about_quote; ?></em></p>
                     <small><?php echo $about_source . $about_medium . $about_date; ?></small>
