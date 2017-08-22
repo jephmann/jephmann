@@ -150,20 +150,20 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <h3>Radar:</h3>
-                        <img width="100%" alt="Radar" title="Radar for <?php
-                            echo "{$city}, {$state}"; ?>"
-                            src="<?php echo $urlRadar; ?>">
+                        <img alt="Radar" class="img100w"
+                            title="Radar for <?php echo "{$city}, {$state}"; ?>"
+                            src="<?php echo $urlRadar; ?>" />
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <h3>Current Conditions:</h3>
                         <img alt=""
                             src="<?php echo $current_icon; ?>">
-                       <p>Weather: <?php echo $current_weather; ?></p>
-                       <p>Temperatures: <?php echo $current_temperature; ?></p>
-                       <p>Winds: <?php echo $current_wind; ?></p>
-                       <p>Precipitation: <?php echo $current_precip; ?></p>
-                       <p>Humidity: <?php echo $current_humidity; ?></p>
-                       <p>Feels Like: <?php echo $current_feel; ?></p>          
+                        <p>Weather: <?php echo $current_weather; ?></p>
+                        <p>Temperatures: <?php echo $current_temperature; ?></p>
+                        <p>Winds: <?php echo $current_wind; ?></p>
+                        <p>Precipitation: <?php echo $current_precip; ?></p>
+                        <p>Humidity: <?php echo $current_humidity; ?></p>
+                        <p>Feels Like: <?php echo $current_feel; ?></p>          
                     </div>
                 </div>
                 
