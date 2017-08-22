@@ -17,8 +17,12 @@ $name_name              = trim( (string) $name[ 'name' ] );
 $name_profile_path      = trim( (string) $name[ 'profile_path' ] );
 $name_biography         = trim( (string) $name[ 'biography' ] );
 $name_place_of_birth    = trim( (string) $name[ 'place_of_birth' ] );
-$name_birthday          = trim( (string) $name[ 'birthday' ] );
-$name_deathday          = trim( (string) $name[ 'deathday' ] );
+$name_birthday          = array_key_exists( 'birthday', $name )
+                        ? trim( (string) $name[ 'birthday' ] )
+                        : '';
+$name_deathday          = array_key_exists( 'deathday', $name )
+                        ? trim( (string) $name[ 'deathday' ] )
+                        : '';
 $name_imdb              = trim( (string) $name[ 'imdb_id' ] );
 $name_aka               = (array) $name[ 'also_known_as' ];
 $ct_name_aka            = (int) count( $name_aka );
@@ -127,13 +131,18 @@ if( $ct_credits_cast > 0 )
     {
         $cast_id            = (string) $cast[ 'id' ];
         $cast_title         = (string) $cast[ 'title' ];
-        $cast_character     = (string) $cast[ 'character' ];
-        $cast_release_year  = '????';
-        $cast_release       = trim( (string) $cast[ 'release_date' ] );
-        if( !empty( $cast_release ) )
-        {
-            $cast_release_date = new DateTime( $cast_release );
-            $cast_release_year = $cast_release_date->format( 'Y' );
+        $cast_character     = array_key_exists( 'character', $cast )
+                ? (string) $cast[ 'character' ]
+                : '';
+        $cast_release_year  = '????';        
+        if( array_key_exists( 'release_date', $cast ))
+        {        
+            $cast_release   = trim( (string) $cast[ 'release_date' ] );
+            if( !empty( $cast_release ) )
+            {
+                $cast_release_date = new DateTime( $cast_release );
+                $cast_release_year = $cast_release_date->format( 'Y' );
+            }            
         }
         $performance_credits .= "<p>"
             . "{$cast_release_year}&nbsp;&nbsp;"
@@ -145,9 +154,6 @@ if( $ct_credits_cast > 0 )
     }
 }
 
-/*
- * TODO: Resolve sorting issue.
- */
 $production_credits = '<p><em>No production credits in the system.</em></p>';
 if( $ct_credits_crew > 0 )
 {
@@ -163,6 +169,7 @@ if( $ct_credits_crew > 0 )
     }
     sort($jobs);
     $crew_jobs = array_unique($jobs);
+    $crew_jobs_sorted = array();
     foreach( $crew_jobs as $key => $value)
     {
         $production_credits .= "<p><strong>{$value}:</strong>";
@@ -173,20 +180,43 @@ if( $ct_credits_crew > 0 )
                 $crew_id            = (string) $crew[ 'id' ];
                 $crew_title         = (string) $crew[ 'title' ];
                 $crew_release_year  = '????';
-                $crew_release = trim( (string) $crew[ 'release_date' ] );                    
+                $crew_release       = trim( (string) $crew[ 'release_date' ] );                    
                 if( !empty( $crew_release ) )
                 {
                     $crew_release_date  = new DateTime( $crew_release );
                     $crew_release_year  = $crew_release_date->format( 'Y' );
                 }
-                $production_credits .= "<br />"
-                    . "{$crew_release_year}&nbsp;&nbsp;"
-                    . "<strong><em>"
-                    . "<a href=\"title.php?id={$crew_id}\">"
-                    . "{$crew_title}</a>"
-                    . "</em></strong>";
+                $crew_jobs_data = array(
+                    'release_year'  => $crew_release_year,
+                    'title'         => $crew_title,
+                    'id'            => $crew_id,
+                );
+                array_push( $crew_jobs_sorted, $crew_jobs_data );
             }
         }
+        foreach( $crew_jobs_sorted as $key => $row )
+        {
+            $c_release_year[ $key ] = $row[ 'release_year' ];
+            $c_title[ $key ]        = $row[ 'title' ];
+        }
+        array_multisort(
+            $c_release_year, SORT_ASC,
+            $c_title, SORT_ASC,
+            $crew_jobs_sorted );
+        $crew_jobs_unique = array_unique( $crew_jobs_sorted, SORT_REGULAR );
+        foreach ( $crew_jobs_unique as $cj )
+        {
+            $crew_job_year  = $cj[ 'release_year' ];
+            $crew_job_title = $cj[ 'title' ];
+            $crew_job_id    = $cj[ 'id' ];
+            $production_credits .= "<br />"
+                . "{$crew_job_year}&nbsp;&nbsp;"
+                . "<strong><em>"
+                . "<a href=\"title.php?id={$crew_job_id}\">"
+                . "{$crew_job_title}</a>"
+                . "</em></strong>";
+        }        
+        
         $production_credits .= "</p>";
     }
 }
@@ -216,7 +246,7 @@ require_once $path . '_views/open-jumbotron.php';
             <div class="panel-body">
                 
                 <!--
-                <img style="border: black 1px dotted;" width="100%"
+                <img style="border: black 1px dotted;" class="img100w"
                      alt=""
                      src="<?php echo $image_name; ?>">
                 -->
