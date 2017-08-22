@@ -15,13 +15,11 @@
             
             <div class="col-lg-5 col-md-5 col-sm-5">
 
-                <img src="_images/379395_2896829097182_85266811_n.jpg"
+                <img src="_images/me201708.jpg"
                      alt="Jeffrey Hartmann"
                      class="img100w" />
                 <blockquote class="blockquote-reverse">
-                    <p>Me on/about 2012. I still have most of this hair,
-                    but I now have new eyeglass frames. Here's hoping
-                    for a more recent image some day soon.</p>
+                    <p>August 2017</p>
                     <small>Me</small>
                 </blockquote>
 
