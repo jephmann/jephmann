@@ -3,152 +3,161 @@
     $path = '../../';
     $subtitle   = 'Movies (TMDB)';
 
-require_once $path . '_php/autoload.php';
+    require_once $path . '_php/autoload.php';
 
-$id                             = (string) $_GET[ 'id' ];
-$moviesAPI                      = new ApiMovieDB;
-$moviesIMDB                     = new IMDB;
+    $id                             = (string) $_GET[ 'id' ];
+    $moviesAPI                      = new ApiMovieDB;
+    $moviesIMDB                     = new IMDB;
 
-// title
-$title                          = (array) $moviesAPI->getSubTopicData(
-                                    $id, 'movie', 'title'
-                                );
-$title_title                    = trim( (string) $title[ 'title' ] );
-$title_release_date             = trim( (string) $title[ 'release_date' ] );
-$title_poster_path              = trim( (string) $title[ 'poster_path' ] );
-$title_tagline                  = trim( (string) $title[ 'tagline' ] );
-$title_overview                 = trim( (string) $title[ 'overview' ] );
-$title_imdb                     = trim( (string) $title[ 'imdb_id' ] );
-$title_genres                   = (array) $title[ 'genres' ];
-$title_production_companies     = (array) $title[ 'production_companies' ]; 
-$ct_title_genres                = (int) count( $title_genres );
-$ct_title_production_companies  = (int) count( $title_production_companies );
+    // title
+    $title                          = (array) $moviesAPI->getSubTopicData(
+                                        $id, 'movie', 'title'
+                                    );
+    $title_title                    = trim( (string) $title[ 'title' ] );
+    $title_release_date             = trim( (string) $title[ 'release_date' ] );
+    $title_poster_path              = trim( (string) $title[ 'poster_path' ] );
+    $title_tagline                  = trim( (string) $title[ 'tagline' ] );
+    $title_overview                 = trim( (string) $title[ 'overview' ] );
+    $title_imdb                     = trim( (string) $title[ 'imdb_id' ] );
+    $title_genres                   = (array) $title[ 'genres' ];
+    $title_production_companies     = (array) $title[ 'production_companies' ]; 
+    $ct_title_genres                = (int) count( $title_genres );
+    $ct_title_production_companies  = (int) count( $title_production_companies );
 
-// main image
-$image_title                    = empty( $title_poster_path )
-                                ? "{$path}_images/no_pic.jpg"
-                                : (string) $moviesAPI->urlImage( $title_poster_path );
+    // main image
+    $image_title                    = empty( $title_poster_path )
+                                    ? "{$path}_images/no_pic.jpg"
+                                    : (string) $moviesAPI->urlImage( $title_poster_path );
 
-// gallery images
-$images                         = (array) $moviesAPI->getSubTopicData(
-                                    $id, 'movie', 'images'
-                                );
-$images_posters                 = (array) $images[ 'posters' ];    
-$images_backdrops               = (array) $images[ 'backdrops' ];
-$ct_posters                     = (int) count( $images_posters );
-$ct_backdrops                   = (int) count( $images_backdrops );
+    // gallery images
+    $images                         = (array) $moviesAPI->getSubTopicData(
+                                        $id, 'movie', 'images'
+                                    );
+    $images_posters                 = (array) $images[ 'posters' ];    
+    $images_backdrops               = (array) $images[ 'backdrops' ];
+    $ct_posters                     = (int) count( $images_posters );
+    $ct_backdrops                   = (int) count( $images_backdrops );
 
-// credits
-$credits                        = (array) $moviesAPI->getSubTopicData(
-                                    $id, 'movie', 'credits'
-                                );
-$credits_cast                   = (array) $credits[ 'cast' ];
-$credits_crew                   = (array) $credits[ 'crew' ];
-$ct_credits_cast                = (int) count( $credits_cast );
-$ct_credits_crew                = (int) count( $credits_crew );
+    // credits
+    $credits                        = (array) $moviesAPI->getSubTopicData(
+                                        $id, 'movie', 'credits'
+                                    );
+    $credits_cast                   = (array) $credits[ 'cast' ];
+    $credits_crew                   = (array) $credits[ 'crew' ];
+    $ct_credits_cast                = (int) count( $credits_cast );
+    $ct_credits_crew                = (int) count( $credits_crew );
 
-// videos
-$videos                         = (array) $moviesAPI->getSubTopicData(
-                                    $id, 'movie', 'videos'
-                                );
+    // videos
+    $videos                         = (array) $moviesAPI->getSubTopicData(
+                                        $id, 'movie', 'videos'
+                                    );
 
-$overview_release   = '';
-$title_release_year = '????';
-if( !empty( $title_release_date ) )
-{
-    $cast_release_date  = new DateTime( $title_release_date );
-    $title_release_year = $cast_release_date->format( 'Y' );
-    $overview_release   = "<p>Release Date:"
-        . "&nbsp;{$cast_release_date->format( 'F j, Y' )}</p>";
-}
-
-$urlIMDB = !empty( $title_imdb )
-    ? (string) $moviesIMDB->getTitleUrl( $title_imdb )
-    : '';
-
-$urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, 'movie' );
-
-$overview_genres = '';
-if ( $ct_title_genres > 0 )
-{
-    $array_genres           = array();
-    foreach ($title_genres as $genre )
+    $overview_release   = '';
+    $title_release_year = '????';
+    if( !empty( $title_release_date ) )
     {
-        $genre_name         = trim( (string) $genre[ 'name' ] );
-        $array_genres[]     = $genre_name;
+        $cast_release_date  = new DateTime( $title_release_date );
+        $title_release_year = $cast_release_date->format( 'Y' );
+        $overview_release   = "<p>Release Date:"
+            . "&nbsp;{$cast_release_date->format( 'F j, Y' )}</p>";
     }
-    $overview_genres = '<p>' . implode( ' | ', $array_genres ) . '</p>';
-}
 
-$overview_companies = '';
-if ( $ct_title_production_companies > 0 )
-{
-    $array_companies        = array();
-    foreach ($title_production_companies as $company )
-    {
-        $company_name       = trim( (string) $company[ 'name' ] );
-        $array_companies[]  = $company_name;
-    }
-    $overview_companies = '<p>' . implode( ' | ', $array_companies ) . '</p>';
-}
+    $urlIMDB = !empty( $title_imdb )
+        ? (string) $moviesIMDB->getTitleUrl( $title_imdb )
+        : '';
 
-$performance_credits = '<p><em>No performance credits in the system.</em></p>';
-if( $ct_credits_cast > 0 )
-{
-    $performance_credits = '';
-    foreach( $credits_cast as $cast )
-    {
-        $cast_id        = (string) $cast[ 'id' ];
-        $cast_name      = (string) $cast[ 'name' ];
-        $cast_character = (string) $cast[ 'character' ];
-        $performance_credits .= "<p>"
-            . "<strong>"
-            . "<a href=\"name.php?id={$cast_id}\">{$cast_name}</a>"
-            . "</strong>"
-            . "<br /><strong>{$cast_character}</strong>"
-            . "</p>";
-    }        
-}
+    $urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, 'movie' );
 
-$production_credits = '<p><em>No production credits in the system.</em></p>';
-if( $ct_credits_crew > 0 )
-{
-    $production_credits = '';
-    $jobs           = array();
-    foreach( $credits_crew as $crew)
+    $overview_genres = '';
+    if ( $ct_title_genres > 0 )
     {
-        $jobs[]     = $crew['job'];
-    }
-    sort( $jobs );
-    $crew_jobs = array_unique( $jobs );        
-    foreach( $crew_jobs as $key => $value )
-    {
-        $production_credits .= "<p><strong>{$value}:</strong>";
-        foreach( $credits_crew as $crew )
+        $array_genres           = array();
+        foreach ($title_genres as $genre )
         {
-            if( $crew['job'] === $value )
-            {
-                $crew_id            = (string) $crew[ 'id' ];
-                $crew_name          = (string) $crew[ 'name' ];    
-                $production_credits .= "<br />"
-                . "<strong>"
-                . "<a href=\"name.php?id={$crew_id}\">{$crew_name}</a>"
-                . "</strong>";
-            }
+            $genre_name         = trim( (string) $genre[ 'name' ] );
+            $array_genres[]     = $genre_name;
         }
-        $production_credits .= "</p>";
+        $overview_genres = '<p>' . implode( ' | ', $array_genres ) . '</p>';
     }
-}
 
-$subtitle .= ": {$title_title} ({$title_release_year})";
+    $overview_companies = '';
+    if ( $ct_title_production_companies > 0 )
+    {
+        $array_companies        = array();
+        foreach ($title_production_companies as $company )
+        {
+            $company_name       = trim( (string) $company[ 'name' ] );
+            $array_companies[]  = $company_name;
+        }
+        $overview_companies = '<p>' . implode( ' | ', $array_companies ) . '</p>';
+    }
 
-$creditFooter   = "Click the heading above to show or hide the list.";
+    $performance_credits = '<p><em>No performance credits in the system.</em></p>';
+    if( $ct_credits_cast > 0 )
+    {
+        $performance_credits = '';
+        foreach( $credits_cast as $cast )
+        {
+            $cast_id        = (string) $cast[ 'id' ];
+            $cast_name      = (string) $cast[ 'name' ];
+            $cast_character = (string) $cast[ 'character' ];
+            $performance_credits .= "<p>"
+                . "<strong>"
+                . "<a href=\"name.php?id={$cast_id}\">{$cast_name}</a>"
+                . "</strong>"
+                . "<br /><strong>{$cast_character}</strong>"
+                . "</p>";
+        }        
+    }
 
-// HTML start
-require_once $path . '_views/head.php';
-require_once $path . '_views/navbar.php';
-require_once $path . '_views/header.php';
-require_once $path . '_views/open-jumbotron.php';
+    $production_credits = '<p><em>No production credits in the system.</em></p>';
+    if( $ct_credits_crew > 0 )
+    {
+        $production_credits = '';
+        $jobs           = array();
+        foreach( $credits_crew as $crew)
+        {
+            $jobs[]     = $crew['job'];
+        }
+        sort( $jobs );
+        $crew_jobs = array_unique( $jobs );        
+        foreach( $crew_jobs as $key => $value )
+        {
+            $production_credits .= "<p><strong>{$value}:</strong>";
+            foreach( $credits_crew as $crew )
+            {
+                if( $crew['job'] === $value )
+                {
+                    $crew_id            = (string) $crew[ 'id' ];
+                    $crew_name          = (string) $crew[ 'name' ];    
+                    $production_credits .= "<br />"
+                    . "<strong>"
+                    . "<a href=\"name.php?id={$crew_id}\">{$crew_name}</a>"
+                    . "</strong>";
+                }
+            }
+            $production_credits .= "</p>";
+        }
+    }
+
+    $subtitle .= ": {$title_title} ({$title_release_year})";
+
+    $creditFooter   = "Click the heading above to show or hide the list.";
+
+    /*
+     *  Custom (per page) meta
+     */
+    $meta_image         = $image_title;
+    $meta_description   = htmlspecialchars( $title_overview )
+                        . ' | Data courtesy of TheMovieDB.com | ';
+    $meta_querystring   = "?id={$id}";
+    /*
+     *  HTML start
+     */
+    require_once $path . '_views/head.php';
+    require_once $path . '_views/navbar.php';
+    require_once $path . '_views/header.php';
+    require_once $path . '_views/open-jumbotron.php';
 ?>
     
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -407,4 +416,6 @@ require_once $path . '_views/open-jumbotron.php';
     }
     require_once $path . '_views/load/google-analytics.php';
     require_once $path . '_views/foot.php';    
-    // HTML end
+    /*
+     *  HTML end
+     */

@@ -37,7 +37,15 @@
         ),        
     );
 
-    // HTML start
+    /*
+     *  Custom (per page) meta
+     */
+    $meta_image         = 'http://jephmann.com/_images/me201708.jpg';
+    $meta_description   = (string) NULL;
+    $meta_querystring   = (string) NULL;
+    /*
+     *  HTML start
+     */
     require_once $path . '_views/head.php';
     require_once $path . '_views/navbar.php';
     require_once $path . '_views/header.php';
@@ -367,4 +375,6 @@
     require_once $path . '_views/load/bootstrap.php';
     require_once $path . '_views/load/google-analytics.php';
     require_once $path . '_views/foot.php';
-    // HTML end
+    /*
+     *  HTML end
+     */

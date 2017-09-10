@@ -11,8 +11,8 @@
     $ctLocations    = (int) count( $locations );    
     
     // default
-    $city = 'Chicago';
-    $state = 'IL';
+    $city   = 'Chicago';
+    $state  = 'IL';
        
     if ( isset( $_POST[ 'weatherCity' ] ) )
     {
@@ -74,8 +74,16 @@
     
     // radar
     $urlRadar       = (string) $weatherAPI->urlRadar( $city, $state );
-    
-    // HTML start
+
+    /*
+     *  Custom (per page) meta
+     */
+    $meta_image         = 'http://jephmann.com/_images/logos/iw63kb1u.bmp';
+    $meta_description   = 'Weather data courtesy of WeatherUnderground.com | ';
+    $meta_querystring   = (string) NULL;
+    /*
+     *  HTML start
+     */
     require_once $path . '_views/head.php';
     require_once $path . '_views/navbar.php';
     require_once $path . '_views/header.php';
@@ -88,10 +96,11 @@
 
                 <h2>The Weather Section</h2>
                 <a target="blank"
-                     href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">
-                    <img alt="" title="Weather Underground"
+                    href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">
+                    <img alt="Weather Underground"
+                        title="Weather Underground"
                         src="../_images/logos/iw63kb1u.bmp"
-                     style="display:block;margin:auto;">
+                        style="display:block;margin:auto;">
                 </a>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -316,4 +325,6 @@
     require_once $path . '_views/load/bootstrap.php';
     require_once $path . '_views/load/google-analytics.php';
     require_once $path . '_views/foot.php';    
-    // HTML end
+    /*
+     *  HTML end
+     */

@@ -3,7 +3,15 @@
     $path       = '';
     $subtitle   = "Home";
 
-    // HTML start
+    /*
+     *  Custom (per page) meta
+     */
+    $meta_image         = 'http://jephmann.com/_images/me201708.jpg';
+    $meta_description   = (string) NULL;
+    $meta_querystring   = (string) NULL;
+    /*
+     * HTML start
+     */ 
     require_once '_views/head.php';
     require_once '_views/navbar.php';
     require_once '_views/header.php';
@@ -58,4 +66,6 @@
     require_once '_views/load/bootstrap.php';
     require_once '_views/load/google-analytics.php';
     require_once '_views/foot.php';
-    // HTML end
+    /*
+     *  HTML end
+     */
