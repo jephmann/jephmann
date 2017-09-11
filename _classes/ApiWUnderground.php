@@ -30,8 +30,20 @@ class ApiWUnderground extends Api
             'state' => 'CA'
             ),
         array(
+            'city' => 'Ann Arbor',
+            'state' => 'MI'
+            ),
+        array(
+            'city' => 'Antioch',
+            'state' => 'IL'
+            ),
+        array(
             'city' => 'Arlington',
             'state' => 'TX'
+            ),
+        array(
+            'city' => 'Arlington',
+            'state' => 'VA'
             ),
         array(
             'city' => 'Arlington Heights',
@@ -94,12 +106,28 @@ class ApiWUnderground extends Api
             'state' => 'MA'
             ),
         array(
+            'city' => 'Brownfield',
+            'state' => 'TX'
+            ),
+        array(
             'city' => 'Buffalo',
             'state' => 'NY'
             ),
         array(
             'city' => 'Burbank',
             'state' => 'CA'
+            ),    
+        array(
+            'city' => 'Castro Valley',
+            'state' => 'CA'
+            ),
+        array(
+            'city' => 'Catalina Foothills',
+            'state' => 'AZ'
+            ),
+        array(
+            'city' => 'Charlottesville',
+            'state' => 'VA'
             ),
         array(
             'city' => 'Chatsworth',
@@ -118,8 +146,28 @@ class ApiWUnderground extends Api
             'state' => 'OH'
             ),
         array(
+            'city' => 'Clifton',
+            'state' => 'NJ'
+            ),
+        array(
             'city' => 'Columbia',
             'state' => 'IL'
+            ),
+        array(
+            'city' => 'Columbus',
+            'state' => 'OH'
+            ),
+        array(
+            'city' => 'Conroe',
+            'state' => 'TX'
+            ),
+        array(
+            'city' => 'Creve Coeur',
+            'state' => 'MO'
+            ),
+        array(
+            'city' => 'Dale City',
+            'state' => 'VA'
             ),
         array(
             'city' => 'Dallas',
@@ -130,6 +178,10 @@ class ApiWUnderground extends Api
             'state' => 'OH'
             ),
         array(
+            'city' => 'Dearborn',
+            'state' => 'MI'
+            ),
+        array(
             'city' => 'Deerfield',
             'state' => 'IL'
             ),
@@ -138,7 +190,23 @@ class ApiWUnderground extends Api
             'state' => 'TX'
             ),
         array(
+            'city' => 'Des Plaines',
+            'state' => 'IL'
+            ),
+        array(
             'city' => 'Detroit',
+            'state' => 'MI'
+            ),
+        array(
+            'city' => 'Downers Grove',
+            'state' => 'IL'
+            ),
+        array(
+            'city' => 'Doylestown',
+            'state' => 'PA'
+            ),
+        array(
+            'city' => 'East Lansing',
             'state' => 'MI'
             ),
         array(
@@ -146,12 +214,32 @@ class ApiWUnderground extends Api
             'state' => 'IL'
             ),
         array(
+            'city' => 'El Paso',
+            'state' => 'TX'
+            ),
+        array(
+            'city' => 'Englewood',
+            'state' => 'NJ'
+            ),
+        array(
             'city' => 'Evanston',
             'state' => 'IL'
             ),
         array(
+            'city' => 'Evansville',
+            'state' => 'IN'
+            ),
+        array(
+            'city' => 'Flower Mound',
+            'state' => 'TX'
+            ),
+        array(
             'city' => 'Fort Lauderdale',
             'state' => 'FL'
+            ),
+        array(
+            'city' => 'Fort Wayne',
+            'state' => 'IN'
             ),
         array(
             'city' => 'Galena',
@@ -162,12 +250,36 @@ class ApiWUnderground extends Api
             'state' => 'CA'
             ),
         array(
+            'city' => 'Glenview',
+            'state' => 'IL'
+            ),
+        array(
+            'city' => 'Grand Prairie',
+            'state' => 'TX'
+            ),
+        array(
             'city' => 'Green Bay',
             'state' => 'WI'
+            ),
+        array(
+            'city' => 'Greene',
+            'state' => 'ME'
+            ),
+        array(
+            'city' => 'Harrisburg',
+            'state' => 'PA'
+            ),
+        array(
+            'city' => 'Harwood Heights',
+            'state' => 'IL'
             ),    
         array(
             'city' => 'Highland Park',
             'state' => 'IL'
+            ),
+        array(
+            'city' => 'Holly Springs',
+            'state' => 'NC'
             ),
         array(
             'city' => 'Homer Glen',
@@ -178,12 +290,24 @@ class ApiWUnderground extends Api
             'state' => 'TX'
             ),
         array(
+            'city' => 'Indianapolis',
+            'state' => 'IN'
+            ),
+        array(
+            'city' => 'Jacksonville',
+            'state' => 'FL'
+            ),
+        array(
             'city' => 'Jacksonville',
             'state' => 'SC'
             ), 
         array(
             'city' => 'Joliet',
             'state' => 'IL'
+            ),
+        array(
+            'city' => 'Kannapolis',
+            'state' => 'NC'
             ),
         array(
             'city' => 'Kansas City',
@@ -194,16 +318,52 @@ class ApiWUnderground extends Api
             'state' => 'TX'
             ),
         array(
+            'city' => 'Lacey',
+            'state' => 'WA'
+            ),
+        array(
+            'city' => 'Lake Forest',
+            'state' => 'IL'
+            ),
+        array(
             'city' => 'Las Vegas',
             'state' => 'NV'
+            ),
+        array(
+            'city' => 'Lenexa',
+            'state' => 'KS'
+            ),
+        array(
+            'city' => 'Libertyville',
+            'state' => 'IL'
+            ),
+        array(
+            'city' => 'Lockport',
+            'state' => 'IL'
+            ),
+        array(
+            'city' => 'Long Beach',
+            'state' => 'CA'
             ),
         array(
             'city' => 'Los Angeles',
             'state' => 'CA'
             ),
         array(
+            'city' => 'Macon',
+            'state' => 'GA'
+            ),
+        array(
             'city' => 'Malibu',
             'state' => 'CA'
+            ),
+        array(
+            'city' => 'Mattoon',
+            'state' => 'IL'
+            ),
+        array(
+            'city' => 'Medford',
+            'state' => 'OR'
             ),
         array(
             'city' => 'Memphis',
@@ -246,13 +406,21 @@ class ApiWUnderground extends Api
             'state' => 'NY'
             ),     
         array(
+            'city' => 'Oak Lawn',
+            'state' => 'IL'
+            ),     
+        array(
             'city' => 'Oak Park',
             'state' => 'IL'
             ),     
         array(
             'city' => 'Oakland',
             'state' => 'CA'
-            ),     
+            ),
+        array(
+            'city' => 'Ocala',
+            'state' => 'FL'
+            ),
         array(
             'city' => 'Omaha',
             'state' => 'NE'
@@ -295,12 +463,12 @@ class ApiWUnderground extends Api
             ),
         array(
             'city' => 'Portland',
-            'state' => 'OR'
+            'state' => 'ME'
             ),
         array(
             'city' => 'Portland',
-            'state' => 'ME'
-            ),    
+            'state' => 'OR'
+            ),
         array(
             'city' => 'Reno',
             'state' => 'NV'
@@ -316,11 +484,11 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Saint George',
             'state' => 'UT'
-            ), 
+            ),
         array(
             'city' => 'Saint Louis',
             'state' => 'MO'
-            ), 
+            ),
         array(
             'city' => 'Saint Paul',
             'state' => 'MN'
@@ -342,6 +510,10 @@ class ApiWUnderground extends Api
             'state' => 'CA'
             ),    
         array(
+            'city' => 'Santa Clara',
+            'state' => 'CA'
+            ),    
+        array(
             'city' => 'Santa Clarita',
             'state' => 'CA'
             ),    
@@ -350,8 +522,16 @@ class ApiWUnderground extends Api
             'state' => 'CA'
             ),
         array(
+            'city' => 'Sarasota',
+            'state' => 'FL'
+            ),
+        array(
             'city' => 'Schiller Park',
             'state' => 'IL'
+            ),
+        array(
+            'city' => 'Scottsdale',
+            'state' => 'AZ'
             ),
         array(
             'city' => 'Seattle',
@@ -375,6 +555,14 @@ class ApiWUnderground extends Api
             ),
         array(
             'city' => 'Tampa',
+            'state' => 'FL'
+            ),    
+        array(
+            'city' => 'Thousand Oaks',
+            'state' => 'CA'
+            ),
+        array(
+            'city' => 'Titusville',
             'state' => 'FL'
             ),
         array(
@@ -400,6 +588,10 @@ class ApiWUnderground extends Api
         array(
             'city' => 'Webster Groves',
             'state' => 'MO'
+            ),
+        array(
+            'city' => 'Woodstock',
+            'state' => 'GA'
             ),
     );
 
