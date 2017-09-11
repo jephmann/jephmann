@@ -121,10 +121,12 @@ class ApiWUnderground extends Api
             'city' => 'Castro Valley',
             'state' => 'CA'
             ),
-        array(
+        /*array(
             'city' => 'Catalina Foothills',
             'state' => 'AZ'
             ),
+         * 
+         */
         array(
             'city' => 'Charlottesville',
             'state' => 'VA'
@@ -209,10 +211,12 @@ class ApiWUnderground extends Api
             'city' => 'East Lansing',
             'state' => 'MI'
             ),
-        array(
+        /*array(
             'city' => 'East Saint Louis',
             'state' => 'IL'
             ),
+         * 
+         */
         array(
             'city' => 'El Paso',
             'state' => 'TX'
