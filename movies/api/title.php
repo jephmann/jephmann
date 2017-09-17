@@ -247,11 +247,11 @@
                     endif;
                 ?>
                 
-                <!--
-                <pre>
-                    <?php print_r( $images ); ?>
-                </pre>
-                -->
+                <?php
+                    // TEST
+                    //require_once $path . '_php/pre/movies_api_images.php';
+                ?>
+
             </div>
             <div class="panel-footer">
                 <?php
@@ -332,16 +332,12 @@
             endif;
             endif;
         ?>
-        <!--
-        <pre>
-            <?php print_r( $title ); ?>
-        </pre>
-        -->
-        <!--
-        <pre>
-            <?php print_r( $videos ); ?>
-        </pre>
-        -->
+        
+        <?php
+            // TESTS
+            //require_once $path . '_php/pre/movies_api_title.php';
+            //require_once $path . '_php/pre/movies_api_videos.php';
+        ?>
         
     </div>
 
@@ -367,11 +363,10 @@
                         <p><?php echo $creditFooter; ?></p>
                     </div>
                 </div>
-                <!--
-                <pre>
-                    <?php print_r( $credits_cast ); ?>
-                </pre>
-                -->
+                <?php
+                    // TEST
+                    //require_once $path . '_php/pre/movies_api_cast.php';
+                ?>
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4">
@@ -390,11 +385,10 @@
                         <p><?php echo $creditFooter; ?></p>
                     </div>
                 </div>
-                <!--
-                <pre>
-                    <?php print_r( $credits_crew ); ?>
-                </pre>
-                -->
+                <?php
+                    // TEST
+                    //require_once $path . '_php/pre/movies_api_crew.php';
+                ?>
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4">
