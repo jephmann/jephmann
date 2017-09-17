@@ -1,7 +1,7 @@
 <?php
     declare( strict_types = 1 );
     $path       = '';
-    $subtitle   = "Home";
+    $subtitle   = "Available for Hire";
 
     /*
      *  Custom (per page) meta
@@ -43,12 +43,17 @@
                         href="about/">About</a>.
                 </p>
                 <p>
+                    Feel free to click anywhere else within this project,
+                    whether "finished" or not. (Frankly, that's the idea.)
+                </p>
+                <p>
                     By the way: Not to bury the lead or anything, but as I
-                    write this (<?php echo $thisMonthYear; ?>), I would not mind a full-time,
-                    permanent job. Feel free to contact me
+                    write this (<?php echo $thisMonthYear; ?>), I would not
+                    mind a full-time, permanent job. Feel free to contact me
                     <em>privately</em> via <a target="_blank"
                     title="LinkedIn: Jeffrey Hartmann"
-                    href="https://www.linkedin.com/in/jeffreyhartmann//">LinkedIn</a>.
+                    href="https://www.linkedin.com/in/jeffreyhartmann//">LinkedIn</a>
+                    or via any other social media where you may find me.
                 </p>
                 <p>
                     Thanks for visiting!
