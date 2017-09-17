@@ -260,6 +260,9 @@
                 ?>
             </div>
         </div>
+        <?php
+            require_once $path . '_views/share-buttons.php';
+        ?>
     </div>
 
     <div class="col-lg-8 col-md-8 col-sm-8">

@@ -310,7 +310,6 @@
                 <?php
                     endif;
                 ?>
-
                 <!--
                 <pre>
                     <?php print_r( $images ); ?>
@@ -322,8 +321,11 @@
                     $logo_title = $name_name;
                     require_once $path . '_views/movies/logo-links.php';
                 ?>
-            </div>
+            </div>            
         </div>
+        <?php
+            require_once $path . '_views/share-buttons.php';
+        ?>
     </div>
 
     <div class="col-lg-8 col-md-8 col-sm-8">
