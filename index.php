@@ -7,7 +7,7 @@
      *  Custom (per page) meta
      */
     $meta_image         = 'http://jephmann.com/_images/me201708.jpg';
-    $meta_description   = (string) NULL;
+    $meta_description   = 'Available for Hire | ';
     $meta_querystring   = (string) NULL;
     /*
      * HTML start
