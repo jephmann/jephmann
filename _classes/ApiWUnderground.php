@@ -9,6 +9,8 @@ class ApiWUnderground extends Api
     private $key                    = "fa4a10d736578d22";
     private $url                    = "http://api.wunderground.com/api";
     
+    private $sampleZIPurl = "http://api.wunderground.com/api/fa4a10d736578d22/conditions/q/60613.json";
+    
     public $features                = array(
         'alerts', 'almanac', 'astronomy', 'conditions', 'currenthurricane',
         'forecast', 'forecast10day', 'geolookup', 'history', 'hourly',
@@ -623,7 +625,9 @@ class ApiWUnderground extends Api
         string $state ) : array
     {
         $new_city = str_replace( ' ', '_', $city );
-        return $this->getJsonArray( $this->jsonReport( $feature, $new_city, $state ) );
+        return $this->getJsonArray(
+            $this->jsonReport( $feature, $new_city, $state )
+        );
     }
     
     public function urlRadar(
@@ -632,7 +636,28 @@ class ApiWUnderground extends Api
     {
         $new_city = str_replace( ' ', '_', $city );
         return "{$this->baseURL()}/animatedradar/q/{$state}/{$new_city}.gif"
-        . "?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=200";       
+            . "?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=200";       
     }
-        
+    
+    public function getLocationViaZip( string $zip ) : array
+    {
+        $url        = "{$this->baseURL()}/conditions/q/{$zip}.json";
+        $array      = $this->getJsonArray($url);
+        $cityState  = array();
+        if ( array_key_exists( 'current_observation', $array) )
+        {
+            // zip exists in WU system.
+            $location   = $array[ 'current_observation' ][ 'display_location' ];
+            $cityState[ 'city' ]  = (string) $location[ 'city' ];
+            $cityState[ 'state' ] = (string) $location[ 'state' ];
+        }
+        else
+        {
+            // zip does not exist in WU system.
+            $cityState[ 'city' ]  = '';
+            $cityState[ 'state' ] = '';
+        }        
+        return $cityState;
+    }
+            
 }

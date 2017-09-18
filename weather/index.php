@@ -8,18 +8,50 @@
     $weatherAPI     = new ApiWUnderground;
     $features       = (array) $weatherAPI->features;
     $locations      = (array) $weatherAPI->locations;
-    $ctLocations    = (int) count( $locations );    
+    $ctLocations    = (int) count( $locations );
     
-    // default
+    // default (TODO: Consider starting empty)
     $city   = 'Chicago';
     $state  = 'IL';
+    $zip    = '60613';
+    $eZip   = '';
+    $showZip = '';
        
-    if ( isset( $_POST[ 'weatherCity' ] ) )
+    if ( isset( $_POST[ 'wZIP' ] ) )
     {
-        $weatherCity    = (int) $_POST[ 'weatherCity' ];
+        $zip        = (string) $_POST[ 'wZIP' ];
+        
+        // server-side validation of ZIP code
+        if ( !preg_match( "/^[0-9]{5}(?:-[0-9]{4})?$/", $zip ))
+        {
+            $eZip   = "<p style='color:orange;font-size:small;'>"
+                    . "5-digit U.S. ZIP Code required."
+                    . "</p>";
+        }
+        else
+        {
+            $location   = $weatherAPI->getLocationViaZip( $zip );
+            // Cover if ZIP not in WU system.
+            if( empty($location[ 'city' ]) or empty($location[ 'state' ]))
+            {
+                $eZip   = "<p style='color:orange;font-size:small;'>"
+                        . "Please try a different U.S. ZIP Code."
+                        . "</p>";
+            }
+            else
+            {
+                $city       = (string) $location[ 'city' ];
+                $state      = (string) $location[ 'state' ];
+                $showZip    = "&nbsp;({$zip})";
+            }
+        }
+    }
+       
+    if ( isset( $_POST[ 'wCity' ] ) )
+    {
+        $weatherCity    = (int) $_POST[ 'wCity' ];
         $city           = (string) $locations[ $weatherCity ][ 'city' ];
         $state          = (string) $locations[ $weatherCity ][ 'state' ];
-        $subtitle       = "{$subtitle} ({$city}, {$state})";
     }
     
     // alert feature
@@ -74,6 +106,12 @@
     
     // radar
     $urlRadar       = (string) $weatherAPI->urlRadar( $city, $state );
+    
+    // City/State/ZIP string
+    $csz = "{$city}, {$state}{$showZip}";
+    
+    // paths
+    $views = $path . '_views/';
 
     /*
      *  Custom (per page) meta
@@ -84,10 +122,10 @@
     /*
      *  HTML start
      */
-    require_once $path . '_views/head.php';
-    require_once $path . '_views/navbar.php';
-    require_once $path . '_views/header.php';
-    require_once $path . '_views/open-jumbotron.php';
+    require_once $views . 'head.php';
+    require_once $views . 'navbar.php';
+    require_once $views . 'header.php';
+    require_once $views . 'open-jumbotron.php';
 ?>    
         
     <div class="container">
@@ -102,65 +140,24 @@
                         src="../_images/logos/iw63kb1u.bmp"
                         style="display:block;margin:auto;">
                 </a>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Select a U.S. City
-                        </h3>                   
-                    </div>
-                    <div class="panel-body">    
-                        <form method="post" action="" name="formWeather">
-                            <div class="form-group">
-                                <select class="form-control" id="weatherCity" name="weatherCity" required="required">
-                                    <option value=""></option><?php
-                                    for( $i=0; $i<$ctLocations; $i++ ):
-                                        $mycity   = $locations[ $i ][ 'city' ];
-                                        $mystate  = $locations[ $i ][ 'state' ];
-                                        ?>
-
-                                    <option value="<?php echo $i; ?>"><?php
-                                        echo "{$mycity}, {$mystate}"; ?></option><?php  
-                                    endfor; ?>
-
-                                </select>
-                            </div>
-                        </form>
-                    </div>                            
-                </div>
+                
+                <?php          
+                    require_once $views . 'weather/forms/zip.php';
+                    require_once $views . 'weather/forms/city.php';
+                ?>
 
             </div>
             <div class="col-lg-8 col-md-8 col-sm-8">        
-                <h2>Weather for <?php echo "{$city}, {$state}"; ?></h2>
-                
-                <?php if ( $ctAlerts != 0 ) : ?>
-                <?php for ( $a=0; $a<$ctAlerts; $a++ ) :
-                    $alert_description  = (string) $alerts[$a]['description'];
-                    $alert_message      = nl2br( (string) $alerts[$a]['message'] );
-                    $alert_expires      = (string) $alerts[$a]['expires'];
-                ?>
-                <div class="panel panel-warning"
-                     style='color: #FFFFFF;'>
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Alert for
-                            <?php echo $city; ?>,
-                            <?php echo $state; ?>:
-                            <?php echo $alert_description; ?>
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <h4>Expires: <?php echo $alert_expires; ?></h4>
-                        <p style="font-family: 'Lucida Console', monospace; font-size: small;"><?php echo $alert_message; ?></p>
-                    </div>
-                </div>
+                <h2>Weather for <?php echo $csz; ?></h2>
                 <?php
-                endfor;
-                endif;
+                    require_once $views . 'weather/alerts.php';
                 ?>
+                
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <h3>Radar:</h3>
                         <img alt="Radar" class="img100w"
-                            title="Radar for <?php echo "{$city}, {$state}"; ?>"
+                            title="Radar for <?php echo $csz; ?>"
                             src="<?php echo $urlRadar; ?>" />
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -181,150 +178,39 @@
     </div>        
         
 
-    <?php require_once $path . '_views/close-jumbotron.php'; ?>
+    <?php require_once $views . 'close-jumbotron.php'; ?>
 
     <div class="container">
         <div class="row">                       
 
-            <div class="col-lg-4 col-md-4 col-sm-4">              
-                
-                <div class="panel panel-success">
-                   <div class="panel-heading">
-                       <h3 class="panel-title">Almanac for
-                           <?php echo $city; ?>,
-                           <?php echo $state; ?>
-                       </h3>
-                   </div>
-                   <div class="panel-body">
-                    
-                        <div class="col-lg-6 col-md-6 col-sm-6">                    
-                            <div class="well">
-                                <h3>Norms</h3>
-                                <p>High:<br/> 
-                                <?php echo $almanacHighNormalF; ?>F
-                                |
-                                <?php echo $almanacHighNormalC; ?>C
-                                </p>
-                                <p>Low:<br/>
-                                <?php echo $almanacLowNormalF; ?>F
-                                |
-                                <?php echo $almanacLowNormalC; ?>C
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="well">
-                                <h3>Records</h3>
-                                <p>High (<?php echo $almanacHighRecordYear; ?>):<br/> 
-                                <?php echo $almanacHighRecordF; ?>F
-                                |
-                                <?php echo $almanacHighRecordC; ?>C
-                                </p>
-                                <p>Low (<?php echo $almanacLowRecordYear; ?>):<br/>
-                                <?php echo $almanacLowRecordF; ?>F
-                                |
-                                <?php echo $almanacLowRecordC; ?>C
-                                </p>
-                            </div>
-                        </div>
-                       
-                   </div>
-               </div>
-                
+            <div class="col-lg-4 col-md-4 col-sm-4">                                
+                <?php
+                    require_once $views . 'weather/almanac.php';
+                ?>                      
             </div>                      
 
             <div class="col-lg-8 col-md-8 col-sm-8">                
-                
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Forecasts for
-                            <?php echo $city . ', ' . $state; ?>
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row"> <!--begin top row-->
-        
-                        <?php
-                            for( $i=0; $i<$ctForecastDay; $i++ ):
-                                $icon_url   = (string) $forecastDay[$i]['icon_url'];
-                                $title      = (string) $forecastDay[$i]['title'];
-                                $fcttext    = (string) $forecastDay[$i]['fcttext'];
-
-                                // start between rows
-                                if( ($i != 0 ) and ( $i % 3 === 0 ) ):
-                        ?>
-                            
-                        </div>
-                        <div class="row"><?php
-                            endif; // end between rows
-                        ?>                                
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><img src="<?php
-                                            echo $icon_url; ?>" alt="">&nbsp;<?php
-                                            echo $title; ?></h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p><?php echo $fcttext; ?></p>
-                                    </div>
-                                </div>                                
-                            </div><?php
-                            endfor;
-                            ?>
-                                
-                        </div> <!--end bottom row-->
-
-                    </div>
-                </div>
-                
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">About this Section</h3>
-                    </div>
-                    <div class="panel-body">
-                        
-                        <p>
-                            Here I retrieve data from <a target="_blank"
-                            href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">Weather
-                            Underground</a>'s API.
-                        </p>
-
-                        <p>
-                            If you would like me to add a U.S. city to this page,
-                            feel free to let me know.
-                        </p>
-
-                        <p>
-                            Default data is for Chicago, IL, basically because I'm
-                            from Chicago (and "because I could").
-                        </p>
-                        
-                    </div>
-                </div>
-                
+                <?php
+                    require_once $views . 'weather/forecasts.php';
+                    require_once $views . 'weather/about.php';
+                ?>
             </div>
                 
         </div>            
     </div>
 
 <?php
-    require_once $path . '_views/close-jumbotron.php';
-    require_once $path . '_views/footer.php';
-    require_once $path . '_views/load/jquery.php';
+    require_once $views . 'close-jumbotron.php';
+    require_once $views . 'footer.php';
+    require_once $views . 'load/jquery.php';
+    require_once $views . 'load/bootstrap.php';
     ?>
-<script type="text/javascript">    
-    $(document).ready(function() {
-        $('#weatherCity').on('change', function() {
-            document.forms['formWeather'].submit();
-        });
-    });
-</script>
+
+    <script type="text/javascript"
+        src="<?php echo $path ?>_js/weather.js"></script>
 <?php
-    require_once $path . '_views/load/bootstrap.php';
-    require_once $path . '_views/load/google-analytics.php';
-    require_once $path . '_views/foot.php';    
+    require_once $views . 'load/google-analytics.php';
+    require_once $views . 'foot.php';    
     /*
      *  HTML end
      */
