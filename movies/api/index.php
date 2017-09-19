@@ -3,8 +3,8 @@
     $path       = '../../';
     $subtitle   = 'Movies: API Version';
 
-    $responseName           = "No results for Name yet.";
-    $responseTitle          = "No results for Title yet.";
+    $responseName           = "To see Titles below, please enter a term in The Search Form.";
+    $responseTitle          = "To see People below, please enter a term in The Search Form.";
     $resultsName            = '';
     $resultsTitle           = '';
     $forQuery               = '';

@@ -1,7 +1,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Search</h3>
+        <h3 class="panel-title">The Search Form</h3>
     </div>
     <div class="panel-body">        
         <form method="post" action="./">
