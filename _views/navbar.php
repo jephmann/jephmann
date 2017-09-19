@@ -39,7 +39,11 @@
                     </li>
                     <li>
                         <a href="#" data-toggle="dropdown">Resources <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu">                            
+                            <li>
+                                <a target="_blank"
+                                   href="http://paper.li/JeffreyHartmann/1502334205#/">jephmann.companion</a>
+                            </li>                            
                             <li>
                                 <a target="_blank"
                                    href="http://builtwithbootstrap.com/">Built With Bootstrap</a>
@@ -59,6 +63,10 @@
                             <li>
                                 <a target="_blank"
                                    href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">Weather Underground</a>
+                            </li>
+                            <li>
+                                <a target="_blank"
+                                   href="http://www.fatcow.com/">FatCow</a>
                             </li>
                         </ul>
                     </li>
