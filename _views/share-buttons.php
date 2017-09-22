@@ -21,7 +21,7 @@
             'toggle'    => TRUE,
             'target'    => TRUE,
             'onclick'   => '',
-            'href'      => "https://bufferapp.com/add?url={$encode_shared_url}&amp;text={$shared_title}",
+            'href'      => "https://bufferapp.com/add?url={$encode_shared_url}&amp;text={$shared_title},jph",
             'src'       => 'buffer',
             'alt'       => 'Buffer',
         ),
@@ -32,14 +32,6 @@
             'href'      => "http://www.digg.com/submit?url={$encode_shared_url}",
             'src'       => 'diggit',
             'alt'       => 'Digg',
-        ),
-        array(
-            'toggle'    => TRUE,
-            'target'    => FALSE,
-            'onclick'   => '',
-            'href'      => "mailto:?Subject={$shared_title}&amp;Body={$encode_shared_title} {$shared_url}",
-            'src'       => 'email',
-            'alt'       => 'Email',
         ),
         array(
             'toggle'    => TRUE,
@@ -75,14 +67,6 @@
         ),
         array(
             'toggle'    => TRUE,
-            'target'    => FALSE,
-            'onclick'   => 'window.print()',
-            'href'      => "javascript:;",
-            'src'       => 'print',
-            'alt'       => 'Print',
-        ),
-        array(
-            'toggle'    => TRUE,
             'target'    => TRUE,
             'onclick'   => '',
             'href'      => "http://reddit.com/submit?url={$encode_shared_url}&amp;title={$shared_title}",
@@ -109,7 +93,7 @@
             'toggle'    => TRUE,
             'target'    => TRUE,
             'onclick'   => '',
-            'href'      => "https://twitter.com/share?url={$encode_shared_url}&amp;text={$encode_shared_title}&amp;hashtags=jeffreyhartmann,idwp",
+            'href'      => "https://twitter.com/share?url={$encode_shared_url}&amp;text={$encode_shared_title}&amp;hashtags={$hashtag}",
             'src'       => 'twitter',
             'alt'       => 'Twitter',
         ),
@@ -129,11 +113,27 @@
             'src'       => 'yummly',
             'alt'       => 'Yummly',
         ),
-
+        array(
+            'toggle'    => FALSE,
+            'target'    => FALSE,
+            'onclick'   => '',
+            'href'      => "mailto:?Subject={$shared_title}&amp;Body={$encode_shared_title} {$shared_url}",
+            'src'       => 'email',
+            'alt'       => 'Email',
+        ),
+        array(
+            'toggle'    => FALSE,
+            'target'    => FALSE,
+            'onclick'   => 'window.print()',
+            'href'      => "javascript:;",
+            'src'       => 'print',
+            'alt'       => 'Print',
+        ),
     );
 ?>
 <!-- I got these buttons from simplesharebuttons.com -->
 <div id="share-buttons">
+    <p style="font-size: small;">Sharing:</p>
     <?php
         foreach ($shareButtons as $sButton):
             $sb_toggle = (boolean) $sButton['toggle'];

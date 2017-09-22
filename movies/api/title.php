@@ -143,6 +143,9 @@
     $subtitle .= ": {$title_title} ({$title_release_year})";
 
     $creditFooter   = "Click the heading above to show or hide the list.";
+    
+    //for Twitter sharebuttons (delimit with comma)
+    $hashtag = 'themoviedb,jephmann';
 
     /*
      *  Custom (per page) meta
