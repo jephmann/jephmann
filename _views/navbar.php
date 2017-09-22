@@ -15,10 +15,12 @@
             <div class="collapse navbar-collapse" id="navbar-main">                
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="<?php echo $path ?>about">About</a>
+                        <a title="About this project"
+                            href="<?php echo $path ?>about">About</a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="dropdown">Movies <span class="caret"></span></a>
+                        <a title="Experiments with data regarding movies"
+                            href="#" data-toggle="dropdown">Movies <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo $path ?>movies">Introduction</a></li>
                             <li><a href="<?php echo $path ?>movies/api">TheMovieDB Version</a></li>
@@ -26,23 +28,26 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?php echo $path ?>weather">Weather</a>
+                        <a title="Experiments with data regarding weather"
+                            href="<?php echo $path ?>weather">Weather</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a target="_blank" href="<?php echo $path ?>resume.pdf">My Resume</a>
+                        <a target="_blank" title="Jeffrey Hartmann's resume (PDF)"
+                           href="<?php echo $path ?>resume.pdf">My Resume</a>
                     </li>
                     <li>
-                        <a target="_blank"
+                        <a target="_blank" title="Jeffrey Hartmann's LinkedIn profile"
                            href="https://www.linkedin.com/in/jeffreyhartmann/">My LinkedIn</a>
                     </li>
                     <li>
-                        <a target="_blank"
+                        <a target="_blank" title="Jeffrey Hartmann's code samples on GitHub.com"
                            href="https://github.com/jephmann">My GitHub</a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="dropdown">Resources <span class="caret"></span></a>
+                        <a title="Some of the technologies in use on this project"
+                            href="#" data-toggle="dropdown">Resources <span class="caret"></span></a>
                         <ul class="dropdown-menu">                            
                             <li>
                                 <a target="_blank"
