@@ -35,6 +35,10 @@
                     </li>
                     <li>
                         <a target="_blank"
+                           href="https://www.linkedin.com/in/jeffreyhartmann/">My LinkedIn</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
                            href="https://github.com/jephmann">My GitHub</a>
                     </li>
                     <li>
