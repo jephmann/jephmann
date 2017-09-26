@@ -16,25 +16,36 @@ class ApiMovieDB extends Api
      */
     
     // retrieve TheMovieDB API URLs for topic (movie, person)
-    public function getTopicURLs( string $id, string $topic ) : array
+    public function getTopicURLs(
+        string $id,
+        string $topic
+    ) : array
     {
         $url                        = "{$this->url}{$topic}/{$id}";
         $queryString                = "?api_key={$this->key}";
         $urls                       = array();
-        switch ($topic)
+        switch ( $topic )
         {
             case 'person':
                 $urls[ "name" ]     = "{$url}{$queryString}";
-                $urls[ "credits" ]  = "{$url}/movie_credits{$queryString}";
                 $urls[ "images" ]   = "{$url}/images{$queryString}";
+                $urls[ "credits" ]  = "{$url}/movie_credits{$queryString}";
+                $urls[ "tv"]        = "{$url}/tv_credits{$queryString}";
                 break;
             
             case 'movie':
                 $urls[ "title" ]    = "{$url}{$queryString}";
-                $urls[ "credits" ]  = "{$url}/credits{$queryString}";
                 $urls[ "images" ]   = "{$url}/images{$queryString}";
+                $urls[ "credits" ]  = "{$url}/credits{$queryString}";
                 $urls[ "videos" ]   = "{$url}/videos{$queryString}";
-                break;                
+                break;
+            
+            case 'tv':
+                $urls[ "show" ]     = "{$url}{$queryString}";
+                $urls[ "images" ]   = "{$url}/images{$queryString}";
+                $urls[ "credits" ]  = "{$url}/credits{$queryString}";
+                $urls[ "videos" ]   = "{$url}/videos{$queryString}";
+                break;
         }        
         return $urls;
     }
@@ -80,7 +91,9 @@ class ApiMovieDB extends Api
     }
 
     // retrieve TheMovieDB URL of image source
-    public function urlImage( string $image_path ) : string
+    public function urlImage(
+        string $image_path
+    ) : string
     {
         if ( !is_null( $image_path ) )
         {
@@ -89,7 +102,10 @@ class ApiMovieDB extends Api
     }
     
     // retrive TheMovieDB public URL for name
-    function getPublicURL( string $id, string $topic ) : string
+    function getPublicURL(
+        string $id,
+        string $topic
+    ) : string
     {
         return "{$this->url_themoviedb}{$topic}/{$id}";
     }
