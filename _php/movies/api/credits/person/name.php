@@ -38,9 +38,17 @@ $ct_profiles            = (int) count( $images_profiles );
 /*
  *  BIOGRAPHY
  */
+$urlIMDB                = !empty( $name_imdb )
+    ? (string) $moviesIMDB->getNameUrl( $name_imdb )
+    : '';
+
+$biography_imdb         = !empty( $urlIMDB )
+    ? " Try <a target=\"_blank\" href=\"{$urlIMDB}bio\">IMDB</a> for more information."
+    : " No IMDB link was provided.";
+        
 $biography_name         = !empty( $name_biography )
     ? preg_replace( '/\n/', '</p><p>', $name_biography )
-    : '<em>No biographic sketch available.</em>';
+    : "<em>TheMovieDB does not have a biography for {$name_name}.{$biography_imdb}</em>";
 
 $biography_birthplace   = !empty( $name_place_of_birth )
     ? "<li><em>Birthplace:&nbsp;</em><strong>{$name_place_of_birth}</strong></li>"
@@ -84,22 +92,14 @@ if ( $born_died )
 {
     $born_died = "({$born_died})";
 }
-
+        
 $biography_aka  = '';
 if( $ct_name_aka > 0 )
 {
     sort( $name_aka );
-    $akas = '';
-    foreach( $name_aka as $k => $v )
-    {
-        $akas .= "{$v}&nbsp;&nbsp;";
-    }
-    $biography_aka = "<li><em>Alias:&nbsp;</em><strong>{$akas}</strong></li>";
+    $akas           = implode( ' | ', $name_aka );
+    $biography_aka  = "<li><em>Alias:&nbsp;</em><strong>{$akas}</strong></li>";
 }
-
-$urlIMDB = !empty( $name_imdb )
-    ? (string) $moviesIMDB->getNameUrl( $name_imdb )
-    : '';
 
 $urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, 'person' );
 
