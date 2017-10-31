@@ -3,39 +3,7 @@
     $path       = '../';
     $subtitle   = "About This Project";
     
-    $abouts = array(
-        array(
-            "img"       => 'the-general-buster-keaton-3-540x362.jpg',
-            "alt"       => 'Buster Keaton',
-            "source"    => 'Buster Keaton',
-            "quote"     => 'Think slow, act fast.',
-        ),
-        array(
-            "img"       => '3536911.jpg',
-            "alt"       => 'George Carlin',
-            "source"    => 'George Carlin',
-            "medium"    => 'Class Clown',
-            "date"      => '1972',
-            "quote"     => 'ATTRACTING ATTENTION TO YOURSELF! That is the name
-                            of this job, y&rsquo;know? It&rsquo;s called
-                            &ldquo;Dig me.&rdquo;',
-        ),
-        array(
-            "img"       => 'Kovacs2.JPG',
-            "alt"       => 'Ernie Kovacs',
-            "source"    => 'Ernie Kovacs',
-            "quote"     => 'There&rsquo;s a standard formula for success in the
-                            entertainment medium, and that is: Beat it to death
-                            if it succeeds.',
-        ),
-        array(
-            "img"       => 'ef6ff625f532e3cf1079a64e06810dbe.jpg',
-            "alt"       => 'Peter Sellers',
-            "source"    => 'What I used to say at every staff meeting',
-            "quote"     => 'As long as the roots are not severed, all is well.
-                            And all will be well in the garden.',
-        ),        
-    );
+
 
     /*
      *  Custom (per page) meta
@@ -56,59 +24,33 @@
         <div class="row">
             
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <h2>Apropos of Nothing</h2>
-                <?php
-                    foreach( $abouts as $about ):
-                    $about_img      = (string) $about[ 'img' ];
-                    $about_alt      = (string) $about[ 'alt' ];
-                    $about_quote    = (string) $about[ 'quote' ];
-                    $about_source   = (string) $about[ 'source' ];
-                    $about_medium   = array_key_exists( 'medium', $about )
-                        ? (string) ', <cite title="' 
-                            . $about[ 'medium' ] . '">'
-                            . $about[ 'medium' ] . '</cite>'
-                        : (string) ''; 
-                    $about_date     = array_key_exists( 'date', $about )
-                        ? (string) '&nbsp;' . $about[ 'date' ]
-                        : (string) '';                            
-                ?><img src="<?php echo $path ?>_images/<?php echo $about_img ?>"
-                     alt="<?php echo $about_alt ?>"
-                     title="<?php echo $about_alt ?>"
-                     class="img100w" />
-                <blockquote class="blockquote-reverse">
-                    <p><em><?php echo $about_quote; ?></em></p>
-                    <small><?php echo $about_source . $about_medium . $about_date; ?></small>
-                </blockquote>                
-                <?php
-                    endforeach;
-                ?>              
+                
+                <h2>About This Project</h2>
+
+                <p>If the worst part of this project is my About page, then
+                    hopefully I am on the right track. As I started writing
+                    this page, I found myself becoming rather verbose.
+                    Thus I broke apart my "elevator speech" (if our elevator
+                    is in the former Sears Tower) into smaller, clickable
+                    sections, each of which focuses on a goal for this
+                    project.</p>
+                
             </div>
             
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <article>
                 
-                    <h2>About This Project</h2>
-                    
-                    <p>If the worst part of this project is my About page, then
-                        hopefully I am on the right track. As I started writing
-                        this page, I found myself becoming rather verbose.
-                        Thus I broke apart my "elevator speech" (if our elevator
-                        is in the former Sears Tower) into smaller, clickable
-                        sections, each of which focuses on a goal for this
-                        project.</p>
-                
-                    <div class="panel-group" id="accordion">      
+                <div class="panel-group" id="accordion">      
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion"
-                                        href="#aboutPortfolio">As Portfolio</a>
-                                    <span class="caret"></span>
-                                </h3>
-                            </div>
-                            <div id="aboutPortfolio" class="panel-collapse collapse">
-                                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                    href="#aboutPortfolio">As Portfolio</a>
+                                <span class="caret"></span>
+                            </h3>
+                        </div>
+                        <div id="aboutPortfolio" class="panel-collapse collapse">
+                            <div class="panel-body">
 
 <p>
     Confidentiality agreements. Non-compete clauses. Private, inner-office
@@ -132,20 +74,20 @@
     only portfolio where I may demonstrate my current skills as a web developer.
 </p>
 
-                                </div>
                             </div>
                         </div>
-                
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion"
-                                       href="#aboutDemoSite">As Demo Site</a>
-                                    <span class="caret"></span>
-                                </h3>
-                            </div>
-                            <div id="aboutDemoSite" class="panel-collapse collapse">
-                                <div class="panel-body">
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#aboutDemoSite">As Demo Site</a>
+                                <span class="caret"></span>
+                            </h3>
+                        </div>
+                        <div id="aboutDemoSite" class="panel-collapse collapse">
+                            <div class="panel-body">
 
 <p>
     "Demo site" may be a more accurate term than "portfolio" to describe this
@@ -166,20 +108,20 @@
     changes on the front-end/client-side.
 </p>
 
-                                </div>
                             </div>
                         </div>
-                
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion"
-                                       href="#aboutWorkshop">As Workshop</a>
-                                    <span class="caret"></span>
-                                </h3>
-                            </div>
-                            <div id="aboutWorkshop" class="panel-collapse collapse">
-                                <div class="panel-body">
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#aboutWorkshop">As Workshop</a>
+                                <span class="caret"></span>
+                            </h3>
+                        </div>
+                        <div id="aboutWorkshop" class="panel-collapse collapse">
+                            <div class="panel-body">
 
 <p>
     Assuming that my basic strengths may not be enough to suit prospective
@@ -216,20 +158,20 @@
     whether I am applying new concepts properly.
 </p>
 
-                                </div>
                             </div>
                         </div>
-                
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion"
-                                       href="#aboutPersonalSite">As Personal Site</a>
-                                    <span class="caret"></span>
-                                </h3>
-                            </div>
-                            <div id="aboutPersonalSite" class="panel-collapse collapse">
-                                <div class="panel-body">
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#aboutPersonalSite">As Personal Site</a>
+                                <span class="caret"></span>
+                            </h3>
+                        </div>
+                        <div id="aboutPersonalSite" class="panel-collapse collapse">
+                            <div class="panel-body">
 
 <p>
     And, whether failing at any of the above, above all, this is ultimately a
@@ -251,20 +193,20 @@
     before. After all, I am nothing if not me.
 </p>
 
-                                </div>
                             </div>
                         </div>
-                
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion"
-                                       href="#aboutSpecifications">Specifications</a>
-                                    <span class="caret"></span>
-                                </h3>
-                            </div>
-                            <div id="aboutSpecifications" class="panel-collapse collapse">
-                                <div class="panel-body">
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#aboutSpecifications">Specifications</a>
+                                <span class="caret"></span>
+                            </h3>
+                        </div>
+                        <div id="aboutSpecifications" class="panel-collapse collapse">
+                            <div class="panel-body">
 
 <ul>
     <li>PHP 7 (and coming soon MySQL)*</li>
@@ -307,20 +249,20 @@
     move on... or even start my own shop.
 </p>
 
-                                </div>
                             </div>
                         </div>
-                
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion"
-                                       href="#aboutOtherStuff">Other Stuff</a>
-                                    <span class="caret"></span>
-                                </h3>
-                            </div>
-                            <div id="aboutOtherStuff" class="panel-collapse collapse">
-                                <div class="panel-body">
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#aboutOtherStuff">Other Stuff</a>
+                                <span class="caret"></span>
+                            </h3>
+                        </div>
+                        <div id="aboutOtherStuff" class="panel-collapse collapse">
+                            <div class="panel-body">
 
 <p>
     I welcome and encourage <em>constructive</em> criticism; I ignore and
@@ -358,13 +300,12 @@
     Otherwise... well, you'd already know where to find me. ;)
 </p>
 
-                                </div>
                             </div>
                         </div>
-
                     </div>
+
+                </div>
                     
-                </article>
             </div>            
         </div>        
     </div>
