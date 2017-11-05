@@ -7,7 +7,13 @@
      *  Custom (per page) meta
      */
     $meta_image         = 'http://jephmann.com/_images/me201708.jpg';
-    $meta_description   = 'Available for Hire | ';
+    $meta_description   = date('F Y')
+            . ': I am available for work,'
+            . ' in and out of web development and design.'
+            . ' Would prefer to remain in Chicago;'
+            . ' open to relocation.'
+            . ' Classic/cult film buff.'
+            . ' A folk-rocker at heart. | ';
     $meta_querystring   = (string) NULL;
     /*
      * HTML start
