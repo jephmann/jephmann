@@ -20,6 +20,11 @@
                     </li>
                     <li>
                         <a title="Experiments with data regarding movies"
+                            href="<?php echo $path ?>movies/api">Movies</a>
+                    </li>
+                    <!--
+                    <li>
+                        <a title="Experiments with data regarding movies"
                             href="#" data-toggle="dropdown">Movies <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo $path ?>movies">Introduction</a></li>
@@ -27,6 +32,7 @@
                             <li><a href="<?php echo $path ?>movies/db">Database Version</a></li>
                         </ul>
                     </li>
+                    -->
                     <li>
                         <a title="Experiments with data regarding weather"
                             href="<?php echo $path ?>weather">Weather</a>
