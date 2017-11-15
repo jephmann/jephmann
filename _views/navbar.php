@@ -4,7 +4,8 @@
             <div class="navbar-header">
                 <button class="navbar-toggle collapsed" type="button"
                         data-toggle="collapse"
-                        data-target="#navbar-main">
+                        data-target="#navbar-main"
+                        title="Navbar Toggle">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
