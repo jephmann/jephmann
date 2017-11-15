@@ -26,7 +26,8 @@
            
             <div class="form-group">
                 <button name="search" class="btn btn-primary"
-                    onclick="alert(document.getElementById('txtSearch').value)">
+                    onclick="alert(document.getElementById('txtSearch').value)"
+                        alt="Search">
                     Search
                 </button>
             </div>
