@@ -10,10 +10,8 @@
     $meta_description   = date('F Y')
             . ': I am available for work,'
             . ' in and out of web development and design.'
-            . ' Would prefer to remain in Chicago;'
-            . ' open to relocation.'
-            . ' Classic/cult film buff.'
-            . ' A folk-rocker at heart. | ';
+            . ' Chicago is home; however, relocation is an option.'
+            . ' Please contact me privately for details. | ';
     $meta_querystring   = (string) NULL;
     /*
      * HTML start
