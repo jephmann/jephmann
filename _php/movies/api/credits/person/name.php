@@ -58,9 +58,20 @@ $biography_birthday     = NULL;
 $birthyear              = NULL;
 if( !empty( $name_birthday ) )
 {
-    $birthday           = new DateTime( $name_birthday );
-    $birthdate          = (string) $birthday->format( 'F j, Y' );
-    $birthyear          = (int) $birthday->format( 'Y' );
+    if( is_numeric( $name_birthday ) )
+    {
+        // partial date
+        $birthdate  = (string) $name_birthday;
+        $birthyear  = (int) $name_birthday;
+    }
+    else
+    {
+        // full date
+        $birthday   = new DateTime( $name_birthday );
+        $birthdate  = (string) $birthday->format( 'F j, Y' );
+        $birthyear  = (int) $birthday->format( 'Y' );
+    }
+    
     $biography_birthday = "<li><em>Born:&nbsp;</em><strong>{$birthdate}</strong></li>";
 }
 
@@ -68,9 +79,20 @@ $biography_deathday     = NULL;
 $deathyear              = NULL;
 if( !empty( $name_deathday ) )
 {
-    $deathday           = new DateTime( $name_deathday );
-    $deathdate          = (string) $deathday->format( 'F j, Y' );
-    $deathyear          = (int) $deathday->format( 'Y' );
+    if( is_numeric( $name_deathday ) )
+    {
+        // partial date
+        $deathdate  = (string) $name_deathday;
+        $birthyear  = (int) $name_deathday;
+    }
+    else
+    {
+        // full date
+        $deathday   = new DateTime( $name_deathday );
+        $deathdate  = (string) $deathday->format( 'F j, Y' );
+        $deathyear  = (int) $deathday->format( 'Y' );
+    }    
+    
     $biography_deathday = "<li><em>Died:&nbsp;</em><strong>{$deathdate}</strong></li>";        
 }
 
@@ -87,7 +109,7 @@ elseif ( empty( $birthyear ) and $deathyear )
 {
    $born_died = "d. {$deathyear}"; 
 }
-
+// if string exists, surround string with parentheses for display
 if ( $born_died )
 {
     $born_died = "({$born_died})";
