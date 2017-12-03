@@ -1,4 +1,4 @@
 <?php
     echo '<pre>';
-    print_r( $film );
+    print_r( $title );
     echo '</pre>';
