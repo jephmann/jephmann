@@ -3,15 +3,18 @@
 /*
  * Retrieve main data for Person/Name
  */
+$topic = 'person';
 
-// name
+// parent data
 $name                   = (array) $moviesAPI->getSubTopicData(
-                            $id, 'person', 'name'
+                            $id, $topic, 'name'
                         );
 $name_name              = trim( (string) $name[ 'name' ] );
 $name_profile_path      = trim( (string) $name[ 'profile_path' ] );
 $name_biography         = trim( (string) $name[ 'biography' ] );
-$name_place_of_birth    = trim( (string) $name[ 'place_of_birth' ] );
+$name_place_of_birth    = array_key_exists( 'place_of_birth', $name )
+                        ? trim( (string) $name[ 'place_of_birth' ] )
+                        : '';
 $name_birthday          = array_key_exists( 'birthday', $name )
                         ? trim( (string) $name[ 'birthday' ] )
                         : '';
@@ -19,8 +22,8 @@ $name_deathday          = array_key_exists( 'deathday', $name )
                         ? trim( (string) $name[ 'deathday' ] )
                         : '';
 $name_imdb              = trim( (string) $name[ 'imdb_id' ] );
-$name_aka               = (array) $name[ 'also_known_as' ];
-$ct_name_aka            = (int) count( $name_aka );
+$aka                    = (array) $name[ 'also_known_as' ];
+$ct_aka                 = (int) count( $aka );
 
 // main image
 $image_name             = empty( $name_profile_path )
@@ -29,7 +32,7 @@ $image_name             = empty( $name_profile_path )
 
 // name images
 $images                 = (array) $moviesAPI->getSubTopicData(
-                            $id, 'person', 'images'
+                            $id, $topic, 'images'
                         );
 $images_profiles        = (array) $images[ 'profiles' ];
 $ct_profiles            = (int) count( $images_profiles );
@@ -38,23 +41,34 @@ $ct_profiles            = (int) count( $images_profiles );
 /*
  *  BIOGRAPHY
  */
-$urlIMDB                = !empty( $name_imdb )
-    ? (string) $moviesIMDB->getNameUrl( $name_imdb )
-    : '';
 
-$biography_imdb         = !empty( $urlIMDB )
-    ? " Try <a target=\"_blank\" href=\"{$urlIMDB}bio\">IMDB</a> for more information."
+// Display the values of this array in the Biography section
+$overview           = array(
+    'name'          => $name_name,
+    'aka'           => '',
+    'text'          => !empty( $name_biography )
+                    ? preg_replace( '/\n/', '</p><p>', $name_biography )
+                    : "<em>TheMovieDB does not have a biography for {$name_name}.</em>",
+    'birthplace'    => !empty( $name_place_of_birth )
+                    ? "<li><em>Birthplace:&nbsp;</em><strong>{$name_place_of_birth}</strong></li>"
+                    : '',
+    'birthday'      => '',
+    'deathday'      => '',
+    'born-died'     => '',
+    'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, $topic ),
+    'urlIMDB'       => !empty( $name_imdb )
+                    ? (string) $moviesIMDB->getNameUrl( $name_imdb )
+                    : '',
+    );
+
+if( empty( $name_biography ) )
+{    
+$overview['text']         .= !empty( $name_imdb )
+    ? " Try <a target=\"_blank\" href=\"{$overview[ 'urlIMDB' ]}bio\">IMDB</a> for more information."
     : " No IMDB link was provided.";
-        
-$biography_name         = !empty( $name_biography )
-    ? preg_replace( '/\n/', '</p><p>', $name_biography )
-    : "<em>TheMovieDB does not have a biography for {$name_name}.{$biography_imdb}</em>";
+}
 
-$biography_birthplace   = !empty( $name_place_of_birth )
-    ? "<li><em>Birthplace:&nbsp;</em><strong>{$name_place_of_birth}</strong></li>"
-    : '';
 
-$biography_birthday     = NULL;
 $birthyear              = NULL;
 if( !empty( $name_birthday ) )
 {
@@ -62,20 +76,22 @@ if( !empty( $name_birthday ) )
     {
         // partial date
         $birthdate  = (string) $name_birthday;
-        $birthyear  = (int) $name_birthday;
+        $birthyear = (int) $name_birthday;
     }
     else
     {
         // full date
         $birthday   = new DateTime( $name_birthday );
         $birthdate  = (string) $birthday->format( 'F j, Y' );
-        $birthyear  = (int) $birthday->format( 'Y' );
+        $birthyear = (int) $birthday->format( 'Y' );
     }
     
-    $biography_birthday = "<li><em>Born:&nbsp;</em><strong>{$birthdate}</strong></li>";
+    $overview[ 'birthday' ] = "<li>"
+        . "<em>Born:&nbsp;</em>"
+        . "<strong>{$birthdate}</strong>"
+        . "</li>";
 }
 
-$biography_deathday     = NULL;
 $deathyear              = NULL;
 if( !empty( $name_deathday ) )
 {
@@ -83,7 +99,7 @@ if( !empty( $name_deathday ) )
     {
         // partial date
         $deathdate  = (string) $name_deathday;
-        $birthyear  = (int) $name_deathday;
+        $deathyear  = (int) $name_deathday;
     }
     else
     {
@@ -93,7 +109,10 @@ if( !empty( $name_deathday ) )
         $deathyear  = (int) $deathday->format( 'Y' );
     }    
     
-    $biography_deathday = "<li><em>Died:&nbsp;</em><strong>{$deathdate}</strong></li>";        
+    $overview[ 'deathday' ] = "<li>"
+        . "<em>Died:&nbsp;</em>"
+        . "<strong>{$deathdate}</strong>"
+        . "</li>";        
 }
 
 $born_died              = NULL;
@@ -114,22 +133,22 @@ if ( $born_died )
 {
     $born_died = "({$born_died})";
 }
+    $overview[ 'born_died' ] = $born_died;
         
-$biography_aka  = '';
-if( $ct_name_aka > 0 )
+if( $ct_aka > 0 )
 {
-    sort( $name_aka );
-    $akas           = implode( ' | ', $name_aka );
-    $biography_aka  = "<li><em>Alias:&nbsp;</em><strong>{$akas}</strong></li>";
+    sort( $aka );
+    $akas           = implode( ' | ', $aka );
+    $overview[ 'aka' ]  = "<li><em>Alias:&nbsp;</em><strong>{$akas}</strong></li>";
 }
 
-$urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, 'person' );
+//$urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, $topic );
 
 /*
  * Additional per-page variables
  */
 
-$subtitle .= ": {$name_name} {$born_died}";
+$subtitle .= ": {$overview[ 'name' ]} {$overview[ 'born_died' ]}";
 
 $creditFooter   = "Click the heading above to show or hide the list.";
 
@@ -138,7 +157,7 @@ $hashtag = 'themoviedb,' . preg_replace('/[\s\W]+/', '', $name_name);
 
 //  Custom (per page) meta
 $meta_image         = $image_name;
-$meta_description   = htmlspecialchars( $name_biography )
+$meta_description   = htmlspecialchars( $overview[ 'text' ] )
                     . ' | Data courtesy of TheMovieDB.com | ';
 $meta_querystring   = "?id={$id}";
 
@@ -149,9 +168,9 @@ $meta_querystring   = "?id={$id}";
 
 // film credits
 $film   = (array) $moviesAPI->getSubTopicData(
-            $id, 'person', 'credits'
+            $id, $topic, 'credits'
         );
 // tv credits
 $tv     = (array) $moviesAPI->getSubTopicData(
-            $id, 'person', 'tv'
+            $id, $topic, 'tv'
         );
