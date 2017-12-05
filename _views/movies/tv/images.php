@@ -1,12 +1,12 @@
 <!--
 <img style="border: black 1px dotted;" width="100%"
-     alt="<?php echo $title_title; ?>"
-     src="<?php echo $image_title; ?>">
+     alt="<?php echo $overview[ 'title' ]; ?>"
+     src="<?php echo $image_tv; ?>">
 -->                
 
 <?php
-    if( !empty( $title_poster_path ) and ( $ct_posters > 0 or $ct_backdrops > 0 ) ):
-    $title_poster = $moviesAPI->urlImage( $title_poster_path );
+    if( !empty( $tv_poster_path ) and ( $ct_posters > 0 or $ct_backdrops > 0 ) ):
+    $tv_poster = $moviesAPI->urlImage( $tv_poster_path );
 ?>    
 <div id="galleria" class="img100w">
 
@@ -14,9 +14,9 @@
 
         // Main image
         echo Galleria::img(
-            $title_poster,
-            $title_title,
-            $overview_release
+            $tv_poster,
+            $overview[ 'title' ],
+            $overview[ 'release' ]
                 . "<p>(Main Image)</p>"
             );
 
@@ -25,15 +25,15 @@
         if( $ct_posters > 0 )
         {
             $x = 0;
-            foreach ( $images_posters as $poster )
+            foreach ( $posters as $poster )
             {
                 $x++;
                 $poster_image = $moviesAPI->urlImage( $poster[ 'file_path' ] );
-                $poster_description = $overview_release
+                $poster_description = $overview[ 'release' ]
                     . "<p>(Poster {$x} of {$ct_posters})</p>";
                 echo Galleria::img(
                     $poster_image,
-                    $title_title,
+                    $overview[ 'title' ],
                     $poster_description
                 );
             }
@@ -43,15 +43,15 @@
         if( $ct_backdrops > 0 )
         {
             $x = 0;
-            foreach ( $images_backdrops as $backdrop )
+            foreach ( $backdrops as $backdrop )
             {
                 $x++;
                 $backdrop_image = $moviesAPI->urlImage( $backdrop[ 'file_path' ] );
-                $backdrop_description = $overview_release
+                $backdrop_description = $overview[ 'release' ]
                     . "<p>(Backdrop {$x} of {$ct_backdrops})</p>";
                 echo Galleria::img(
                     $backdrop_image,
-                    $title_title,
+                    $overview[ 'title' ],
                     $backdrop_description
                 );
             }
@@ -67,5 +67,4 @@
 </h4>
 <?php
     endif;
-    // TEST
-    //require_once $path . '_php/movies/api/pre/images.php';
+    //require_once $test . 'images.php';

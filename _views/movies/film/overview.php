@@ -1,14 +1,15 @@
 <h3>Overview</h3>
 <p class="text-warning"><em><?php
-    echo $film_tagline;
+    echo $overview[ 'tagline' ];
 ?></em></p>
 <p><?php
-    echo $film_overview;
+    echo $overview[ 'text' ];
 ?></p>
 <?php
-    echo $overview_genres;
-    echo $overview_release;
-    echo $overview_companies;
+    echo $overview[ 'release' ];
+    echo $overview[ 'titles' ];
+    echo $overview[ 'genres' ];
+    echo $overview[ 'companies' ];
 
     $videos_results = (array) $videos[ 'results' ];
     $ctVideos = (int) count($videos_results);
@@ -63,5 +64,6 @@
     endif;
     endif;
     // TESTS
-    //require_once $path . '_php/movies/api/pre/title.php';
-    //require_once $path . '_php/movies/api/pre/videos.php';
+    //require_once $test . 'title.php';
+    //require_once $test . 'titles.php';
+    //require_once $test . 'videos.php';

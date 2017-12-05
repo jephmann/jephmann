@@ -17,9 +17,9 @@
             $name_profile,
             $name_name,
             '<ul>'
-                . $biography_birthplace
-                . $biography_birthday
-                . $biography_deathday
+                . $overview[ 'birthplace' ]
+                . $overview[ 'birthday' ]
+                . $overview[ 'deathday' ]
                 . '</ul>'
                 . '<p>(Main Image)</p>'
             );
@@ -31,9 +31,9 @@
             $x++;
             $profile_image = $moviesAPI->urlImage( $profile[ 'file_path' ] );
             $profile_description = '<ul>'
-                . $biography_birthplace
-                . $biography_birthday
-                . $biography_deathday
+                . $overview[ 'birthplace' ]
+                . $overview[ 'birthday' ]
+                . $overview[ 'deathday' ]
                 . '</ul>'
                 . "<p>(Profile {$x} of {$ct_profiles})</p>";
             echo Galleria::img(
