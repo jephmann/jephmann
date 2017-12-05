@@ -33,15 +33,11 @@ class ApiMovieDB extends Api
                 $urls[ "tv"]        = "{$url}/tv_credits{$queryString}";
                 break;
             
-            case 'movie':
-                $urls[ "title" ]    = "{$url}{$queryString}";
-                $urls[ "images" ]   = "{$url}/images{$queryString}";
-                $urls[ "credits" ]  = "{$url}/credits{$queryString}";
-                $urls[ "videos" ]   = "{$url}/videos{$queryString}";
-                break;
-            
+            // so far, movie and tv have the same pattern
+            case 'movie':   // url requires 'movie'; data becomes 'film         
             case 'tv':
-                $urls[ "show" ]     = "{$url}{$queryString}";
+                $urls[ "title" ]    = "{$url}{$queryString}";
+                $urls[ "titles" ]   = "{$url}/alternative_titles{$queryString}";
                 $urls[ "images" ]   = "{$url}/images{$queryString}";
                 $urls[ "credits" ]  = "{$url}/credits{$queryString}";
                 $urls[ "videos" ]   = "{$url}/videos{$queryString}";
