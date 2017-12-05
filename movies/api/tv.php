@@ -39,23 +39,27 @@
     <div class="col-lg-4 col-md-4 col-sm-4">
         
         <div class="panel panel-default">
+            
             <div class="panel-heading">
                 <h2 class="panel-title">
-                    <em><?php echo $title_title; ?></em>
-                    (<?php echo $title_release_year; ?>)
+                    <em><?php echo $overview[ 'title' ]; ?></em>
+                    (<?php echo $overview[ 'release_year' ]; ?>)
                 </h2>
             </div>
+            
             <div class="panel-body">
                 <?php
                     require_once $views_movies . 'tv/images.php';
                 ?>
             </div>
+            
             <div class="panel-footer">
                 <?php
-                    $logo_title = $title_title;
-                    require_once $views_movies  . 'logo-links.php';
+                    $logo_title = $overview[ 'title' ];
+                    require_once $views_movies . 'logo-links.php';
                 ?>
             </div>
+            
         </div>
         <?php require_once $views . 'share-buttons.php'; ?>
         
@@ -96,7 +100,7 @@
     require_once $views . 'footer.php';
     require_once $views . 'load/jquery.php';
     require_once $views . 'load/bootstrap.php';
-    if( !empty( $title_poster_path ) )
+    if( !empty( $tv_poster_path ) )
     {
         if( $ct_posters > 0 or $ct_backdrops > 0 )
         {                    
