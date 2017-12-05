@@ -33,4 +33,32 @@ class Tools {
         return json_decode( $html, true );
     }
     
+    // Returns a string of array items delimited by ' | '
+    // if the array has at least one item.
+    function listForMovies(
+            string $subject,
+            array $array,
+            string $key
+            ) : string
+    {
+        //print_r($array);
+        $result = '';
+        if( count( $array ) > 0 )
+        {
+            $implodeArray = array();
+            foreach ( $array as $a )
+            {
+                $string = trim( (string) $a[ $key ] );
+                $implodeArray[] = $string;
+            }
+            sort($implodeArray);
+            $result = '<p style="font-size: small"><strong>'
+                    . $subject
+                    . '</strong><br />'
+                    . implode( ' | ', $implodeArray )
+                    . '</p>';
+        }    
+        return $result;
+    }    
+    
 }
