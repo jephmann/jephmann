@@ -80,6 +80,12 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
         <h2>The Movie Section: TheMovieDB Version</h2>    
     </div>
+    
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <?php
+            require_once $views . 'movies/search.php';
+        ?>
+    </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4">        
         <?php 
@@ -92,10 +98,6 @@
         <?php 
             require_once $views_search . 'name.php';    
         ?>
-    </div>
-    
-    <div class="col-lg-4 col-md-4 col-sm-4">
-        <?php require_once $views . 'movies/search.php'; ?>
     </div>
                 
 <?php
