@@ -52,6 +52,7 @@
         <meta property="og:image"
               content="<?php echo $meta['image']; ?>">
         <meta property="og:image:height" content="300" />
+        <meta property="og:type" content="website" />
         <meta property="og:url"
               content="<?php echo $meta['canonical']; ?>">
                
