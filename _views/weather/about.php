@@ -11,11 +11,6 @@
         </p>
 
         <p>
-            If you would like me to add a U.S. city to this page,
-            feel free to let me know.
-        </p>
-
-        <p>
             Default data is for Chicago, IL, basically because I'm
             from Chicago (and "because I could").
         </p>

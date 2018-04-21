@@ -143,7 +143,7 @@
                 
                 <?php          
                     require_once $views . 'weather/forms/zip.php';
-                    require_once $views . 'weather/forms/city.php';
+                    //require_once $views . 'weather/forms/city.php';
                 ?>
 
             </div>
