@@ -56,7 +56,8 @@
             <div class="panel-footer">
                 <?php
                     $logo_title = $name_name;
-                    require_once $views_movies . 'logo-links.php';
+                    //require_once $views_movies . 'logo-links.php';
+                    require_once $views_movies . 'movie-links.php';
                 ?>
             </div>            
         </div>
