@@ -7,7 +7,7 @@
                       href="https://bootswatch.com/slate/">https://bootswatch.com/slate/</a>.
                 </p>
                 <p>
-                    &copy; <?php echo $thisYear; ?> by Jeffrey Hartmann
+                    &copy; 2017 - <?php echo $thisYear; ?> by Jeffrey Hartmann
                 </p>
             </div>
         </div>
