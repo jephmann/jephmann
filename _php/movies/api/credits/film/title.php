@@ -64,8 +64,10 @@ if( !empty( $film_release_date ) )
 {
     $cast_release_date  = new DateTime( $film_release_date );
     $overview[ 'release_year' ] = $cast_release_date->format( 'Y' );
-    $overview[ 'release' ]      = "<p>Release Date:"
-        . "&nbsp;{$cast_release_date->format( 'F j, Y' )}</p>";
+    $overview[ 'release' ]      = '<p style="font-size: small;">'
+        . '<strong>Release Date:</strong><br />'
+        . $cast_release_date->format( 'F j, Y' )
+        . '</p>';
 }
 
 /*

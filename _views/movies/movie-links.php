@@ -1,5 +1,8 @@
 
         <p>
+            
+            <strong>See also:&nbsp;</strong>
+            
             <a target="_blank"
                 title="The Movie Database page for <?php echo $logo_title; ?>"
                 href="<?php echo $overview[ 'urlMovieDB' ]; ?>">TMDb</a>

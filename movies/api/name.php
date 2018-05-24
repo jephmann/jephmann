@@ -43,23 +43,13 @@
     <div class="col-lg-4 col-md-4 col-sm-4">
         
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <?php echo "{$overview[ 'name' ]} {$overview[ 'born_died' ]}"; ?>
-                </h2>
-            </div>
+                      
             <div class="panel-body">
                 <?php
                     require_once $views_name . 'images.php';
                 ?>
             </div>
-            <div class="panel-footer">
-                <?php
-                    $logo_title = $name_name;
-                    //require_once $views_movies . 'logo-links.php';
-                    require_once $views_movies . 'movie-links.php';
-                ?>
-            </div>            
+            
         </div>
         <?php require_once $views . 'share-buttons.php'; ?>
         

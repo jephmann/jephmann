@@ -1,16 +1,23 @@
-<h3>Overview</h3>
+<h3>
+    <em><?php echo $overview[ 'title' ]; ?></em>
+    (<?php echo $overview[ 'release_year' ]; ?>)
+</h3>
 <p class="text-warning"><em><?php
     echo $overview[ 'tagline' ];
 ?></em></p>
-<p><?php
-    echo $overview[ 'text' ];
-?></p>
 <?php
     echo $overview[ 'release' ];
     echo $overview[ 'titles' ];
     echo $overview[ 'genres' ];
     echo $overview[ 'companies' ];
-
+    $logo_title = $overview[ 'title' ];
+    //require_once $views_movies . 'logo-links.php';
+    require_once $views_movies . 'movie-links.php';
+?>
+<p><?php
+    echo $overview[ 'text' ];
+?></p>
+<?php
     $videos_results = (array) $videos[ 'results' ];
     $ctVideos = (int) count($videos_results);
     if( $ctVideos>0 ):
