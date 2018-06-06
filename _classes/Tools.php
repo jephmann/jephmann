@@ -6,30 +6,53 @@ class Tools {
      * methods
      */
     
+    // retrieve an outside html page and convert into a string
     function getHTML( string $url ) : string
     {
-	$ch = curl_init();
-
 	$user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4)'
             . ' AppleWebKit/537.36 (KHTML, like Gecko)'
             . ' Chrome/50.0.2661.102'
             . ' Safari/537.36';
+        
+        // establish cURL options
+        $cOptions = array(
+            CURLOPT_CONNECTTIMEOUT  => 10,      // 10 seconds
+            CURLOPT_FOLLOWLOCATION  => true,
+            CURLOPT_HEADER          => false,   // no need to print header in the output
+            CURLOPT_RETURNTRANSFER  => true,    // allow transfer of output as a string to a variable    
+            CURLOPT_URL             => $url,    
+            CURLOPT_USERAGENT       => $user_agent,
+        );
 
-	curl_setopt( $ch, CURLOPT_URL, $url );
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-	curl_setopt( $ch, CURLOPT_USERAGENT, $user_agent );
-	curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+        // start cURL session
+        $cSession       = curl_init();
+        // send cURL options to the session
+        curl_setopt_array( $cSession, $cOptions );
+        // place output into string variable upon execution of session
+        (string) $html  = curl_exec( $cSession );
+        // end CURL session
+        curl_close( $cSession );
 
-	$data = (string) curl_exec( $ch );
+        // return string
+        return $html;
+    }
 
-	curl_close( $ch );
-
-	return $data;
+    // Retrieve data from HTML pages by matching strings with regular expressions
+    function scrapeHTML( string $url, string $regex ) : array
+    {
+        (string) $html = Tools::getHTML( $url );
+        
+        (array) $result = preg_match( $regex, $html, $matches )
+            ? $matches
+            : array( 'not found' );
+        
+        return $result;
     }
     
+    // retrieve JSON data from outside APIs and parse into PHP array
     function getJsonArray( string $url ) : array
     {
-        $html = Tools::getHtml( $url );
+        (string) $html = Tools::getHtml( $url );
         return json_decode( $html, true );
     }
     
