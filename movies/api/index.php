@@ -6,6 +6,8 @@
     $search         = "{$path}_php/movies/api/search/";
     $views_search   = "{$views}movies/search/";
     $subtitle       = 'Movies: API Version';
+
+    require_once $path . '_php/autoload.php';
     
     /*
      * initialize variables for "if isset POST search"
