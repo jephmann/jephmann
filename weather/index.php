@@ -10,12 +10,18 @@
     $locations      = (array) $weatherAPI->locations;
     $ctLocations    = (int) count( $locations );
     
-    // default (TODO: Consider starting empty)
-    $city   = 'Chicago';
-    $state  = 'IL';
-    $zip    = '60613';
-    $eZip   = '';
-    $showZip = '';
+    // default
+    $city   = isset($_COOKIE['jephmann_weather_city'])
+            ? $_COOKIE['jephmann_weather_city']
+            : 'Chicago';
+    $state  = isset($_COOKIE['jephmann_weather_state'])
+            ? $_COOKIE['jephmann_weather_state']
+            : 'IL';
+    $zip    = isset($_COOKIE['jephmann_weather_zip'])
+            ? $_COOKIE['jephmann_weather_zip']
+            : '60613';
+    $eZip       = '';
+    $showZip    = '';
        
     if ( isset( $_POST[ 'wZIP' ] ) )
     {
@@ -40,9 +46,30 @@
             }
             else
             {
+                // populate variables with values
                 $city       = (string) $location[ 'city' ];
                 $state      = (string) $location[ 'state' ];
                 $showZip    = "&nbsp;({$zip})";
+                // update cookies
+                $cookie_expire  = time() + (86400 * 30); // 30 days from now
+                setcookie(
+                    'jephmann_weather_city',
+                    $city,
+                    $cookie_expire,
+                    '/'
+                );
+                setcookie(
+                    'jephmann_weather_state',
+                    $state,
+                    $cookie_expire,
+                    '/'
+                );
+                setcookie(
+                    'jephmann_weather_zip',
+                    $zip,
+                    $cookie_expire,
+                    '/'
+                );
             }
         }
     }
@@ -112,6 +139,8 @@
     
     // paths
     $views = $path . '_views/';
+    
+    
 
     /*
      *  Custom (per page) meta

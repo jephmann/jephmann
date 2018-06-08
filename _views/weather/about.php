@@ -11,7 +11,14 @@
         </p>
 
         <p>
-            Default data is for Chicago, IL, basically because I'm
+            For ease of use, this page uses cookies.
+            Assuming that they are functional,
+            the last ZIP code you entered should be in force for the next 30
+            days until you enter a different one.
+        </p>
+
+        <p>
+            Otherwise, default data is for Chicago, IL, basically because I'm
             from Chicago (and "because I could").
         </p>
 
