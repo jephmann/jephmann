@@ -6,10 +6,13 @@ class ApiMovieDB extends Api
      * Attributes
      */
 
-    private $key                    = 'f5100af9458f136f2e7e38267a6aabfa';
-    private $url                    = 'http://api.themoviedb.org/3/';
-    public $url_themoviedb          = 'https://www.themoviedb.org/';
-    public $url_imdb                = 'http://www.imdb.com/';
+    private $key            = 'f5100af9458f136f2e7e38267a6aabfa';
+    private $url            = 'http://api.themoviedb.org/3/';
+    public $url_themoviedb  = 'https://www.themoviedb.org/';
+    public $url_imdb        = 'http://www.imdb.com/';    
+    public $video_types     = array(
+        'Trailer', 'Teaser', 'Clip', 'Featurette',
+    );
     
     /*
      * Methods
