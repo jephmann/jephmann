@@ -11,7 +11,7 @@ class ApiMovieDB extends Api
     public $url_themoviedb  = 'https://www.themoviedb.org/';
     public $url_imdb        = 'http://www.imdb.com/';    
     public $video_types     = array(
-        'Trailer', 'Teaser', 'Clip', 'Featurette',
+        'Trailer', 'Teaser', 'Clip', 'Featurette', 'Opening Credits',
     );
     
     /*

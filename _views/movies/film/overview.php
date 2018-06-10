@@ -16,6 +16,7 @@
     //require_once $views_movies . 'logo-links.php';
     require_once $views_movies . 'movie-links.php';
 ?>
+
 <p><?php
     echo $overview[ 'text' ];
 ?></p>
@@ -65,7 +66,7 @@
         <?php
             endif;
             endfor;
-        ?>        
+        ?>
     </div>
     <div class="panel-footer">
         * Although TheMovieDB may suggest that at least one <?php echo $vt; ?>
