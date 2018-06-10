@@ -55,7 +55,7 @@ $overview           = array(
     'titles'        => (string) Tools::listForMovies(
             'Alternate Titles', $titles, 'title'
             ),
-    'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
+    'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'tv' ),
     'urlIMDB'       => !empty( $tv_imdb )
                     ? (string) $moviesIMDB->getTitleUrl( $tv_imdb )
                     : ''
