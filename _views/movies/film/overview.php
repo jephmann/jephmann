@@ -41,12 +41,17 @@
             } 
         }
         if ( $ctVT ):
+            $idVT = preg_replace( '~ ~', '', strtolower( $vt ) );
 ?>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title"><?php echo $vt; ?> *</h3>
+        <h3 class="panel-title">
+            <a data-toggle="collapse" href="#<?php echo $idVT; ?>"
+               title="Click for <?php echo $vt; ?> video"><?php echo $vt; ?></a>
+            <span class="caret"></span>
+        </h3>
     </div>
-    <div class="panel-body">        
+    <div class="panel-body panel-collapse collapse" id="<?php echo $idVT; ?>">
         <?php
             for( $v=0; $v<$ctVideos; $v++ ) :
             $video_key      = (string) $videos_results[ $v ][ 'key' ];
@@ -69,7 +74,7 @@
         ?>
     </div>
     <div class="panel-footer">
-        * Although TheMovieDB may suggest that at least one <?php echo $vt; ?>
+        Although TheMovieDB may suggest that at least one <?php echo $vt; ?>
         might exist in YouTube for this title, YouTube might not necessarily
         have any for this title.
     </div>
