@@ -25,6 +25,16 @@
     $videos_results = (array) $videos[ 'results' ];
     $ctVideos = (int) count($videos_results);
     if( $ctVideos ):
+?>
+<h3>
+    Video
+</h3>
+<p style="font-size: small;">    
+    Click each panel to show or hide.    
+    (Although TheMovieDB might provide a key to a YouTube video,
+    there is no guarantee that the video might be present at YouTube.)
+</p>
+<?php
         
         (array) $video_types = $moviesAPI->video_types;
     
@@ -69,20 +79,16 @@
         </div>
         <hr/>
         <?php
-            endif;
-            endfor;
+            endif;  // match video types
+            endfor; // loop through video_results
         ?>
     </div>
-    <div class="panel-footer">
-        Although TheMovieDB may suggest that at least one <?php echo $vt; ?>
-        might exist in YouTube for this title, YouTube might not necessarily
-        have any for this title.
-    </div>
+    <!-- no panel footer -->
 </div>
 <?php
-    endif;
-    endforeach;
-    endif;
+    endif;      // ctVT
+    endforeach; // video_types as vt
+    endif;      // ctVideos
 
     // TESTS
     //require_once $test . 'title.php';
