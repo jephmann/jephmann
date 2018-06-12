@@ -34,6 +34,43 @@ $ct_backdrops   = (int) count( $backdrops );
 // videos
 $videos = (array) $moviesAPI->getSubTopicData( $id, $topic, 'videos' );
 
+// release info AKA "release_dates"; think versions
+$release_info           = (array) $moviesAPI->getSubTopicData( $id, $topic, 'release_dates')['results'];
+$release_certifications = array();
+foreach( $release_info as $ri)
+{    
+    $ri_country = $ri[ 'iso_3166_1' ];
+    $ri_dates   = $ri[ 'release_dates' ];
+    $ri_certifications = array();
+    if ( count( $ri_dates ) )
+    {
+        foreach( $ri_dates as $ri_d )
+        {
+            if(strlen($ri_d[ 'certification' ]) > 0)
+                $ri_certifications[] = $ri_d[ 'certification' ];
+        }
+    }
+    $ri_certifications = array_unique( $ri_certifications );
+    $ri_country_certifications    = count($ri_certifications)
+                        ? implode("|", $ri_certifications)
+                        : '';
+    if( $ri_country_certifications )
+        $release_certifications[ $ri_country ] = $ri_country_certifications;
+}
+$release_certifications_us = array_key_exists( 'US', $release_certifications )
+        ? $release_certifications[ 'US' ]
+        : 'N/A';
+$list_certifications = '<p style="font-size: small">'
+    . '<strong>Ratings / Certifications</strong>:';
+if (empty( $release_certifications ))
+    $list_certifications .= '&nbsp;N/A';
+else
+    foreach ( $release_certifications as $rcKey => $rcValue )
+        $list_certifications .= '<br /><strong>'
+            . $rcKey . ':</strong>&nbsp;'
+            . $rcValue;
+$list_certifications .= '</p>';
+
 /*
  *  OVERVIEW
  */
@@ -57,7 +94,10 @@ $overview           = array(
     'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
     'urlIMDB'       => !empty( $film_imdb )
                     ? (string) $moviesIMDB->getTitleUrl( $film_imdb )
-                    : ''
+                    : '',
+    //'certifications'    => (array) $release_certifications,
+    'certifications'    => (string) $list_certifications,
+    'certifications_us' => (string) $release_certifications_us,
     );
 
 if( !empty( $film_release_date ) )

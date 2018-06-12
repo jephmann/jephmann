@@ -1,6 +1,7 @@
 <h3>
     <em><?php echo $overview[ 'title' ]; ?></em>
     (<?php echo $overview[ 'release_year' ]; ?>)
+    [<?php echo $overview[ 'certifications_us' ]; ?>]
 </h3>
 
 <p class="text-warning"><em><?php
@@ -12,6 +13,7 @@
     echo $overview[ 'titles' ];
     echo $overview[ 'genres' ];
     echo $overview[ 'companies' ];
+    echo $overview[ 'certifications' ];
     $logo_title = $overview[ 'title' ];
     //require_once $views_movies . 'logo-links.php';
     require_once $views_movies . 'movie-links.php';

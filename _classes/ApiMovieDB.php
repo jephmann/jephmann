@@ -44,6 +44,7 @@ class ApiMovieDB extends Api
                 $urls[ "images" ]   = "{$url}/images{$queryString}";
                 $urls[ "credits" ]  = "{$url}/credits{$queryString}";
                 $urls[ "videos" ]   = "{$url}/videos{$queryString}";
+                $urls[ "release_dates" ]   = "{$url}/release_dates{$queryString}";
                 break;
         }        
         return $urls;
