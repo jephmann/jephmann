@@ -13,4 +13,3 @@
         </div>
     </footer>
 </div>
-<script src="https://redalert.battleforthenet.com/widget.js" async></script>
