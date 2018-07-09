@@ -1,7 +1,7 @@
 <?php
     declare( strict_types = 1 );
     $path       = '';
-    $subtitle   = "Available for Hire";
+    $subtitle   = "Available for Work";
 
     /*
      *  Custom (per page) meta
@@ -9,7 +9,7 @@
     $meta_image         = 'http://jephmann.com/_images/me201708.jpg';
     $meta_description   = date('F Y')
             . ': I am available for work,'
-            . ' in and out of web development and design.'
+            . ' in and out of web development/design.'
             . ' Chicago is home; however, relocation is an option.'
             . ' Please contact me privately for details. | ';
     $meta_querystring   = (string) NULL;
@@ -32,7 +32,7 @@
                      class="img100w" />
                 <blockquote class="blockquote-reverse">
                     <p>August 2017</p>
-                    <small>Me</small>
+                    <small>My most recent photo</small>
                 </blockquote>
 
             </div>
@@ -43,19 +43,17 @@
                 
                 <p>
                     For a far more verbose explanation of this project,
-                        you may click <a title="Jeffrey Hartmann: About"
-                        href="about/">About</a>.
-                </p>
-                <p>
+                    you may click <a title="Jeffrey Hartmann: About"
+                    href="about/">About</a>.
                     Feel free to click anywhere else within this project,
                     whether "finished" or not. (Frankly, that's the idea.)
                 </p>
                 <p>
-                    By the way: Not to bury the lead or anything, but as I
-                    write this (<?php echo $thisMonthYear; ?>), I would not
-                    mind a full-time, permanent job. Feel free to contact me
-                    <em>privately</em> via <a target="_blank"
-                    title="LinkedIn: Jeffrey Hartmann"
+                    By the way: as I write this (<?php echo $thisMonthYear; ?>),
+                    I am available for a full-time, permanent job,
+                    in and out of web development and design.
+                    For details please contact me <em>privately</em> via
+                    <a target="_blank" title="LinkedIn: Jeffrey Hartmann"
                     href="https://www.linkedin.com/in/jeffreyhartmann//">LinkedIn</a>
                     or via any other social media where you may find me.
                 </p>
