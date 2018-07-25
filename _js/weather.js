@@ -10,10 +10,12 @@ $(document).ready(function() {
         
     }); 
 
+    /*
     $('#wCity').on('change', function() {
         
         $('#weatherCity').submit();
         
-    });      
+    });
+    */
 
 });
