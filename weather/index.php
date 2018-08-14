@@ -1,7 +1,7 @@
 <?php
     declare( strict_types = 1 );
     $path       = '../';
-    $subtitle   = 'Weather';
+    $subtitle   = 'Weather (via Weather Underground)';
 
     // autoload class files
     require_once $path . '_php/autoload1.php';
