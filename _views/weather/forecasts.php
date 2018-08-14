@@ -12,6 +12,7 @@
                 $icon_url   = (string) $forecastDay[$i]['icon_url'];
                 $title      = (string) $forecastDay[$i]['title'];
                 $fcttext    = (string) $forecastDay[$i]['fcttext'];
+                $icon_alt   = basename( $icon_url, '.gif' );
 
                 // start between rows
                 if( ($i != 0 ) and ( $i % 3 === 0 ) ):
@@ -25,7 +26,9 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title"><img src="<?php
-                            echo $icon_url; ?>" alt="">&nbsp;<?php
+                            echo $icon_url; ?>" alt="<?php
+                            echo $icon_alt; ?>" title="<?php
+                            echo $icon_alt; ?>">&nbsp;<?php
                             echo $title; ?></h3>
                     </div>
                     <div class="panel-body">

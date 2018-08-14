@@ -100,6 +100,7 @@
     $current_humidity       = (string) $current[ 'relative_humidity' ];
     $current_precip         = (string) $current[ 'precip_today_string' ];
     $current_icon           = (string) $current[ 'icon_url' ];
+    $current_icon_alt       = basename( $current_icon, '.gif' );
     
     // almanac feature
     $arrayAlmanac   = (array) $weatherAPI->arrayReport(
@@ -191,8 +192,9 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <h3>Current Conditions:</h3>
-                        <img alt=""
-                            src="<?php echo $current_icon; ?>">
+                        <img src="<?php echo $current_icon; ?>"
+                            alt="<?php echo $current_icon_alt; ?>"
+                            title="<?php echo $current_icon_alt; ?>">
                         <p>Weather: <?php echo $current_weather; ?></p>
                         <p>Temperatures: <?php echo $current_temperature; ?></p>
                         <p>Winds: <?php echo $current_wind; ?></p>
@@ -204,8 +206,7 @@
                 
             </div>                
         </div>
-    </div>        
-        
+    </div>
 
     <?php require_once $views . 'close-jumbotron.php'; ?>
 
