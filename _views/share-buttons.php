@@ -142,6 +142,7 @@
             $sb_href = (string) $sButton['href'];
             $sb_src = $simplesharebuttons . (string) $sButton['src'];
             $sb_alt = (string) $sButton['alt'];
+            $sb_title = $sb_alt;
             if ($sb_toggle === TRUE) :
                 $shareTarget = $sb_target
                     ? ' target="_blank"' 
@@ -153,7 +154,10 @@
     
     <!-- <?php echo $sb_alt; ?> -->
     <a href="<?php echo $sb_href ?>"<?php echo $shareTarget.$shareOnClick; ?>>
-        <img src="<?php echo $sb_src; ?>.png" alt="<?php echo $sb_alt; ?>" />
+        <img src="<?php
+            echo $sb_src; ?>.png" alt="<?php
+            echo $sb_alt; ?>" title="<?php
+            echo $sb_alt; ?>" />
     </a>
     <?php
             endif;
