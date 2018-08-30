@@ -6,44 +6,30 @@
 
 <?php
     if( !empty( $name_profile_path ) and $ct_profiles > 0 ):
-    $name_profile = $moviesAPI->urlImage( $name_profile_path );
+    $name_profile       = $moviesAPI->urlImage( $name_profile_path );
+    $gallery_subject    = $name_name;
+    $gallery_dates      = '<ul>'
+        . $overview[ 'birthplace' ]
+        . $overview[ 'birthday' ]
+        . $overview[ 'deathday' ]
+        . '</ul>';
 ?>
 <div id="galleria" class="img100w">
-
     <?php
 
         // Main image
         echo Galleria::img(
             $name_profile,
-            $name_name,
-            '<ul>'
-                . $overview[ 'birthplace' ]
-                . $overview[ 'birthday' ]
-                . $overview[ 'deathday' ]
-                . '</ul>'
-                . '<p>(Main Image)</p>'
-            );
+            $gallery_subject,
+            $gallery_dates . '<p>(Main Image)</p>'
+        );
 
-        // Profile images
-        $x = 0;
-        foreach ( $images_profiles as $profile )
-        {
-            $x++;
-            $profile_image = $moviesAPI->urlImage( $profile[ 'file_path' ] );
-            $profile_description = '<ul>'
-                . $overview[ 'birthplace' ]
-                . $overview[ 'birthday' ]
-                . $overview[ 'deathday' ]
-                . '</ul>'
-                . "<p>(Profile {$x} of {$ct_profiles})</p>";
-            echo Galleria::img(
-                $profile_image,
-                $name_name,
-                $profile_description
-            );
-        }
+        // Profile images        
+        $profile_images = Galleria::images(
+            $gallery_subject, $gallery_dates, $images_profiles, 'Profile'
+        );
+        echo $profile_images;
     ?>
-
 </div>
 <?php
     else:
