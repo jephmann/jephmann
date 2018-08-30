@@ -22,7 +22,7 @@ $titles = (array) $moviesAPI->getSubTopicData( $id, $topic, 'titles' )['titles']
 // main image
 $image_film = empty( $film_poster_path )
             ? "{$path}_images/no_pic.jpg"
-            : (string) $moviesAPI->urlImage( $film_poster_path );
+            : (string) $moviesAPI->urlImages( $film_poster_path )[ 'gallery' ];
 
 // gallery images
 $images = (array) $moviesAPI->getSubTopicData( $id, $topic, 'images' );

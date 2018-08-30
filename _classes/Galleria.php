@@ -15,10 +15,10 @@ class Galleria {
     {        
         return "<a href=\"{$image_path}\">"
             . "<img"
-            . " src=\"{$image_path}\""
-            . " data-big=\"{$image_path}\""
-            . " data-title=\"{$data_title}\""
-            . " data-description=\"{$data_description}\""
+            . "\r\n src=\"{$image_path}\""
+            . "\r\n data-big=\"{$image_path}\""
+            . "\r\n data-title=\"{$data_title}\""
+            . "\r\n data-description=\"{$data_description}\""
             . ">"
             . "</a>";
     }
@@ -42,9 +42,15 @@ class Galleria {
             foreach( $images as $img )
             {
                 $i++;
-                $image          = ApiMovieDB::urlImage( $img[ 'file_path' ] );
+                $file           = $img[ 'file_path' ];
+                $image          = ApiMovieDB::urlImages( $file )[ 'gallery' ];
+                $original       = ApiMovieDB::urlImages( $file )[ 'original'];
                 $description    = $gallery_dates
-                    . "<p>({$type} {$i} of {$count})</p>";
+                    . "<br /><br />"
+                    . "<strong><a target='_blank' title='Click for full image'"
+                    . " \r\n href='{$original}'>"
+                    . "{$type} {$i} of {$count}"
+                    . "</a></strong>";
                 $list           .= Galleria::img(
                     $image, $gallery_subject, $description
                 );

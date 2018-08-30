@@ -6,7 +6,7 @@
 
 <?php
     if( !empty( $name_profile_path ) and $ct_profiles > 0 ):
-    $name_profile       = $moviesAPI->urlImage( $name_profile_path );
+    $name_profile       = $moviesAPI->urlImages( $name_profile_path )[ 'gallery' ];
     $gallery_subject    = $name_name;
     $gallery_dates      = '<ul>'
         . $overview[ 'birthplace' ]
@@ -21,7 +21,7 @@
         echo Galleria::img(
             $name_profile,
             $gallery_subject,
-            $gallery_dates . '<p>(Main Image)</p>'
+            $gallery_dates . '<br /><br /><strong>Main Image</strong>'
         );
 
         // Profile images        

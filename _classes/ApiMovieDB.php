@@ -8,6 +8,7 @@ class ApiMovieDB extends Api
 
     private $key            = 'f5100af9458f136f2e7e38267a6aabfa';
     private $url            = 'http://api.themoviedb.org/3/';
+    public $url_image       = 'https://image.tmdb.org/t/p/';
     public $url_themoviedb  = 'https://www.themoviedb.org/';
     public $url_imdb        = 'http://www.imdb.com/';    
     public $video_types     = array(
@@ -89,16 +90,20 @@ class ApiMovieDB extends Api
                 );
         return (array) $this->getJsonArray( $url );
     }
-
-    // retrieve TheMovieDB URL of image source
-    public function urlImage(
+    
+    // retrieve TheMovieDB URLs of image versions
+    public function urlImages(
         string $image_path
-    ) : string
+    ) : array
     {
+        $base   = "https://image.tmdb.org/t/p/";
+        $images = [];
         if ( !is_null( $image_path ) )
         {
-            return "https://image.tmdb.org/t/p/w300_and_h450_bestv2{$image_path}";
+            $images[ 'original' ]   = "{$base}original{$image_path}";
+            $images[ 'gallery' ]    = "{$base}w300_and_h450_bestv2{$image_path}";
         }
+        return $images;        
     }
     
     // retrive TheMovieDB public URL for name

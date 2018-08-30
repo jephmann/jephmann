@@ -28,7 +28,7 @@ $ct_aka                 = (int) count( $aka );
 // main image
 $image_name             = empty( $name_profile_path )
                         ? "{$path}_images/no_pic.jpg"
-                        : (string) $moviesAPI->urlImage( $name_profile_path );
+                        : (string) $moviesAPI->urlImages( $name_profile_path )[ 'gallery' ];
 
 // name images
 $images                 = (array) $moviesAPI->getSubTopicData(

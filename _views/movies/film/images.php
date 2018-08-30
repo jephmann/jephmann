@@ -6,9 +6,10 @@
 
 <?php
     if( !empty( $film_poster_path ) and ( $ct_posters > 0 or $ct_backdrops > 0 ) ):
-    $film_poster        = $moviesAPI->urlImage( $film_poster_path );
+    $film_poster        = $moviesAPI->urlImages( $film_poster_path )[ 'gallery' ];
     $gallery_subject    = $overview[ 'title' ];
-    $gallery_dates      = $overview[ 'release' ];
+    $gallery_dates      = '<strong>Release Date:</strong><br />'
+        . $cast_release_date->format( 'F j, Y' );
 ?>    
 <div id="galleria" class="img100w">
     <?php
@@ -17,7 +18,7 @@
         echo Galleria::img(
             $film_poster,
             $gallery_subject,
-            $gallery_dates . "<p>(Main Image)</p>"
+            $gallery_dates . '<br /><br /><strong>Main Image</strong>'
         );
 
         // Poster images        
