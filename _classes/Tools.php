@@ -59,10 +59,11 @@ class Tools {
     // Returns a string of array items delimited by ' | '
     // if the array has at least one item.
     function listForMovies(
-            string $subject,
-            array $array,
-            string $key
-            ) : string
+        string $subject,
+        array $array,
+        string $key,
+        string $delimiter = ' | '
+    ) : string
     {
         //print_r($array);
         $result = '';
@@ -77,8 +78,8 @@ class Tools {
             sort($implodeArray);
             $result = '<p style="font-size: small"><strong>'
                     . $subject
-                    . '</strong><br />'
-                    . implode( ' | ', $implodeArray )
+                    . ':</strong><br />'
+                    . implode( $delimiter, $implodeArray )
                     . '</p>';
         }    
         return $result;

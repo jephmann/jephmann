@@ -50,10 +50,10 @@ $overview           = array(
             'Genres', $genres, 'name'
             ),
     'companies'     => (string) Tools::listForMovies(
-            'Production Companies', $production_companies, 'name'
+            'Production Companies', $production_companies, 'name', '<br />'
             ),
     'titles'        => (string) Tools::listForMovies(
-            'Alternate Titles', $titles, 'title'
+            'Alternate Titles', $titles, 'title', '<br />'
             ),
     'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'tv' ),
     'urlIMDB'       => !empty( $tv_imdb )

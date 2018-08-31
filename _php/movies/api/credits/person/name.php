@@ -138,8 +138,9 @@ if ( $born_died )
 if( $ct_aka > 0 )
 {
     sort( $aka );
-    $akas           = implode( ' | ', $aka );
-    $overview[ 'aka' ]  = "<li><em>Alias:&nbsp;</em><strong>{$akas}</strong></li>";
+    $unique_aka         = array_unique($aka);
+    $akas               = implode( ' <br /> ', $unique_aka );
+    $overview[ 'aka' ]  = "<em>Alias:<br /></em><strong>{$akas}</strong>";
 }
 
 //$urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, $topic );

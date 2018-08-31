@@ -83,14 +83,14 @@ $overview           = array(
     'release'       => '',
     'release_year'  => '????',
     'genres'        => (string) Tools::listForMovies(
-            'Genres', $genres, 'name'
-            ),
+        'Genres', $genres, 'name'
+    ),
     'companies'     => (string) Tools::listForMovies(
-            'Production Companies', $production_companies, 'name'
-            ),
+        'Production Companies', $production_companies, 'name', '<br />'
+    ),
     'titles'        => (string) Tools::listForMovies(
-            'Alternate Titles', $titles, 'title'
-            ),
+        'Alternate Titles', $titles, 'title', '<br />'
+    ),
     'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
     'urlIMDB'       => !empty( $film_imdb )
                     ? (string) $moviesIMDB->getTitleUrl( $film_imdb )

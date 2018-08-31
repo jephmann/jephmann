@@ -9,7 +9,7 @@
     $film_poster        = $moviesAPI->urlImages( $film_poster_path )[ 'gallery' ];
     $gallery_subject    = $overview[ 'title' ];
     $gallery_dates      = '<strong>Release Date:</strong><br />'
-        . $cast_release_date->format( 'F j, Y' );
+        . $overview[ 'release_year' ];
 ?>    
 <div id="galleria" class="img100w">
     <?php
