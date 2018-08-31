@@ -37,7 +37,9 @@
 ?>
     
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2>The Movie Section: TheMovieDB Version</h2>    
+        <h2><?php
+            echo "{$overview[ 'name' ]} {$overview[ 'born_died' ]}";
+        ?></h2>    
     </div>
     
     <div class="col-lg-4 col-md-4 col-sm-4">
