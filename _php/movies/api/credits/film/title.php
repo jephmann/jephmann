@@ -6,15 +6,21 @@
 $topic = 'movie';            // url requires 'movie'; its data becomes 'film'
 
 // parent data
-$title  = (array) $moviesAPI->getSubTopicData( $id, $topic, 'title' );
-$film_title                 = trim( (string) $title[ 'title' ] );
-$film_release_date          = trim( (string) $title[ 'release_date' ] );
-$film_poster_path           = trim( (string) $title[ 'poster_path' ] );
-$film_tagline               = trim( (string) $title[ 'tagline' ] );
-$film_overview              = trim( (string) $title[ 'overview' ] );
+$title                      = (array) $moviesAPI->getSubTopicData(
+                                $id, $topic, 'title'
+                            );
+$film_homepage              = trim( (string) $title[ 'homepage'] );
 $film_imdb                  = trim( (string) $title[ 'imdb_id' ] );
+$film_title_original        = trim( (string) $title[ 'original_title' ] );
+$film_overview              = trim( (string) $title[ 'overview' ] );
+$film_poster_path           = trim( (string) $title[ 'poster_path' ] );
+$film_release_date          = trim( (string) $title[ 'release_date' ] );
+$film_runtime               = trim( (string) $title[ 'runtime' ] );
+$film_tagline               = trim( (string) $title[ 'tagline' ] );
+$film_title                 = trim( (string) $title[ 'title' ] );
 $genres                     = (array) $title[ 'genres' ];
 $production_companies       = (array) $title[ 'production_companies' ];
+$production_countries       = (array) $title[ 'production_countries' ];
 
 // alternate titles
 $titles = (array) $moviesAPI->getSubTopicData( $id, $topic, 'titles' )['titles'];
@@ -25,14 +31,14 @@ $image_film = empty( $film_poster_path )
             : (string) $moviesAPI->urlImages( $film_poster_path )[ 'gallery' ];
 
 // gallery images
-$images = (array) $moviesAPI->getSubTopicData( $id, $topic, 'images' );
+$images         = (array) $moviesAPI->getSubTopicData( $id, $topic, 'images' );
 $posters        = (array) $images[ 'posters' ];    
 $backdrops      = (array) $images[ 'backdrops' ];
 $ct_posters     = (int) count( $posters );
 $ct_backdrops   = (int) count( $backdrops );
 
 // videos
-$videos = (array) $moviesAPI->getSubTopicData( $id, $topic, 'videos' );
+$videos         = (array) $moviesAPI->getSubTopicData( $id, $topic, 'videos' );
 
 // release info AKA "release_dates"; think versions
 $release_info           = (array) $moviesAPI->getSubTopicData( $id, $topic, 'release_dates')['results'];
@@ -60,55 +66,72 @@ foreach( $release_info as $ri)
 $release_certifications_us = array_key_exists( 'US', $release_certifications )
         ? $release_certifications[ 'US' ]
         : 'N/A';
-$list_certifications = '<p style="font-size: small">'
-    . '<strong>Ratings / Certifications</strong>:';
+$list_certifications = '<p style="font-size: 1em">'
+    . '<strong>Ratings / Certifications</strong>:<br />';
 if (empty( $release_certifications ))
     $list_certifications .= '&nbsp;N/A';
 else
     foreach ( $release_certifications as $rcKey => $rcValue )
-        $list_certifications .= '<br /><strong>'
+        $list_certifications .= '<strong>'
             . $rcKey . ':</strong>&nbsp;'
-            . $rcValue;
+            . $rcValue . '&nbsp; ';
 $list_certifications .= '</p>';
+
+$release_date = '';
+$release_year = '';
+if( !empty( $film_release_date ) )
+{
+    $cast_release_date  = new DateTime( $film_release_date );
+    $release_date       = $cast_release_date->format( 'F j, Y' );
+    $release_year       = $cast_release_date->format( 'Y' );
+}
 
 /*
  *  OVERVIEW
  */
 
 // Display the values of this array in the Overview section
-$overview           = array(
-    'title'         => $film_title,
-    'text'          => $film_overview,
-    'tagline'       => $film_tagline,
-    'release'       => '',
-    'release_year'  => '????',
-    'genres'        => (string) Tools::listForMovies(
+$overview               = array(
+    'homepage'          => $film_homepage,
+    'text'              => $film_overview
+        ? '<p>' . $film_overview . '</p>'
+        : '',
+    'tagline'           => $film_tagline
+        ? '<p class="text-warning"><em>' . $film_tagline . '</em></p>'
+        : '',
+    'title'             => $film_title,
+    'title_original'    => $film_title_original
+        ? Tools::doForOverview( 'Original Title', $film_title_original )
+        : '',
+    'release'           => $release_date
+        ? Tools::doForOverview( 'Release Date', $release_date )
+        : '',
+    'release_year'      => $release_year
+        ? $release_year
+        : '????',
+    'runtime'           => $film_runtime
+        ? Tools::doForOverview( 'Runtime', $film_runtime, FALSE )
+        : '',
+    'genres'            => (string) Tools::listForMovies(
         'Genres', $genres, 'name'
     ),
-    'companies'     => (string) Tools::listForMovies(
+    'companies'         => (string) Tools::listForMovies(
         'Production Companies', $production_companies, 'name', '<br />'
     ),
-    'titles'        => (string) Tools::listForMovies(
+    'countries'         => (string) Tools::listForMovies(
+        'Production Countries', $production_countries, 'name'
+    ),
+    'titles'            => (string) Tools::listForMovies(
         'Alternate Titles', $titles, 'title', '<br />'
     ),
-    'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
-    'urlIMDB'       => !empty( $film_imdb )
-                    ? (string) $moviesIMDB->getTitleUrl( $film_imdb )
-                    : '',
+    'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
+    'urlIMDB'           => !empty( $film_imdb )
+                        ? (string) $moviesIMDB->getTitleUrl( $film_imdb )
+                        : '',
     //'certifications'    => (array) $release_certifications,
     'certifications'    => (string) $list_certifications,
     'certifications_us' => (string) $release_certifications_us,
-    );
-
-if( !empty( $film_release_date ) )
-{
-    $cast_release_date  = new DateTime( $film_release_date );
-    $overview[ 'release_year' ] = $cast_release_date->format( 'Y' );
-    $overview[ 'release' ]      = '<p style="font-size: small;">'
-        . '<strong>Release Date:</strong><br />'
-        . $cast_release_date->format( 'F j, Y' )
-        . '</p>';
-}
+);
 
 /*
  * Additional per-page variables

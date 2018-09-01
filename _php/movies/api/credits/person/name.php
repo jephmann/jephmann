@@ -9,9 +9,11 @@ $topic = 'person';
 $name                   = (array) $moviesAPI->getSubTopicData(
                             $id, $topic, 'name'
                         );
+$name_biography         = trim( (string) $name[ 'biography' ] );
+$name_homepage          = trim( (string) $name[ 'homepage'] );
+$name_imdb              = trim( (string) $name[ 'imdb_id' ] );
 $name_name              = trim( (string) $name[ 'name' ] );
 $name_profile_path      = trim( (string) $name[ 'profile_path' ] );
-$name_biography         = trim( (string) $name[ 'biography' ] );
 $name_place_of_birth    = array_key_exists( 'place_of_birth', $name )
                         ? trim( (string) $name[ 'place_of_birth' ] )
                         : '';
@@ -21,7 +23,8 @@ $name_birthday          = array_key_exists( 'birthday', $name )
 $name_deathday          = array_key_exists( 'deathday', $name )
                         ? trim( (string) $name[ 'deathday' ] )
                         : '';
-$name_imdb              = trim( (string) $name[ 'imdb_id' ] );
+
+// alternate names
 $aka                    = (array) $name[ 'also_known_as' ];
 $ct_aka                 = (int) count( $aka );
 
@@ -37,38 +40,13 @@ $images                 = (array) $moviesAPI->getSubTopicData(
 $images_profiles        = (array) $images[ 'profiles' ];
 $ct_profiles            = (int) count( $images_profiles );
 
+//IMDB
+$urlIMDB = '';
+if( $name_imdb )
+    $urlIMDB = $moviesIMDB->getNameUrl( $name_imdb );
 
-/*
- *  BIOGRAPHY
- */
-
-// Display the values of this array in the Biography section
-$overview           = array(
-    'name'          => $name_name,
-    'aka'           => '',
-    'text'          => !empty( $name_biography )
-                    ? preg_replace( '/\n/', '</p><p>', $name_biography )
-                    : "<em>TheMovieDB does not have a biography for {$name_name}.</em>",
-    'birthplace'    => !empty( $name_place_of_birth )
-                    ? "<li><em>Birthplace:&nbsp;</em><strong>{$name_place_of_birth}</strong></li>"
-                    : '',
-    'birthday'      => '',
-    'deathday'      => '',
-    'born-died'     => '',
-    'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, $topic ),
-    'urlIMDB'       => !empty( $name_imdb )
-                    ? (string) $moviesIMDB->getNameUrl( $name_imdb )
-                    : '',
-    );
-
-if( empty( $name_biography ) )
-{    
-$overview['text']         .= !empty( $name_imdb )
-    ? " Try <a target=\"_blank\" href=\"{$overview[ 'urlIMDB' ]}bio\">IMDB</a> for more information."
-    : " No IMDB link was provided.";
-}
-
-
+// dates
+$birthdate              = '';
 $birthyear              = NULL;
 if( !empty( $name_birthday ) )
 {
@@ -76,22 +54,18 @@ if( !empty( $name_birthday ) )
     {
         // partial date
         $birthdate  = (string) $name_birthday;
-        $birthyear = (int) $name_birthday;
+        $birthyear  = (int) $name_birthday;
     }
     else
     {
         // full date
         $birthday   = new DateTime( $name_birthday );
         $birthdate  = (string) $birthday->format( 'F j, Y' );
-        $birthyear = (int) $birthday->format( 'Y' );
+        $birthyear  = (int) $birthday->format( 'Y' );
     }
-    
-    $overview[ 'birthday' ] = "<li>"
-        . "<em>Born:&nbsp;</em>"
-        . "<strong>{$birthdate}</strong>"
-        . "</li>";
 }
 
+$deathdate              = '';
 $deathyear              = NULL;
 if( !empty( $name_deathday ) )
 {
@@ -107,12 +81,7 @@ if( !empty( $name_deathday ) )
         $deathday   = new DateTime( $name_deathday );
         $deathdate  = (string) $deathday->format( 'F j, Y' );
         $deathyear  = (int) $deathday->format( 'Y' );
-    }    
-    
-    $overview[ 'deathday' ] = "<li>"
-        . "<em>Died:&nbsp;</em>"
-        . "<strong>{$deathdate}</strong>"
-        . "</li>";        
+    }
 }
 
 $born_died              = NULL;
@@ -132,15 +101,56 @@ elseif ( empty( $birthyear ) and $deathyear )
 if ( $born_died )
 {
     $born_died = "({$born_died})";
+} 
+
+/*
+ * GALLERIA strings
+ */
+
+$galleria = array(
+    'name' => $name_name,
+    'born_died' => $born_died,
+    'birthplace' => $name_place_of_birth
+);
+
+/*
+ *  BIOGRAPHY (aka OVERVIEW)
+ */
+
+// Display the values of this array in the Biography section
+$overview           = array(
+    'name'          => $name_name,
+    'homepage'      => $name_homepage,
+    'aka'           => '',
+    'text'          => !empty( $name_biography )
+                    ? preg_replace( '/\n/', '</p><p>', $name_biography )
+                    : "<em>TheMovieDB does not have a biography for {$name_name}.</em>",
+    'birthplace'    => !empty( $name_place_of_birth )
+                    ? Tools::doForOverview( 'Birthplace', $name_place_of_birth )
+                    : '',
+    'birthday'      => $birthdate
+                    ? Tools::doForOverview( 'Born', $birthdate )
+                    : '',
+    'deathday'      => $deathdate
+                    ? Tools::doForOverview( 'Died', $deathdate )
+                    : '',
+    'born_died'     => $born_died,
+    'urlIMDB'       => $urlIMDB,
+    );
+
+if( empty( $name_biography ) )
+{    
+$overview['text']         .= !empty( $name_imdb )
+    ? " Try <a target=\"_blank\" href=\"{$overview[ 'urlIMDB' ]}bio\">IMDB</a> for more information."
+    : " No IMDB link was provided.";
 }
-    $overview[ 'born_died' ] = $born_died;
-        
+
 if( $ct_aka > 0 )
 {
     sort( $aka );
-    $unique_aka         = array_unique($aka);
+    $unique_aka         = array_unique( $aka );
     $akas               = implode( ' <br /> ', $unique_aka );
-    $overview[ 'aka' ]  = "<em>Alias:<br /></em><strong>{$akas}</strong>";
+    $overview[ 'aka' ]  = Tools::doForOverview( 'Alias', $akas );
 }
 
 //$urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, $topic );

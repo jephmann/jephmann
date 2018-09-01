@@ -13,14 +13,14 @@ class Galleria {
         string $data_description
     ) : string
     {        
-        return "<a href=\"{$image_path}\">"
+        return "\r\n<a href=\"{$image_path}\">"
             . "<img"
             . "\r\n src=\"{$image_path}\""
             . "\r\n data-big=\"{$image_path}\""
             . "\r\n data-title=\"{$data_title}\""
             . "\r\n data-description=\"{$data_description}\""
             . ">"
-            . "</a>";
+            . "\r\n</a>";
     }
     
     /*

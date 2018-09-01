@@ -69,20 +69,45 @@ class Tools {
         $result = '';
         if( count( $array ) > 0 )
         {
-            $implodeArray = array();
+            // create new simple array
+            $newArray = array();
+            // populate new array with values from original array
             foreach ( $array as $a )
             {
                 $string = trim( (string) $a[ $key ] );
-                $implodeArray[] = $string;
+                $newArray[] = $string;
             }
-            sort($implodeArray);
-            $result = '<p style="font-size: small"><strong>'
-                    . $subject
-                    . ':</strong><br />'
-                    . implode( $delimiter, $implodeArray )
-                    . '</p>';
+            // sort new array
+            sort( $newArray );
+            // remove duplicates
+            $uniqueArray = array_unique( $newArray );
+            // format data
+            $data = implode( $delimiter, $uniqueArray );
+            // build paragraph
+            $result = '<p style="font-size: 1em"><strong>'
+                . $subject
+                . ':</strong><br />'
+                . implode( $delimiter, $uniqueArray )
+                . '</p>';
+            $result = Tools::doForOverview( $subject, $data );
         }    
         return $result;
-    }    
+    }
     
+    function doForOverview(
+            string $subject,
+            string $data,
+            bool $break = TRUE            
+            ) : string
+    {
+        $result = '<p style="font-size: 1em;">'
+            . '<strong>' . $subject . ':</strong>';
+        if( $break )
+            $result .= '<br />';
+        else
+            $result .= '&nbsp;';
+        $result .= $data . '</p>';
+        
+        return $result;
+    }
 }

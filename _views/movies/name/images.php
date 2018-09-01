@@ -8,11 +8,7 @@
     if( !empty( $name_profile_path ) and $ct_profiles > 0 ):
     $name_profile       = $moviesAPI->urlImages( $name_profile_path )[ 'gallery' ];
     $gallery_subject    = $name_name;
-    $gallery_dates      = '<ul>'
-        . $overview[ 'birthplace' ]
-        . $overview[ 'birthday' ]
-        . $overview[ 'deathday' ]
-        . '</ul>';
+    $gallery_dates      = $galleria[ 'birthplace' ] . '<br />' . $galleria[ 'born_died' ];
 ?>
 <div id="galleria" class="img100w">
     <?php
