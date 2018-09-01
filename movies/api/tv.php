@@ -33,7 +33,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
         <h2>
             <em><?php echo $overview[ 'title' ]; ?></em>
-            (<?php echo $overview[ 'release_year' ]; ?>)
+            <?php echo $overview[ 'release_cancel' ]; ?>
         </h2>    
     </div>
 
