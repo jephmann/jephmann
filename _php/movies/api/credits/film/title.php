@@ -125,6 +125,7 @@ $overview               = array(
         'Alternate Titles', $titles, 'title', '<br />'
     ),
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
+    'imdb'              => $film_imdb,
     'urlIMDB'           => !empty( $film_imdb )
                         ? (string) $moviesIMDB->getTitleUrl( $film_imdb )
                         : '',

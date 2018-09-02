@@ -15,6 +15,8 @@
     echo $overview[ 'tagline' ];
     echo $overview[ 'text' ];
     echo $overview[ 'certifications' ];
+    if ( $overview[ 'imdb' ] )
+        require_once $path . '_plugins/imdb/ratings.php';
 ?></div>
 
 <div class="col-lg-12 col-md-12 col-sm-12"><?php
