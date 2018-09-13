@@ -136,6 +136,7 @@ $overview           = array(
                     : '',
     'born_died'     => $born_died,
     'urlIMDB'       => $urlIMDB,
+    'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'person' ),
     );
 
 if( empty( $name_biography ) )
@@ -152,8 +153,6 @@ if( $ct_aka > 0 )
     $akas               = implode( ' <br /> ', $unique_aka );
     $overview[ 'aka' ]  = Tools::doForOverview( 'Alias', $akas );
 }
-
-//$urlMovieDB = (string) $moviesAPI->getPublicUrl( $id, $topic );
 
 /*
  * Additional per-page variables
