@@ -37,7 +37,7 @@
 ?>
     
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2><?php
+        <h2 style="border-bottom: 1px silver dotted; padding-bottom: 6px;"><?php
             echo "{$overview[ 'name' ]} {$overview[ 'born_died' ]}";
         ?></h2>    
     </div>
