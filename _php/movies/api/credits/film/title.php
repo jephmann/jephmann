@@ -147,7 +147,7 @@ $hashtag            = 'themoviedb,' . preg_replace( '/[\s\W]+/', '', $overview[ 
 
 //  Custom (per page) meta
 $meta_image         = $image_film;
-$meta_description   = htmlspecialchars( $overview[ 'text' ] )
+$meta_description   = htmlspecialchars( $film_overview )
                     . ' | Data courtesy of TheMovieDB.com | ';
 $meta_querystring   = "?id={$id}";
 
