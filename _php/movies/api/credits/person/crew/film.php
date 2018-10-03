@@ -25,8 +25,12 @@ if( $ct_film_crew > 0 )
             {
                 $fCrew_id            = (string) $fCrew[ 'id' ];
                 $fCrew_title         = (string) $fCrew[ 'title' ];
+                
+                // Define 'release_date' index where missing
                 $fCrew_release_year  = '????';
-                $fCrew_release       = trim( (string) $fCrew[ 'release_date' ] );                    
+                $fCrew_release       = ( array_key_exists( 'release_date', $fCrew ) )
+                        ? trim( (string) $fCrew[ 'release_date' ] )
+                        : '';
                 if( !empty( $fCrew_release ) )
                 {
                     $fCrew_release_date  = new DateTime( $fCrew_release );

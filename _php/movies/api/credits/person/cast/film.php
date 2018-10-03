@@ -9,10 +9,8 @@ if( $ct_film_cast > 0 )
 {
     $film_performance = '';
     
-    
-    
     // Define 'release_date' index where missing
-    for($i=0;$i<$ct_film_cast;$i++)
+    for( $i=0; $i<$ct_film_cast; $i++)
     {
         if( !array_key_exists('release_date', $film_cast[$i]) )
         {
