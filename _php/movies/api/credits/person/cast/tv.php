@@ -32,8 +32,8 @@ if( $ct_tv_cast > 0 )
         $tCast_id           = (string) $tCast[ 'id' ];
         $tCast_name         = (string) $tCast[ 'name' ];
         $tCast_character    = array_key_exists( 'character', $tCast )
-                            ? (string) $tCast[ 'character' ]
-                            : '';
+            ? preg_replace( '~\s?/\s?~', '<br />', (string) $tCast[ 'character' ] )
+            : '';
         $tCast_first_year    = '????';
         if( array_key_exists( 'first_air_date', $tCast ))
         {        

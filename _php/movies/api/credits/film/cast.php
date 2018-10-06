@@ -10,7 +10,10 @@ if( $ct_credits_cast > 0 )
     {
         $cast_id        = (string) $cast[ 'id' ];
         $cast_name      = (string) $cast[ 'name' ];
-        $cast_character = (string) $cast[ 'character' ];
+        $cast_character = array_key_exists( 'character', $cast )
+            ? preg_replace( '~\s?/\s?~', '<br />', (string) $cast[ 'character' ] )
+            : '';
+        
         $performance_credits .= "<p>"
             . "<strong>"
             . "<a href=\"name.php?id={$cast_id}\">{$cast_name}</a>"

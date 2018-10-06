@@ -34,8 +34,8 @@ if( $ct_film_cast > 0 )
         $fCast_id           = (string) $fCast[ 'id' ];
         $fCast_title        = (string) $fCast[ 'title' ];
         $fCast_character    = array_key_exists( 'character', $fCast )
-                            ? (string) $fCast[ 'character' ]
-                            : '';
+            ? preg_replace( '~\s?/\s?~', '<br />', (string) $fCast[ 'character' ] )
+            : '';
         $fCast_release_year  = '????';
         if( array_key_exists( 'release_date', $fCast ))
         {        
