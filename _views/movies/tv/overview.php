@@ -8,16 +8,28 @@
     echo $overview[ 'titles' ];
     echo $overview[ 'genres' ];
     echo $overview[ 'companies' ];    
-    echo $overview[ 'countries' ];    
-    $logo_title = $overview[ 'title' ];
-    //require_once $views_movies . 'logo-links.php';
-    require_once $views_movies . 'movie-links.php';
+    echo $overview[ 'countries' ];
 ?></div>
 
 <div class="col-lg-6 col-md-6 col-sm-6"><?php
     echo $overview[ 'tagline' ];
-    echo $overview[ 'text' ];
-?></div>
+    if ( $overview[ 'text' ] ) : ;
+    ?>
+    <blockquote class="blockquote"><?php
+    echo $overview[ 'text' ]; ?>
+        <small>
+            from TheMovieDB (and not from Jeffrey Hartmann)
+        </small>
+    </blockquote>
+    <?php
+        endif;
+        
+        // "Additional Information"
+        $logo_title = $overview[ 'title' ];
+        //require_once $views_movies . 'logo-links.php';
+        require_once $views_movies . 'movie-links.php';
+    ?>
+</div>
 
 <div class="col-lg-12 col-md-12 col-sm-12"><?php
     require_once $views_movies . 'videos.php';
