@@ -1,12 +1,12 @@
 <?php
 
-class ApiMovieDB extends Api
+class ApiMovieDB extends Api implements iApiMovieDB
 {
     /*
      * Attributes
      */
 
-    private $key            = 'f5100af9458f136f2e7e38267a6aabfa';
+    private $key            = iApiMovieDB::KEY;
     private $url            = 'http://api.themoviedb.org/3/';
     public $url_image       = 'https://image.tmdb.org/t/p/';
     public $url_themoviedb  = 'https://www.themoviedb.org/';

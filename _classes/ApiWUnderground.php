@@ -9,7 +9,7 @@ class ApiWUnderground extends Api
     private $key                    = "fa4a10d736578d22";
     private $url                    = "http://api.wunderground.com/api";
     
-    private $sampleZIPurl = "http://api.wunderground.com/api/fa4a10d736578d22/conditions/q/60613.json";
+    //private $sampleZIPurl = "http://api.wunderground.com/api/fa4a10d736578d22/conditions/q/60613.json";
     
     public $features                = array(
         'alerts', 'almanac', 'astronomy', 'conditions', 'currenthurricane',

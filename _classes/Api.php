@@ -32,8 +32,7 @@ class Api
 	curl_close( $ch );
 
 	return $data;
-    }
-    
+    }    
     
     public static function getJsonArray( string $json_url ) : array
     {
