@@ -1,5 +1,5 @@
 <?php
     echo '<pre>';
-    print_r( $name );
+    print_r( $omdb );
     echo '</pre>';
 

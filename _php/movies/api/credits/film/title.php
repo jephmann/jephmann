@@ -94,7 +94,7 @@ if( !empty( $film_release_date ) )
 $overview               = array(
     'homepage'          => $film_homepage,
     'text'              => $film_overview
-        ? '<p>' . $film_overview . '</p>'
+        ? $film_overview
         : '',
     'tagline'           => $film_tagline
         ? '<p class="text-warning"><em>' . $film_tagline . '</em></p>'
@@ -133,6 +133,42 @@ $overview               = array(
     'certifications'    => (string) $list_certifications,
     'certifications_us' => (string) $release_certifications_us,
 );
+
+/*
+ * Open Movie data is unique to Movie Titles
+ * until they provide other kinds of data.
+ * Hence, the Open Movie API class is called only here, for now.
+ * Open Movie seems to provide general "summing up" movie-title data
+ * (just the main names and top credits, ratings/awards, etc.)
+ * which would be appropriate for a movie's "jumbotron" section,
+ * stuff I don't pick up from TheMovieDB.
+ * Plus the same IMDB ids are used.
+ * Sometimes the Open Movie data might not match TheMovieDB;
+ * this could mean that one of them supplies an errant IMDB id.
+ */
+
+$openMoviesAPI  = new ApiOpenMovieDB;    
+$omdb           = $openMoviesAPI->getTitleData( $film_imdb );
+
+$omdb_actors    = array_key_exists( 'Actors', $omdb )
+                ? $openMoviesAPI->nullNA( trim( $omdb[ 'Actors' ] ) )
+                : '';
+$featuring      = Tools::doForOverview( 'Featuring', $omdb_actors, TRUE );
+
+$omdb_writer    = array_key_exists( 'Writer', $omdb )
+                ? $openMoviesAPI->nullNA( trim( $omdb[ 'Writer' ] ) )
+                : '';
+$writtenBy      = Tools::doForOverview( 'Written by', $omdb_writer, TRUE );
+
+$omdb_director  = array_key_exists( 'Director', $omdb )
+                ? $openMoviesAPI->nullNA( trim( $omdb[ 'Director' ] ) )
+                : '';
+$directedBy     = Tools::doForOverview( 'Directed by', $omdb_director, TRUE );
+
+$omdb_awards    = array_key_exists( 'Awards', $omdb )
+                ? $openMoviesAPI->nullNA( trim( $omdb[ 'Awards' ] ) )
+                : '';
+$awardsWon     = Tools::doForOverview( 'Awards', $omdb_awards, TRUE );
 
 /*
  * Additional per-page variables
