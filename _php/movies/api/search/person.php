@@ -12,7 +12,7 @@ for ( $r=0; $r<$ct_people; $r++ )
     $person_name    = (string) $person[ 'name' ];
     $person_kf      = (array) $person[ 'known_for'];
     $ct_kf          = (int) count( $person_kf );
-    $knownForTitles = array();
+    $kf_titles = array();
     for( $kf=0; $kf<$ct_kf; $kf++ )
     {
         if( array_key_exists( 'title', $person_kf[ $kf ] ) )
@@ -20,11 +20,13 @@ for ( $r=0; $r<$ct_people; $r++ )
             $kf_titles[ $kf ] = (string) $person_kf[ $kf ]['title'];
         }
     }
-    $known_for          = (string) implode( '; ', $kf_titles );    
+    $known_for          = !empty( $kf_titles )
+                        ? (string) implode( '; ', $kf_titles )
+                        : '';    
     $person_known_for   = !empty( $known_for )
             ? ", known for: {$known_for}"
             : '';
-    $person_results    .= '<li><a href="name.php?id='
+    $person_results    .= '<li><a data-toggle="tooltip" href="name.php?id='
         . $person_id . '" title="'
         . strtoupper( $person_name ) 
         . htmlentities( $person_known_for ) .'">' 
