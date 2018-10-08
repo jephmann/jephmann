@@ -10,4 +10,5 @@
         <p style="font-size:small;"><?php echo $searchFooter; ?></p>
     </div>
 </div>
-<?php //require_once $test . 'search/person.php'; ?>
+<?php
+    // require_once $test . 'search/person.php';
