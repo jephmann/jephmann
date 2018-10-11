@@ -150,6 +150,10 @@ $overview               = array(
 $openMoviesAPI  = new ApiOpenMovieDB;    
 $omdb           = $openMoviesAPI->getTitleData( $film_imdb );
 
+$omdb_plot      = array_key_exists( 'Plot', $omdb )
+                ? $openMoviesAPI->nullNA( trim( $omdb[ 'Plot' ] ) )
+                : '';
+
 $omdb_actors    = array_key_exists( 'Actors', $omdb )
                 ? $openMoviesAPI->nullNA( trim( $omdb[ 'Actors' ] ) )
                 : '';

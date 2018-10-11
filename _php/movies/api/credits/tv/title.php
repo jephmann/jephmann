@@ -115,7 +115,7 @@ if ( $release_cancel )
 $overview               = array(
     'homepage'          => $tv_homepage,
     'text'              => $tv_overview
-        ? '<p>' . $tv_overview . '</p>'
+        ? $tv_overview
         : '',
     'tagline'           => $tv_tagline
         ? '<p class="text-warning"><em>' . $tv_tagline . '</em></p>'
@@ -156,8 +156,8 @@ $overview               = array(
             ),
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'tv' ),
     'urlIMDB'           => !empty( $tv_imdb )
-                        ? (string) $moviesIMDB->getTitleUrl( $tv_imdb )
-                        : ''
+        ? (string) $moviesIMDB->getTitleUrl( $tv_imdb )
+        : ''
 );
 
 /*

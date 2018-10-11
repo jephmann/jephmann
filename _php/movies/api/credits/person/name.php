@@ -123,8 +123,8 @@ $overview           = array(
     'homepage'      => $name_homepage,
     'aka'           => '',
     'text'          => !empty( $name_biography )
-                    ? preg_replace( '/\n/', '</p><p>', $name_biography )
-                    : "<em>TheMovieDB does not have a biography for {$name_name}.</em>",
+                    ? preg_replace( '/\n/', '&nbsp;', $name_biography )
+                    : '',
     'birthplace'    => !empty( $name_place_of_birth )
                     ? Tools::doForOverview( 'Birthplace', $name_place_of_birth )
                     : '',
@@ -138,13 +138,6 @@ $overview           = array(
     'urlIMDB'       => $urlIMDB,
     'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'person' ),
     );
-
-if( empty( $name_biography ) )
-{    
-$overview['text']         .= !empty( $name_imdb )
-    ? " Try <a target=\"_blank\" href=\"{$overview[ 'urlIMDB' ]}bio\">IMDB</a> for more information."
-    : " No IMDB link was provided.";
-}
 
 if( $ct_aka > 0 )
 {
