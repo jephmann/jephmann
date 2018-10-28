@@ -16,6 +16,10 @@
             <br />            
             <a target="_blank"
                 title="Internet Movie Database page for <?php echo $logo_title; ?>"
+                data-toggle="tooltip"
+                data-placement="top"
+                data-original-title="Internet Movie Database page for <?php echo $logo_title; ?>"
+                data-animation="false"
                 href="<?php echo $overview[ 'urlIMDB' ]; ?>">Internet Movie Database</a> 
                 
             <?php endif; ?>
@@ -25,6 +29,10 @@
             <br />
             <a target="_blank"
                 title="Home page for <?php echo $logo_title; ?>"
+                data-toggle="tooltip"
+                data-placement="top"
+                data-original-title="Home page for <?php echo $logo_title; ?>"
+                data-animation="false"
                 href="<?php echo $overview[ 'homepage' ]; ?>">Web Site</a> 
                 
             <?php endif; ?>
