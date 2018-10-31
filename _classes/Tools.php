@@ -110,4 +110,11 @@ class Tools {
         
         return $result;
     }
+    
+    // Returns a pop-up alert;
+    // mostly for testing.
+    function alertThis( string $text ) : string
+    {
+        return "<script type='text/javascript'>alert('{$text}');</script>";
+    }
 }
