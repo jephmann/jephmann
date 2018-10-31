@@ -1,106 +1,41 @@
 <?php
 
-class Database implements DatabaseInterface
+class Database implements iDatabase
 {
-     
-    /*
-     * properties
-     */
-    
-    protected $host       = 'localhost';
-    protected $dbname     = 'jephmann2016';
-    protected $charset    = 'utf8';
-    protected $uname      = 'root';
-    protected $pword      = '';
     
     /*
-     * methods: database connection
+     * This property retrieves from the iDatabase interface
+     * an array which contains key values
+     * which enable a given database connection.
+     * (GitHub viewers shall not see the iDatabase interface file.)
      */
+    // protected $dbKeys = iDatabase::LOCAL;
+    protected $dbKeys = iDatabase::LIVE;
     
+    /*
+     * This method returns a string for the Data Source Name (DSN)
+     * which complies with the PHP Database Object (PDO).
+     */
     protected function dsn() : string
     {
         return "mysql:"
-        . "host={$this->host};"
-        . "dbname={$this->dbname};"
-        . "charset={$this->charset}";
-    }
-    
-    public function connect()
-    {
-        return new PDO( $this->dsn(), $this->uname, $this->pword );
+        . "host={$this->dbKeys['host']};"
+        . "dbname={$this->dbKeys['dbname']};"
+        . "charset={$this->dbKeys['charset']}";
     }
     
     /*
-     * methods: C*R*U*D
+     * This metnod returns a new PHP Database Object (PDO).
+     * A PHP file in this project needs only to call this method
+     * to connect to the MySQL database related to this project.
      */
-    
-    public function create( string $table, array $parameters ) : string
+    public function connect() : PDO
     {
-        $fields = $this->listFields( $parameters );
-        $values = $this->parameterizeFields( $parameters );
-        
-        return "INSERT INTO {$table} ({$fields}) VALUES ({$values})";
-    }    
-    
-    public function readAll( string $table ) : string
-    {
-        return "SELECT * FROM {$table}";
+        return new PDO(
+            $this->dsn(),
+            $this->dbKeys['uname'],
+            $this->dbKeys['pword']
+        );
     }
-    
-    public function readAllById( string $table ) : string
-    {
-        return "{$this->readAll( $table )} WHERE id = :id";                
-    }
-    
-    public function update( string $table, array $parameters ) : string
-    {
-        $fields = $this->changeFields($parameters);
-        return "UPDATE {$table} SET {$fields} WHERE id = :id";
-    }
-    
-    public function delete( string $table ) : string
-    {
-        return "DELETE FROM {$table} WHERE id=:id";
-    }
-    
-    /*
-     * methods: additional database functions
-     */
-    
-    public function clearTable( string $table ) : string
-    {
-        return "TRUNCATE TABLE {$table}";
-    }
-    
-    /*
-     * methods: auxiliary for this class
-     */
-    
-    protected function listFields( array $parameters ) : string
-    {
-        return join( ',', $parameters );
-    }
-    
-    protected function parameterizeFields( array $parameters ) : string
-    {
-        $parameterized = array();
-        foreach( $parameters as $parameter )
-        {
-            $parameterized[] = ":{$parameter}";            
-        }
-        
-        return join( ',', $parameterized );                
-    }
-    
-    protected function changeFields( array $parameters ) : string
-    {
-        $changed = array();
-        foreach( $parameters as $parameter )
-        {
-            $changed[] = "{$parameter}=:{$parameter}";            
-        }
-        
-        return join( ',', $changed );        
-    }    
     
 }
