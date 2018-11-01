@@ -9,8 +9,7 @@ class Database implements iDatabase
      * which enable a given database connection.
      * (GitHub viewers shall not see the iDatabase interface file.)
      */
-    // protected $dbKeys = iDatabase::LOCAL;
-    protected $dbKeys = iDatabase::LIVE;
+    protected $dbKeys = iDatabase::KEYS;
     
     /*
      * This method returns a string for the Data Source Name (DSN)
