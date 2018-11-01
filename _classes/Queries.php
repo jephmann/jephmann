@@ -43,7 +43,7 @@ class Queries
     
     public function delete( string $table ) : string
     {
-        return "DELETE FROM {$table} WHERE id=:id";
+        return "DELETE FROM {$table} WHERE id = :id";
     }
     
     /*
@@ -67,6 +67,13 @@ class Queries
     {        
         return "DROP TABLE IF EXISTS {$table}";
     }
+
+    // count only the records/rows of a table
+    public function countTable( string $table ) : string
+    {
+        return "SELECT COUNT(*) from {$table}";
+    }  
+    
     
     /*
      * methods: auxiliary for this class
@@ -76,7 +83,7 @@ class Queries
     // prepare a comma-delimited list of fields for INSERT
     protected function listFields( array $parameters ) : string
     {
-        return join( ',', $parameters );
+        return join( ', ', $parameters );
     }
     
     // for parameterized INSERT:
@@ -89,7 +96,7 @@ class Queries
             $parameterized[] = ":{$parameter}";            
         }
         
-        return join( ',', $parameterized );                
+        return join( ', ', $parameterized );                
     }
     
     // for parameterized UPDATE:
@@ -99,10 +106,10 @@ class Queries
         $changed = array();
         foreach( $parameters as $parameter )
         {
-            $changed[] = "{$parameter}=:{$parameter}";            
+            $changed[] = "{$parameter} = :{$parameter}";            
         }
         
-        return join( ',', $changed );        
-    }    
+        return join( ', ', $changed );        
+    }
     
 }
