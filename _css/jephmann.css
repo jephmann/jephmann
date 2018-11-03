@@ -41,3 +41,9 @@ footer
     height:         460px;
     width:          100%;
 }
+
+.credits-scroll
+{
+    max-height:     20em;
+    overflow-y:     scroll;
+}
