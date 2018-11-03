@@ -6,7 +6,7 @@
             <span class="caret"></span>
         </h3>
     </div>
-    <div class="panel-body panel-collapse collapse in" id="production">
+    <div class="panel-body panel-collapse collapse in credits-scroll" id="production">
         <?php echo $production_credits; ?>
     </div>
     <div class="panel-footer">

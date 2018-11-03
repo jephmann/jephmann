@@ -6,7 +6,7 @@
             <span class="caret"></span>
         </h3>
     </div>
-    <div class="panel-body panel-collapse collapse in" id="performers">
+    <div class="panel-body panel-collapse collapse in credits-scroll" id="performers">
         <?php echo $performance_credits; ?>
     </div>
     <div class="panel-footer">
