@@ -41,9 +41,9 @@ $images_profiles        = (array) $images[ 'profiles' ];
 $ct_profiles            = (int) count( $images_profiles );
 
 //IMDB
-$urlIMDB = '';
-if( $name_imdb )
-    $urlIMDB = $moviesIMDB->getNameUrl( $name_imdb );
+$urlIMDB                = ( $name_imdb )
+                        ? $moviesIMDB->getNameUrl( $name_imdb )
+                        : '';
 
 // dates
 $birthdate              = '';
