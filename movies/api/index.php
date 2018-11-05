@@ -79,31 +79,75 @@
     require_once $views . 'open-jumbotron.php';    
 ?>
     
+<div class="row">
+    
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2>The Movie Section: TheMovieDB Version</h2>    
+        <h2 style="border-bottom: 1px silver dotted">
+            The Movie Section: TheMovieDB Version
+        </h2>    
     </div>
     
+</div>
+
+<div class="row">
+    
+    <div class="col-lg-8 col-md-8 col-sm-8">
+        <p>
+            Most data and links to images for the Movies section come from
+            <a target="_blank" href="https://www.themoviedb.org/">TheMovieDB</a>.
+        </p>
+        <p>
+            Additional data for Film Titles come from
+            <a target="_blank" href="http://www.omdbapi.com/">The Open Movie
+                Database</a>.
+        </p>
+        <p>
+            At least one plug-in comes from
+            <a target="_blank" href="https://www.imdb.com/">IMDb</a>.
+        </p>
+        <p>
+            Whether or not he still clings to an award which he won in 1986 as a
+            film critic for his college's newspaper, Jeffrey Hartmann is not
+            responsible for the texts of overviews and biographies supplied by
+            external data sources.
+        </p>
+    </div> 
+
     <div class="col-lg-4 col-md-4 col-sm-4">
         <?php
             require_once $views . 'movies/search.php';
         ?>
     </div>
+    
+</div>
+                
+<?php require_once $views . 'close-jumbotron.php'; ?>
+    
+<div class="container">
+    <div class="row">
 
-    <div class="col-lg-4 col-md-4 col-sm-4">        
-        <?php 
-            require_once $views_search . 'film.php'; 
-            require_once $views_search . 'tv.php';    
-        ?>        
-    </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <?php
+                require_once $views_search . 'film.php';
+            ?>
+        </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-4">
-        <?php 
-            require_once $views_search . 'name.php';    
-        ?>
+        <div class="col-lg-4 col-md-4 col-sm-4">        
+            <?php
+                require_once $views_search . 'tv.php';
+            ?>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <?php
+                require_once $views_search . 'name.php';
+            ?>
+        </div>
+
     </div>
+</div>
                 
 <?php
-    require_once $views . 'close-jumbotron.php';
     require_once $views . 'footer.php';
     require_once $views . 'load/jquery.php';
     require_once $views . 'load/bootstrap.php';
