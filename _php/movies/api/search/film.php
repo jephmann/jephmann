@@ -11,7 +11,8 @@ for ( $f=0; $f<$ct_films; $f++ )
     $film_id        = (string) $film[ 'id' ];
     $film_title     = (string) $film[ 'title' ];
     $film_overview  = (string) $film[ 'overview' ];
-    $film_results   .= '<li><a data-toggle="tooltip" href="film.php?id=' 
+    $film_results   .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
+        . '<a data-toggle="tooltip" href="film.php?id=' 
         . $film_id . '" title="'
         . strtoupper( $film_title ) . ': ' 
         . htmlentities( $film_overview ) .' ..."><em>' 

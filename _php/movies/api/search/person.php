@@ -26,7 +26,8 @@ for ( $r=0; $r<$ct_people; $r++ )
     $person_known_for   = !empty( $known_for )
             ? ", known for: {$known_for}"
             : '';
-    $person_results    .= '<li><a data-toggle="tooltip" href="name.php?id='
+    $person_results    .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
+        . '<a data-toggle="tooltip" href="name.php?id='
         . $person_id . '" title="'
         . strtoupper( $person_name ) 
         . htmlentities( $person_known_for ) .'">' 

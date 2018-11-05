@@ -11,7 +11,8 @@ for ( $f=0; $f<$ct_tv; $f++ )
     $show_id        = (string) $show[ 'id' ];
     $show_title     = (string) $show[ 'name' ];
     $show_overview  = (string) $show[ 'overview' ];
-    $tv_results     .= '<li><a data-toggle="tooltip" href="tv.php?id=' 
+    $tv_results     .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
+        . '<a data-toggle="tooltip" href="tv.php?id=' 
         . $show_id . '" title="'
         . strtoupper( $show_title ) . ': ' 
         . htmlentities( $show_overview ) .' ..."><em>' 
