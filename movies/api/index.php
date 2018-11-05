@@ -59,11 +59,6 @@
         require_once $search . 'person.php';
     }
 
-    $searchFooter   = "In the Search form, simply type all or part of a person's
-                        name or a movie's title and click the Search button.
-                        If you see a result that you like, click on its link
-                        for its details.";
-
     /*
      *  Custom (per page) meta
      */
@@ -82,7 +77,7 @@
 <div class="row">
     
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2 style="border-bottom: 1px silver dotted">
+        <h2 style="border-bottom: 1px silver dotted;">
             The Movie Section: TheMovieDB Version
         </h2>    
     </div>
@@ -93,23 +88,9 @@
     
     <div class="col-lg-8 col-md-8 col-sm-8">
         <p>
-            Most data and links to images for the Movies section come from
-            <a target="_blank" href="https://www.themoviedb.org/">TheMovieDB</a>.
-        </p>
-        <p>
-            Additional data for Film Titles come from
-            <a target="_blank" href="http://www.omdbapi.com/">The Open Movie
-                Database</a>.
-        </p>
-        <p>
-            At least one plug-in comes from
-            <a target="_blank" href="https://www.imdb.com/">IMDb</a>.
-        </p>
-        <p>
-            Whether or not he still clings to an award which he won in 1986 as a
-            film critic for his college's newspaper, Jeffrey Hartmann is not
-            responsible for the texts of overviews and biographies supplied by
-            external data sources.
+            In the Search form, simply type all or part of a person's name or a
+            movie's title and click the Search button. If you see a result that
+            you like, click on its link for its details.
         </p>
     </div> 
 
@@ -144,6 +125,43 @@
             ?>
         </div>
 
+    </div>    
+</div>                
+    
+<div class="container">    
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+        
+            <h3 style="border-top: 1px silver dotted; padding-top: 1em;">
+                About the Movie Section
+            </h3>
+
+            <p>
+                Most data and links to images for the Movies section come from
+                <a target="_blank" href="https://www.themoviedb.org/">TheMovieDB</a>.
+            </p>
+            <p>
+                Additional data for Film Titles come from
+                <a target="_blank" href="http://www.omdbapi.com/">The Open Movie
+                    Database</a>.
+            </p>
+            <p>
+                At least one plug-in comes from
+                <a target="_blank" href="https://www.imdb.com/">IMDb</a>.
+            </p>
+            <p>
+                Data are -- <em>hey, it's a plural</em> -- subject to the
+                limitations of their sources. (For example, search results
+                currently max out at 20.)
+            </p>
+            <p>
+                Whether or not he still clings to an award which he won in 1986
+                as a film critic for his college's newspaper, Jeffrey Hartmann
+                is not responsible for the texts of overviews and biographies
+                supplied by external data sources.
+            </p>
+        
+        </div>        
     </div>
 </div>
                 
