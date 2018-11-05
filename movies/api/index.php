@@ -73,31 +73,34 @@
     require_once $views . 'header.php';
     require_once $views . 'open-jumbotron.php';    
 ?>
+<div class="container">
     
-<div class="row">
-    
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2 style="border-bottom: 1px silver dotted;">
-            The Movie Section: TheMovieDB Version
-        </h2>    
+    <div class="row">
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h2 style="border-bottom: 1px silver dotted;">
+                The Movie Section: TheMovieDB Version
+            </h2>    
+        </div>
+
     </div>
-    
-</div>
 
-<div class="row">
-    
-    <div class="col-lg-8 col-md-8 col-sm-8">
-        <p>
-            In the Search form, simply type all or part of a person's name or a
-            movie's title and click the Search button. If you see a result that
-            you like, click on its link for its details.
-        </p>
-    </div> 
+    <div class="row">
 
-    <div class="col-lg-4 col-md-4 col-sm-4">
-        <?php
-            require_once $views . 'movies/search.php';
-        ?>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <p>
+                In the Search form, simply type all or part of a person's name or a
+                movie's title and click the Search button. If you see a result that
+                you like, click on its link for its details.
+            </p>
+        </div> 
+
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <?php
+                require_once $views . 'movies/search.php';
+            ?>
+        </div>
+
     </div>
     
 </div>
