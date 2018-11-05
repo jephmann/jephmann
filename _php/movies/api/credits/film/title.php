@@ -126,7 +126,7 @@ $overview               = array(
     ),
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
     'imdb'              => $film_imdb,
-    'urlIMDB'           => !empty( $film_imdb )
+    'urlIMDB'           => ( $film_imdb )
                         ? (string) $moviesIMDB->getTitleUrl( $film_imdb )
                         : '',
     //'certifications'    => (array) $release_certifications,
