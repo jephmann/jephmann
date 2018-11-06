@@ -16,7 +16,7 @@
                     onclick="goBack()" href="#"
                     data-toggle="tooltip" data-placement="bottom"
                     data-original-title="Go Back"                            
-                    style="margin: 0 1em;">&lt; BACK</a>                        
+                    style="margin: 0.33em 0.75em;">&lt; BACK</a>                        
                 <a href="<?php echo $path ?>" class="navbar-brand">Jeffrey Hartmann</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">                
