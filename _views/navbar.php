@@ -11,13 +11,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <button type="button" onclick="goBack()" title="Go Back"
-                    class="navbar-toggle collapsed btn btn-primary navbar-btn pull-left"
+                <a class="pull-left navbar-toggle collapsed"
+                    title="Go Back" alt="Go Back"
+                    onclick="goBack()" href="#"
                     data-toggle="tooltip" data-placement="bottom"
-                    data-original-title="Go Back"
-                    style="margin: 0 1em;">
-                    &lt;
-                </button>
+                    data-original-title="Go Back"                            
+                    style="margin: 0 1em;">&lt; BACK</a>                        
                 <a href="<?php echo $path ?>" class="navbar-brand">Jeffrey Hartmann</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">                
