@@ -24,6 +24,19 @@
             </div>            
         </form>
         <?php echo $eZip; ?>
-        
+        <h4>ANNOUNCEMENT:
+            <a target="_blank" title="Announcement from Weather Underground"
+                data-toggle="tooltip" data-placement="bottom"
+                data-original-title="Announcement from Weather Underground"
+                href="https://apicommunity.wunderground.com/weatherapi/topics/end-of-service-for-the-weather-underground-api">
+                End of Service for the Weather Underground API
+            </a>
+        </h4>
+        <p style="font-size: 1.0em;">
+            <em>
+            After December 31, 2018, the Weather section of this
+            website may shut down indefinitely.
+            </em>
+        </p>        
     </div>
 </div>
