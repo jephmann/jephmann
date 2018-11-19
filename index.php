@@ -6,7 +6,7 @@
     /*
      *  Custom (per page) meta
      */
-    $meta_image         = 'http://jephmann.com/_images/me201708.jpg';
+    $meta_image         = 'http://jephmann.com/_images/me201708_movie.jpg';
     $meta_description   = date('F Y')
             . ': I am available for work,'
             . ' in and out of web development/design.'
