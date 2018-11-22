@@ -8,7 +8,7 @@
     /*
      *  Custom (per page) meta
      */
-    $meta_image         = 'http://jephmann.com/_images/me201708_1200x675.jpg';
+    $meta_image         = 'http://jephmann.com/_images/me201708_LI.jpg';
     $meta_description   = (string) NULL;
     $meta_querystring   = (string) NULL;
     /*
