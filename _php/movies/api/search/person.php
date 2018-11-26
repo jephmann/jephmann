@@ -2,7 +2,7 @@
 
 // retrieve person data from API
 $people     = (array) $moviesAPI->getResultsArray(
-                $query, 'person', $include_adult
+                $query, 'person', 'true'
             );
 $ct_people  = (int) count( $people );  
 for ( $r=0; $r<$ct_people; $r++ )
@@ -10,7 +10,9 @@ for ( $r=0; $r<$ct_people; $r++ )
     $person         = (array) $people[ $r ];        
     $person_id      = trim( (string) $person['id'] );
     $person_name    = trim( (string) $person[ 'name' ] );
-    $person_kf      = (array) $person[ 'known_for'];
+    $person_kf      = ( !$allow_adult )
+            ? $moviesAPI->filterAdult( $person[ 'known_for' ] )
+            : $person[ 'known_for' ];
     $ct_kf          = (int) count( $person_kf );
     $kf_titles = array();
     for( $kf=0; $kf<$ct_kf; $kf++ )
