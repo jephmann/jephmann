@@ -24,7 +24,7 @@ for ( $r=0; $r<$ct_people; $r++ )
     }
     $known_for          = ( $kf_titles )
                         ? (string) implode( '; ', $kf_titles )
-                        : '';    
+                        : '';
     $person_known_for   = ( $known_for )
             ? ", known for: {$known_for}"
             : '';
