@@ -134,11 +134,18 @@ class ApiMovieDB extends Api implements iApiMovieDB
         $result = array();
         foreach( $array as $x )
         {
-            // omit if 'adult' key has a value
-            if( !$x[ 'adult' ] )
+            if ( array_key_exists( 'adult', $x ) )
+            {
+                // omit if 'adult' key has a value
+                if( !$x[ 'adult' ] )
+                {
+                    $result[] = $x;
+                }
+            }
+            else
             {
                 $result[] = $x;
-            }           
+            }
         }
         return $result;        
     }
