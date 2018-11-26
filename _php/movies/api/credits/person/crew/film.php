@@ -1,8 +1,8 @@
 <?php
 // Film Production
 $film_crew      = ( $allow_adult )
-    ? $film[ 'crew' ]
-    : $moviesAPI->filterAdult( $film[ 'crew'] );
+                ? $film[ 'crew' ]
+                : $moviesAPI->filterAdult( $film[ 'crew'] );
 
 $ct_film_crew       = (int) count( $film_crew );
 

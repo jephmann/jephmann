@@ -1,8 +1,8 @@
 <?php
 // Film Performance
 $film_cast      = ( $allow_adult )
-    ? $film[ 'cast' ]
-    : $moviesAPI->filterAdult( $film[ 'cast'] );
+                ? $film[ 'cast' ]
+                : $moviesAPI->filterAdult( $film[ 'cast'] );
 
 $ct_film_cast   = (int) count( $film_cast );
 
