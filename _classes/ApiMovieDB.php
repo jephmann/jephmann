@@ -38,7 +38,7 @@ class ApiMovieDB extends Api implements iApiMovieDB
                 break;
             
             // so far, movie and tv have the same pattern
-            case 'movie':   // url requires 'movie'; data becomes 'film         
+            case 'movie':   // url requires 'movie'; data becomes 'film'
             case 'tv':
                 $urls[ "title" ]    = "{$url}{$queryString}";
                 $urls[ "titles" ]   = "{$url}/alternative_titles{$queryString}";
@@ -66,10 +66,9 @@ class ApiMovieDB extends Api implements iApiMovieDB
     public function getUrlSearch(
         string $text,
         string $type,
-        string $include_adult
+        string $include_adult = 'false'
     ) : string
-    {          
-
+    {     
         $query          = (string) urlencode( $text );
         $url            = "{$this->url}search/";
         $queryString    = "?api_key={$this->key}"
@@ -82,7 +81,7 @@ class ApiMovieDB extends Api implements iApiMovieDB
     public function getSearchData(
         string $text,
         string $type,
-        string $include_adult
+        string $include_adult = 'false'
     ) : array
     {
         $url    = (string) $this->getUrlSearch(
@@ -119,7 +118,7 @@ class ApiMovieDB extends Api implements iApiMovieDB
     function getResultsArray(
         string $text,
         string $type,
-        string $include_adult
+        string $include_adult = 'false'
     ) : array
     {
         $url    = (string) $this->getUrlSearch(
@@ -127,6 +126,21 @@ class ApiMovieDB extends Api implements iApiMovieDB
                 );
         $data   = (array) $this->getJsonArray( $url );
         return $data[ 'results' ];
+    }
+    
+    // filter adult projects from name/person credits
+    function filterAdult( array $array ) : array
+    {
+        $result = array();
+        foreach( $array as $x )
+        {
+            // omit if 'adult' key has a value
+            if( !$x[ 'adult' ] )
+            {
+                $result[] = $x;
+            }           
+        }
+        return $result;        
     }
     
 }
