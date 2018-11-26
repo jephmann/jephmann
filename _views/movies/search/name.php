@@ -6,4 +6,4 @@
 </div>
 <ul class="list-group"><?php echo $person_results; ?></ul>
 <?php
-    // require_once $test . 'search/person.php';
+    //require_once $test . 'search/person.php';
