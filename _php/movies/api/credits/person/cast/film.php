@@ -1,7 +1,9 @@
 <?php
-
 // Film Performance
-$film_cast      = (array) $film[ 'cast' ];
+$film_cast      = ( $allow_adult )
+    ? $film[ 'cast' ]
+    : $moviesAPI->filterAdult( $film[ 'cast'] );
+
 $ct_film_cast   = (int) count( $film_cast );
 
 $film_performance   = '<p><em>No film performances in the system.</em></p>';
@@ -45,13 +47,13 @@ if( $ct_film_cast > 0 )
                 $fCast_release_date = new DateTime( $fCast_release );
                 $fCast_release_year = $fCast_release_date->format( 'Y' );
             }            
-        }
+        }        
         $film_performance .= "<p>"
             . "{$fCast_release_year}&nbsp;&nbsp;"
             . "<strong><em>"
             . "<a href=\"film.php?id={$fCast_id}\">{$fCast_title}</a>"
             . "</em></strong>"
             . "<br /><strong>{$fCast_character}</strong>"
-            . "</p>";
+            . "</p>";        
     }
 }

@@ -1,7 +1,9 @@
 <?php
-
 // Film Production
-$film_crew          = (array) $film[ 'crew' ];
+$film_crew      = ( $allow_adult )
+    ? $film[ 'crew' ]
+    : $moviesAPI->filterAdult( $film[ 'crew'] );
+
 $ct_film_crew       = (int) count( $film_crew );
 
 $film_production    = '<p><em>No Film production credits in the system.</em></p>';
