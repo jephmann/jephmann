@@ -6,6 +6,8 @@
     $search         = "{$path}_php/movies/api/search/";
     $views_search   = "{$views}movies/search/";
     $subtitle       = 'Movies: API Version';
+    // set up future Adult toggling
+    $allow_adult    = FALSE;
 
     require_once $path . '_php/autoload.php';
     
@@ -30,9 +32,12 @@
     $person_results         = '';
     $ct_people              = 0;
     
-    //$include_adult        = 'false';
-    $include_adult          = 'true';
-    $include_adult_checked  = '';
+    // for the search url
+    $include_adult          = ( $allow_adult )
+                            ? 'true'
+                            : 'false';   
+    
+    //$include_adult_checked  = '';
 
     // process submitted data
     if ( isset( $_POST[ 'search' ] ) )

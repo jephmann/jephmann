@@ -7,6 +7,8 @@
     $views_movies   = "{$views}movies/";
     $views_credits  = "{$views_movies}film/credits/";
     $subtitle       = 'Movies (TMDB)';
+    // set up future Adult toggling
+    $allow_adult    = FALSE;
 
     require_once $path . '_php/autoload.php';
 
