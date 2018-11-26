@@ -128,7 +128,7 @@ class ApiMovieDB extends Api implements iApiMovieDB
         return $data[ 'results' ];
     }
     
-    // filter adult projects from name/person credits
+    // filter adult projects from results
     function filterAdult( array $array ) : array
     {
         $result = array();
