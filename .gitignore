@@ -1,2 +1,10 @@
 /nbproject/
 /_experiments/
+/database/
+/_classes/iApiWUnderground.php
+/_classes/iApiMovieDB.php
+/_classes/iApiOpenMovieDB.php
+/HTML5Application/nbproject/private/
+/_classes/iDatabase.php
+/survey/
+/FormToDatabase/

@@ -163,6 +163,10 @@
                 currently max out at 20.)
             </p>
             <p>
+                Filtering is applied here to film projects flagged as "adult" by
+                TheMovieDB.
+            </p>
+            <p>
                 Whether or not he still clings to an award which he won in 1986
                 as a film critic for his college's newspaper, Jeffrey Hartmann
                 is not responsible for the texts of overviews and biographies
