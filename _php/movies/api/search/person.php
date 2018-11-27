@@ -30,7 +30,8 @@ for ( $r=0; $r<$ct_people; $r++ )
             : '';
     $person_results    .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
         . '<strong>'
-        . '<a data-toggle="tooltip" href="name.php?id='
+        . '<a data-toggle="tooltip" data-placement="right"'
+        . ' href="name.php?id='
         . $person_id . '" title="'
         . strtoupper( $person_name ) 
         . htmlentities( $person_known_for ) .'">' 

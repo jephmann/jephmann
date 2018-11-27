@@ -13,7 +13,8 @@ for ( $f=0; $f<$ct_tv; $f++ )
     $show_overview  = trim( (string) $show[ 'overview' ] );
     $tv_results     .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
         . '<strong><em>'
-        . '<a data-toggle="tooltip" href="tv.php?id=' 
+        . '<a data-toggle="tooltip" data-placement="right"'
+        . ' href="tv.php?id=' 
         . $show_id . '" title="'
         . strtoupper( $show_title ) . ': ' 
         . htmlentities( $show_overview ) .' ...">' 
