@@ -1,9 +1,6 @@
-
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title"><?php echo $film_response; ?></h3>
-    </div>
-</div>
+<?php if( $ct_films ): ?>
+<h4><?php echo $film_response; ?></h4>
 <ul class="list-group"><?php echo $film_results; ?></ul>
 <?php
-    // require_once $test . 'search/film.php';
+    endif;
+    //require_once $test . 'search/film.php';

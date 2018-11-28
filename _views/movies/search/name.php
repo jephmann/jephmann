@@ -1,9 +1,6 @@
-
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title"><?php echo $person_response; ?></h3>
-    </div>
-</div>
+<?php if( $ct_people ): ?>
+<h4><?php echo $person_response; ?></h4>
 <ul class="list-group"><?php echo $person_results; ?></ul>
 <?php
+    endif;
     //require_once $test . 'search/person.php';
