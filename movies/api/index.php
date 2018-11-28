@@ -20,7 +20,7 @@
     $film_response          = "To see Films,"
             . " please enter a term in The Search Form.";
     $film_results           = '';
-    $ct_film                = 0;
+    $ct_films               = 0;
     // tv
     $tv_response            = "To see TV Shows,"
             . " please enter a term in The Search Form.";
