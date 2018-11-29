@@ -48,12 +48,13 @@ if( $ct_film_cast > 0 )
                 $fCast_release_year = $fCast_release_date->format( 'Y' );
             }            
         }        
-        $film_performance .= "<p>"
+        $film_performance .= "<li "
+            . "class=\"list-group-item d-flex justify-content-between align-items-center\">"
             . "{$fCast_release_year}&nbsp;&nbsp;"
             . "<strong><em>"
             . "<a href=\"film.php?id={$fCast_id}\">{$fCast_title}</a>"
             . "</em></strong>"
             . "<br /><strong>{$fCast_character}</strong>"
-            . "</p>";        
+            . "</li>";        
     }
 }

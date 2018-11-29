@@ -1,5 +1,4 @@
 <?php
-
 // TV Performance
 $tv_cast        = (array) $tv[ 'cast' ];
 $ct_tv_cast     = (int) count( $tv_cast );
@@ -44,12 +43,13 @@ if( $ct_tv_cast > 0 )
                 $tCast_first_year = $tCast_first_date->format( 'Y' );
             }            
         }
-        $tv_performance .= "<p>"
+        $tv_performance .= "<li "
+            . "class=\"list-group-item d-flex justify-content-between align-items-center\">"
             . "{$tCast_first_year}&nbsp;&nbsp;"
             . "<strong><em>"
             . "<a href=\"tv.php?id={$tCast_id}\">{$tCast_name}</a>"
             . "</em></strong>"
             . "<br /><strong>{$tCast_character}</strong>"
-            . "</p>";            
+            . "</li>";            
     }         
 }
