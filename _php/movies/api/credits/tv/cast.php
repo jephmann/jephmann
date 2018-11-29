@@ -13,11 +13,12 @@ if( $ct_credits_cast > 0 )
         $cast_character = array_key_exists( 'character', $cast )
             ? preg_replace( '~\s?/\s?~', '<br />', (string) $cast[ 'character' ] )
             : '';
-        $performance_credits .= "<p>"
+        $performance_credits .= "<li "
+            . "class=\"list-group-item d-flex justify-content-between align-items-center\">"
             . "<strong>"
             . "<a href=\"name.php?id={$cast_id}\">{$cast_name}</a>"
             . "</strong>"
             . "<br /><strong>{$cast_character}</strong>"
-            . "</p>";
+            . "</li>";
     }        
 }
