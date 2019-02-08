@@ -41,6 +41,7 @@
             'src'       => 'facebook',
             'alt'       => 'Facebook',
         ),
+        /*
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -49,6 +50,7 @@
             'src'       => 'google',
             'alt'       => 'Google+',
         ),
+        */
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
