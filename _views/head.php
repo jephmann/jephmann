@@ -33,7 +33,7 @@
         <link rel="canonical"
               href="<?php echo $meta['canonical']; ?>" />
         <meta name="description"
-              content="<?php echo $meta['description']; ?>">
+              content="<?php echo htmlentities( $meta['description'], ENT_QUOTES ); ?>">
         <meta name="author"
               content="Jeffrey Hartmann">
         <!-- Twitter --> 
@@ -41,14 +41,14 @@
         <meta name="twitter:title"
               content="<?php echo $meta['title']; ?>">
         <meta name="twitter:description"
-              content="<?php echo $meta['description']; ?>">
+              content="<?php echo htmlentities( $meta['description'], ENT_QUOTES ); ?>">
         <meta name="twitter:image"
               content="<?php echo $meta['image']; ?>">
         <!-- Facebook / Open Graph -->
         <meta property="og:title"
               content="<?php echo $meta['title']; ?>">
         <meta property="og:description"
-              content="<?php echo $meta['description']; ?>">
+              content="<?php echo htmlentities( $meta['description'], ENT_QUOTES ); ?>">
         <meta property="og:image"
               content="<?php echo $meta['image']; ?>">
         <meta property="og:image:height" content="300" />
