@@ -92,18 +92,25 @@
 
     <div class="row">
 
-        <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="col-lg-4 col-md-4 col-sm-4">
             <p>
-                In the Search form, simply type all or part of a person's name or a
-                movie's title and click the Search button. If you see a result that
-                you like, click on its link for its details.
+                In the Search Form, simply type all or part of a person's name or a
+                movie's title and click the Search button.
             </p>
-        </div> 
+        </div>
 
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <?php
-                require_once $views . 'movies/search.php';
-            ?>
+            <p>
+                Results may appear below among people's names and/or
+                movie titles and/or television titles.
+            </p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <p>
+                If you see a result that
+                you like, click on its link for its details.
+            </p>
         </div>
 
     </div>
@@ -117,19 +124,20 @@
 
         <div class="col-lg-4 col-md-4 col-sm-4">
             <?php
-                require_once $views_search . 'film.php';
             ?>
         </div>
 
         <div class="col-lg-4 col-md-4 col-sm-4">        
             <?php
+                require_once $views_search . 'name.php';
+                require_once $views_search . 'film.php';
                 require_once $views_search . 'tv.php';
+                require_once $views . 'movies/search.php';
             ?>
         </div>
 
         <div class="col-lg-4 col-md-4 col-sm-4">
             <?php
-                require_once $views_search . 'name.php';
             ?>
         </div>
 
