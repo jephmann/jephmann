@@ -30,7 +30,7 @@ for ( $r=0; $r<$ct_people; $r++ )
             : '';
     $person_results    .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
         . '<strong>'
-        . '<a data-toggle="tooltip" data-placement="right"'
+        . '<a data-toggle="tooltip" data-placement="bottom"'
         . ' href="name.php?id='
         . $person_id . '" title="'
         . strtoupper( $person_name ) 
@@ -41,4 +41,7 @@ for ( $r=0; $r<$ct_people; $r++ )
         $person_results .= '<br />(' . $known_for . ')';
     $person_results .= '</li>';
 }
-$person_response       = "Top Name Results{$forQuery}: {$ct_people}";
+$person_response       = "Top Name Results{$forQuery}: "
+    . ' <span class="badge badge-primary badge-pill">'
+    . $ct_people
+    . '</span>';

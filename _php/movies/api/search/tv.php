@@ -1,10 +1,10 @@
 <?php
 
 // retrieve film data from API
-$shows              = (array) $moviesAPI->getResultsArray(
-                        $query, 'tv', $include_adult
-                    );
+$shows = (array) $moviesAPI->getResultsArray( $query, 'tv', $include_adult );
+// count the records
 $ct_tv              = (int) count( $shows );
+// format for display
 for ( $f=0; $f<$ct_tv; $f++ )
 {
     $show           = (array) $shows[ $f ];
@@ -13,7 +13,7 @@ for ( $f=0; $f<$ct_tv; $f++ )
     $show_overview  = trim( (string) $show[ 'overview' ] );
     $tv_results     .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
         . '<strong><em>'
-        . '<a data-toggle="tooltip" data-placement="right"'
+        . '<a data-toggle="tooltip" data-placement="bottom"'
         . ' href="tv.php?id=' 
         . $show_id . '" title="'
         . strtoupper( $show_title ) . ': ' 
@@ -22,7 +22,10 @@ for ( $f=0; $f<$ct_tv; $f++ )
         . '</a>'
         . '</em></strong>';
     if( $show_overview )
-        $tv_results .= '<br />(' . $show_overview . ')';
+        $tv_results .= '<br />(' . substr( htmlentities( $show_overview ), 0, 100 ) . ' ...)';
     $film_results   . '</li>';
 }
-$tv_response        = "Top Television Results{$forQuery}: {$ct_tv}";
+$tv_response        = "Top Television Results{$forQuery}:"
+    . ' <span class="badge badge-primary badge-pill">'
+    . $ct_tv
+    . '</span>';
