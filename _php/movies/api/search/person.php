@@ -28,18 +28,19 @@ for ( $r=0; $r<$ct_people; $r++ )
     $person_known_for   = ( $known_for )
             ? ", known for: {$known_for}"
             : '';
+    $person_href        = 'name.php?id=' . $person_id;    
     $person_results    .= '<li class="list-group-item d-flex justify-content-between align-items-center">'
         . '<strong>'
         . '<a data-toggle="tooltip" data-placement="bottom"'
-        . ' href="name.php?id='
-        . $person_id . '" title="'
+        . ' href="' . $person_href . '" title="'
         . strtoupper( $person_name ) 
-        . htmlentities( $person_known_for ) .'">' 
+        . htmlentities( $person_known_for ) . '">' 
         . $person_name . '</a>'
         . '</strong>';
     if ($known_for)
         $person_results .= '<br />(' . $known_for . ')';
-    $person_results .= '</li>';
+    $person_results     .= $moviesAPI->btnGoToResult( $person_href );
+    $person_results     .= '</li>';
 }
 $person_response       = "Top Name Results{$forQuery}: "
     . ' <span class="badge badge-primary badge-pill">'

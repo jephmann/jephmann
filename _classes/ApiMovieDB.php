@@ -144,6 +144,18 @@ class ApiMovieDB extends Api implements iApiMovieDB
             }
         }
         return $result;        
+    } 
+        
+    // create GO button-link in Search results
+    function btnGoToResult( string $href ) : string
+    {
+        $button = '<p style="text-align: right;">'
+            . '<span class="badge badge-success">'
+            . '<a href="' . $href . '">GO</a>'
+            . '</span>'
+            . '</p>';
+        
+        return $button;
     }
     
 }
