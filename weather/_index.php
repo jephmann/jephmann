@@ -82,17 +82,13 @@
     }
     
     // alert feature
-    /*
     $arrayAlerts    = (array) $weatherAPI->arrayReport(
         'alerts', $city, $state
         );
     $alerts         = (array) $arrayAlerts[ 'alerts' ];
     $ctAlerts       = (int) count( $alerts );
-     * 
-     */
     
     // conditions feature
-    /*
     $arrayConditions   = (array) $weatherAPI->arrayReport(
         'conditions', $city, $state
         );    
@@ -105,11 +101,8 @@
     $current_precip         = (string) $current[ 'precip_today_string' ];
     $current_icon           = (string) $current[ 'icon_url' ];
     $current_icon_alt       = basename( $current_icon, '.gif' );
-     * 
-     */
     
     // almanac feature
-    /*
     $arrayAlmanac   = (array) $weatherAPI->arrayReport(
         'almanac', $city, $state
         );    
@@ -130,19 +123,14 @@
     $almanacLowRecordF      = (int) $almanacLowRecord['F'];
     $almanacLowRecordC      = (int) $almanacLowRecord['C'];    
     $almanacLowRecordYear   = (int) $almanacLow['recordyear'];
-     * 
-     */
 
     // forecast feature
-    /*
     $arrayForecast = $weatherAPI->arrayReport(
         'forecast', $city, $state
         );
     $forecast       = (array) $arrayForecast[ 'forecast' ];
     $forecastDay    = (array) $forecast['txt_forecast']['forecastday'];
     $ctForecastDay  = (int) count( $forecastDay );
-     * 
-     */
     
     // radar
     $urlRadar       = (string) $weatherAPI->urlRadar( $city, $state );
@@ -175,42 +163,82 @@
             <div class="col-lg-4 col-md-4 col-sm-4">
 
                 <h2>The Weather Section</h2>
+                <a target="blank"
+                    href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">
+                    <img alt="Weather Underground"
+                        title="Weather Underground"
+                        src="../_images/logos/iw63kb1u.bmp"
+                        style="display:block;margin:auto;">
+                </a>
                 
-                <h3>2017-2019</h3>
-                
+                <?php          
+                    require_once $views . 'weather/forms/zip.php';
+                    //require_once $views . 'weather/forms/city.php';
+                ?>
+
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-8">
-                <h2>SECTION SUSPENDED</h2>
-                <p>
-                    A few months back, the source of the weather data for this
-                    section announced changes to its API which originally would
-                    have resulted in shutting down this section back in December
-                    2018. After a reprieve of sorts, this shutdown has now come
-                    to pass.
-                </p>
-                <p>
-                    We still have the Movies section wherein I can still show
-                    people what I can do with an external API. Meanwhile I am
-                    open to other <em>free</em> sources of weather data so that
-                    I may try this again.
-                </p>
-                <p>
-                    I am also open to suggestions regarding other free APIs for
-                    me to play with. (Yes, I also can scrape other websites for
-                    data; the issue is whether I may.)
-                </p>
-                <p>
-                    As always, I am grateful for your time.
-                </p>
+            <div class="col-lg-8 col-md-8 col-sm-8">        
+                <h2>Weather for <?php echo $csz; ?></h2>
+                <?php
+                    require_once $views . 'weather/alerts.php';
+                ?>
+                
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <h3>Radar:</h3>
+                        <img alt="Radar" class="img100w"
+                            title="Radar for <?php echo $csz; ?>"
+                            src="<?php echo $urlRadar; ?>" />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <h3>Current Conditions:</h3>
+                        <img src="<?php echo $current_icon; ?>"
+                            alt="<?php echo $current_icon_alt; ?>"
+                            title="<?php echo $current_icon_alt; ?>">
+                        <p>Weather: <?php echo $current_weather; ?></p>
+                        <p>Temperatures: <?php echo $current_temperature; ?></p>
+                        <p>Winds: <?php echo $current_wind; ?></p>
+                        <p>Precipitation: <?php echo $current_precip; ?></p>
+                        <p>Humidity: <?php echo $current_humidity; ?></p>
+                        <p>Feels Like: <?php echo $current_feel; ?></p>          
+                    </div>
+                </div>
+                
             </div>                
         </div>
-    </div>    
+    </div>
+
+    <?php require_once $views . 'close-jumbotron.php'; ?>
+
+    <div class="container">
+        <div class="row">                       
+
+            <div class="col-lg-4 col-md-4 col-sm-4">                                
+                <?php
+                    require_once $views . 'weather/almanac.php';
+                ?>                      
+            </div>                      
+
+            <div class="col-lg-8 col-md-8 col-sm-8">                
+                <?php
+                    require_once $views . 'weather/forecasts.php';
+                    require_once $views . 'weather/about.php';
+                ?>
+            </div>
+                
+        </div>            
+    </div>
 
 <?php
     require_once $views . 'close-jumbotron.php';
     require_once $views . 'footer.php';
     require_once $views . 'load/jquery.php';
     require_once $views . 'load/bootstrap.php';
+    ?>
+
+    <script type="text/javascript"
+        src="<?php echo $path ?>_js/weather.js"></script>
+<?php
     require_once $views . 'load/google-analytics.php';
     require_once $views . 'foot.php';    
     /*
