@@ -60,7 +60,7 @@
         else // process the data
         {            
             /*
-            * e-mail version
+            * e-mail version, awaiting email support
             */
             //require_once '_email.php';
 
@@ -107,16 +107,10 @@
                     </li>
                     <li>
                         In lieu of e-mail support, I am inserting data from this
-                        form into a MySQL table via a parameterized INSERT
-                        statement for PDO.
+                        form into a database table.
                     </li>
                     <li>
                         Validation both server-side and client-side.
-                    </li>
-                    <li>
-                        IRL: I usually don't say this stuff on a web page, but
-                        this is a workshop site after all. Code submitted on
-                        GitHub for your approval or laughs.
                     </li>
                 </ul>
                 
@@ -134,7 +128,7 @@
                     <?php echo $eMessage; ?>
                 </div>
                 
-                <?php elseif( $_SESSION['Contact']['Success'] === TRUE ) : ?>
+                <?php elseif( $_SESSION['Contact']['Success'] ) : ?>
                 
                 <div class="alert alert-dismissible alert-success">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
