@@ -1,10 +1,12 @@
 <?php
     declare( strict_types = 1 );
+    // Session Variables
+    session_start();
+    $_SESSION['Contact']['Success'] = FALSE;
+    // Page Variables
     $path       = '../';
     $subtitle   = "About This Project";
     
-
-
     /*
      *  Custom (per page) meta
      */

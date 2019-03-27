@@ -1,5 +1,9 @@
 <?php
     declare( strict_types = 1 );
+    // Session Variables
+    session_start();
+    $_SESSION['Contact']['Success'] = FALSE;
+    // Page Variables
     $path           = '../../';
     $views          = "{$path}_views/";
     $test           = "{$path}_php/movies/api/pre/";

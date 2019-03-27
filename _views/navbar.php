@@ -27,6 +27,14 @@
                             data-original-title="About this project"
                             href="<?php echo $path ?>about">About</a>
                     </li>
+                    <!-- SUSPENDED
+                    <li>
+                        <a title="Contact me"
+                            data-toggle="tooltip" data-placement="bottom"
+                            data-original-title="Contact me"
+                            href="<?php echo $path ?>contact">Contact</a>
+                    </li>
+                    -->
                     <li>
                         <a title="Experiments with data regarding movies"
                             data-toggle="tooltip" data-placement="bottom"

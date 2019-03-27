@@ -122,4 +122,25 @@ class Tools {
     {
         return "<script type='text/javascript'>alert('{$text}');</script>";
     }
+    
+    /*
+     * evaluate incoming string data, with Required and Length options
+     */
+    function evaluateData(
+        string $field,
+        string $data,
+        bool $required,
+        int $chars ) : string
+    {
+        $result = '';
+        if ( $required )
+            if( empty( $data ) )
+                $result = "{$field}: Required.";
+        elseif( $chars )
+            if ( strlen( $data ) > $chars )
+                $result = "{$field}: Must not exceed {$chars} characters.";
+        if ( $result )
+            $result = "<li>{$result}</li>";
+        return $result;
+    }
 }
