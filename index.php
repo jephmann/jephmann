@@ -47,18 +47,27 @@
                 
                 <p>
                     For a far more verbose explanation of this project,
-                    you may click <a title="Jeffrey Hartmann: About"
-                    href="about/">About</a>.
+                    you may click
+                    <a title="Jeffrey Hartmann: About"
+                        data-toggle="tooltip" data-placement="top"
+                        data-original-title="About this project"
+                        href="about/">About</a>.
                     Feel free to click anywhere else within this project,
                     whether "finished" or not. (Frankly, that's the idea.)
                 </p>
                 <p>
-                    By the way: as I write this (<?php echo $thisMonthYear; ?>),
-                    I am available for a full-time, permanent job,
-                    in and out of web development and design.
-                    For details please contact me <em>privately</em> via
+                    By the way: as you read this (<?php echo $thisMonthYear; ?>),
+                    I am available for full-time, permanent work, in and out of
+                    web development and design. For details, feel free to try my                    
+                    <a title="Jeffrey Hartmann: Contact"
+                        data-toggle="tooltip" data-placement="top"
+                        data-original-title="Contact Jeffrey Hartmann"
+                        href="contact/">Contact</a>
+                    form; otherwise, please contact me <em>privately</em> via
                     <a target="_blank" title="LinkedIn: Jeffrey Hartmann"
-                    href="https://www.linkedin.com/in/jeffreyhartmann//">LinkedIn</a>
+                        data-toggle="tooltip" data-placement="top"
+                        data-original-title="Contact Jeffrey Hartmann"
+                        href="https://www.linkedin.com/in/jeffreyhartmann/">LinkedIn</a>
                     or via any other social media where you may find me.
                 </p>
                 <p>
