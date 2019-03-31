@@ -14,7 +14,8 @@ class ContactForm extends React.Component {
             requireSubject: '',
             maxSubject: '',
             requireBody: '',
-            maxBody: ''
+            maxBody: '',
+            matchEmail: ''
         };
     }
     
@@ -55,11 +56,14 @@ class ContactForm extends React.Component {
     };    
     validateEmail = () => {
         const { contactEmail } = this.state;
+        var rex = new RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
         this.setState({
             requireEmail:
-                contactEmail.length > 0 ? null : 'Required',
+                contactEmail.length > 0 ? null : 'Required.',
+            matchEmail:
+                rex.test(contactEmail) ? null : 'Improper email address.',
             maxEmail:
-                contactEmail.length < 250 ? null : 'Limit 250 characters'
+                contactEmail.length < 250 ? null : 'Limit 250 characters.'
         });
     }
     
@@ -78,7 +82,7 @@ class ContactForm extends React.Component {
         });
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         //event.preventDefault();
         //var thanks = "Thanks!"
         //alert("Thanks!");
@@ -87,7 +91,7 @@ class ContactForm extends React.Component {
     render() {
  
         return (
-            <form method="post" onSubmit={this.handleSubmit}
+            <form method="post" onSubmit={this.handleSubmit} noValidate
                 action="">
                 <div className="form-group required">
                     <label htmlFor="contactName"
@@ -116,6 +120,7 @@ class ContactForm extends React.Component {
                         <span className="invalid-feedback">
                             &nbsp;{this.state.requireEmail}
                             &nbsp;{this.state.maxEmail}
+                            &nbsp;{this.state.matchEmail}
                         </span>
                     </label>
                     <input type="email"
