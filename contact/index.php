@@ -45,8 +45,9 @@
         $eName      = Tools::evaluateData(
             "Name", $post_contactName, TRUE, 250
         );
+        $emailRegExp = "~^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$~";
         $eEmail     = Tools::evaluateData(
-            "Email", $post_contactEmail, TRUE, 250
+            "Email", $post_contactEmail, TRUE, 250, $emailRegExp
         );
         $eSubject   = Tools::evaluateData(
             "Subject", $post_contactSubject, TRUE, 250
@@ -128,7 +129,7 @@
                 
                 <div class="alert alert-dismissible alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Houston, we have a problem.</strong>
+                    <strong>Message blocked:</strong>
                     <?php echo $eMessage; ?>
                 </div>
                 
