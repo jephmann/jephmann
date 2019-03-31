@@ -124,23 +124,34 @@ class Tools {
     }
     
     /*
-     * evaluate incoming string data, with Required and Length options
+     * evaluate incoming string data re:
+     * Required
+     * Maximum Length
+     * optional Regex matching
      */
     function evaluateData(
         string $field,
         string $data,
         bool $required,
-        int $chars ) : string
+        int $maxchars,
+        string $regex = ''
+    ) : string
     {
         $result = '';
+        
         if ( $required )
             if( empty( $data ) )
                 $result = "{$field}: Required.";
-        elseif( $chars )
-            if ( strlen( $data ) > $chars )
-                $result = "{$field}: Must not exceed {$chars} characters.";
+        elseif( $maxchars )
+            if ( strlen( $data ) > $maxchars )
+                $result = "{$field}: Must not exceed {$maxchars} characters.";
+        elseif( $regex )
+            if( !preg_match( $regex, $data ) )
+                $result = "{$field}: Improperly formatted.";
+                
         if ( $result )
             $result = "<li>{$result}</li>";
+            
         return $result;
     }
 }
