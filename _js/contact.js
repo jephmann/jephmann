@@ -15,7 +15,8 @@ class ContactForm extends React.Component {
             maxSubject: '',
             requireBody: '',
             maxBody: '',
-            matchEmail: ''
+            matchEmail: '',
+            message: ''
         };
     }
     
@@ -82,10 +83,59 @@ class ContactForm extends React.Component {
         });
     }
 
-    handleSubmit = (event) => {
-        //event.preventDefault();
-        //var thanks = "Thanks!"
-        //alert("Thanks!");
+    handleSubmit = (event) => {       
+        this.state.message = null;
+        
+        if ( this.state.requireName !== null )
+        {
+            this.state.message += '\n- Name Required.';
+        }
+        
+        if ( this.state.maxName !== null )
+        {
+            this.state.message += '\n- Name limit: 1000 characters.';
+        }
+        
+        if ( this.state.requireEmail !== null )
+        {
+            this.state.message += '\n- E-mail Required.';
+        }
+        
+        if ( this.state.matchEmail !== null )
+        {
+            this.state.message += '\n- Improper e-mail address.';
+        }
+        
+        if ( this.state.maxEmail !== null )
+        {
+            this.state.message += '\n- E-mail limit: 250 characters.';
+        }
+        
+        if ( this.state.requireSubject !== null )
+        {
+            this.state.message += '\n- Subject Required.';
+        }
+        
+        if ( this.state.maxSubject !== null )
+        {
+            this.state.message += '\n- Subject limit: 250 characters.';
+        }
+        
+        if ( this.state.requireBody !== null )
+        {
+            this.state.message += '\n- Body Required.';
+        }
+        
+        if ( this.state.maxBody !== null )
+        {
+            this.state.message += '\n- Body limit: 1000 characters.';
+        }
+        
+        if ( this.state.message !== null )
+        {
+            alert( 'Please address the following:' + this.state.message );
+            event.preventDefault();
+        }
     }
   
     render() {
