@@ -83,8 +83,7 @@ class ContactForm extends React.Component {
         });
     }
 
-    handleSubmit = (event) => {       
-        this.state.message = null;
+    handleSubmit = (event) => {
         
         if ( this.state.requireName !== null )
         {
@@ -131,7 +130,7 @@ class ContactForm extends React.Component {
             this.state.message += '\n- Body limit: 1000 characters.';
         }
         
-        if ( this.state.message !== null )
+        if ( this.state.message !== '' )
         {
             alert( 'Please address the following:' + this.state.message );
             event.preventDefault();
