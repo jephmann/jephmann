@@ -175,6 +175,12 @@
                 TheMovieDB.
             </p>
             <p>
+                Whereas the overall purpose of this website is to serve as a
+                personal demo/portfolio/workshop of web and data skills, this
+                Movies section is not meant to compete with or substitute for
+                far more definitive movie websites.
+            </p>
+            <p>
                 Whether or not he still clings to an award which he won in 1986
                 as a film critic for his college's newspaper, Jeffrey Hartmann
                 is not responsible for the texts of overviews and biographies
