@@ -9,7 +9,7 @@
     $test           = "{$path}_php/movies/api/pre/";
     $search         = "{$path}_php/movies/api/search/";
     $views_search   = "{$views}movies/search/";
-    $subtitle       = 'Movies: API Version';
+    $subtitle       = 'Movies';
     // set up future Adult toggling
     $allow_adult    = FALSE;
 

@@ -5,7 +5,7 @@
     $_SESSION['Contact']['Success'] = FALSE;
     // Page Variables
     $path       = '';
-    $subtitle   = "Available for Work";
+    $subtitle   = date('F Y') . ': Available for Work';
 
     /*
      *  Custom (per page) meta

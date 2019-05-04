@@ -14,7 +14,7 @@
     $views_name             = "{$views_movies}name/";
     $views_performance      = "{$views_name}performance/";
     $views_production       = "{$views_name}production/";
-    $subtitle               = 'Movies (TMDB)';
+    $subtitle               = 'Movies';
     // set up future Adult toggling
     $allow_adult            = FALSE;
 

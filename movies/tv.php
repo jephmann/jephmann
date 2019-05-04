@@ -10,7 +10,7 @@
     $credits_tv     = "{$path}_php/movies/api/credits/tv/";
     $views_movies   = "{$views}movies/";
     $views_credits  = "{$views_movies}/tv/credits/";
-    $subtitle       = 'Movies (TMDB)';
+    $subtitle       = 'Movies';
     // set up future Adult toggling
     $allow_adult    = FALSE;
 

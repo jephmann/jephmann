@@ -15,7 +15,8 @@
     
     // Social Meta
     $meta = array(
-        'title'         => 'Jeffrey Hartmann | ' . $subtitle,
+        'title'         => $subtitle
+            . ' | Jeffrey Hartmann',
         'description'   => $meta_description
             . 'Jeffrey Hartmann\'s personal workshop and demo project',
         'image'         => $meta_image,

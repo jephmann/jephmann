@@ -178,7 +178,7 @@ $awardsWon     = Tools::doForOverview( 'Awards', $omdb_awards, TRUE );
  * Additional per-page variables
  */
 
-$subtitle           .= ": {$overview[ 'title' ]} ({$overview[ 'release_year' ]})";
+$subtitle           = "{$overview[ 'title' ]} ({$overview[ 'release_year' ]}) | {$subtitle}";
 
 $creditFooter       = "Click the heading above to show or hide the list.";
 
