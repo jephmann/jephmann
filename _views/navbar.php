@@ -31,7 +31,7 @@
                         <a title="Experiments with data regarding movies"
                             data-toggle="tooltip" data-placement="bottom"
                             data-original-title="Experiments with data regarding movies"
-                            href="<?php echo $path ?>movies/api">Movies</a>
+                            href="<?php echo $path ?>movies">Movies</a>
                     </li>
                     <!--
                     <li>
