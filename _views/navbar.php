@@ -44,12 +44,14 @@
                         </ul>
                     </li>
                     -->
+                    <!--
                     <li>
                         <a title="Experiments with data regarding weather"
                             data-toggle="tooltip" data-placement="bottom"
                             data-original-title="Experiments with data regarding weather"
                             href="<?php echo $path ?>weather">Weather</a>
                     </li>
+                    -->
                     <li>
                         <a title="Contact me"
                             data-toggle="tooltip" data-placement="bottom"
