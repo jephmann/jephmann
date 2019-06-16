@@ -6,8 +6,8 @@
     // Page Variables
     $path           = '../';
     $views          = "{$path}_views/";
-    $test           = "{$path}_php/movies/api/pre/";
-    $search         = "{$path}_php/movies/api/search/";
+    $test           = "{$path}_php/movies/pre/";
+    $search         = "{$path}_php/movies/search/";
     $views_search   = "{$views}movies/search/";
     $subtitle       = 'Movies';
     // set up future Adult toggling

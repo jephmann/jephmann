@@ -7,8 +7,9 @@
     $path                   = '../';
     $views                  = "{$path}_views/";
     $views_movies           = "{$views}movies/";
-    $test                   = "{$path}_php/movies/api/pre/";
-    $credits_person         = "{$path}_php/movies/api/credits/person/";
+    $php_movies             = "{$path}_php/movies/";
+    $test                   = "{$php_movies}pre/";
+    $credits_person         = "{$php_movies}credits/person/";
     $credits_person_cast    = "{$credits_person}cast/";
     $credits_person_crew    = "{$credits_person}crew/";
     $views_name             = "{$views_movies}name/";

@@ -6,8 +6,9 @@
     // Page Variables
     $path           = '../';
     $views          = "{$path}_views/";
-    $test           = "{$path}_php/movies/api/pre/";
-    $credits_film   = "{$path}_php/movies/api/credits/film/";
+    $php_movies     = "{$path}_php/movies/";
+    $test           = "{$php_movies}pre/";
+    $credits_film   = "{$php_movies}credits/film/";
     $views_movies   = "{$views}movies/";
     $views_credits  = "{$views_movies}film/credits/";
     $subtitle       = 'Movies';
