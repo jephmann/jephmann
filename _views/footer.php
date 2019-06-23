@@ -9,11 +9,34 @@
                 <p>
                     &copy; 2017 - <?php echo $thisYear; ?> by Jeffrey Hartmann
                 </p>
-                <p>
-                    <a href='https://ko-fi.com/S6S1MIEP' target='_blank'>
-                        <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
-                    </a>
-                </p>
+                <div>
+                    <span>
+                        <a target="_blank" href="https://dev.to/jeffreyhartmann">
+                            <img
+                                src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
+                                alt="Jeffrey Hartmann's DEV Profile"
+                                title="Jeffrey Hartmann's DEV Profile"                                
+                                data-toggle="tooltip" data-placement="top"
+                                data-original-title="Jeffrey Hartmann's DEV Profile"
+                                border="0"
+                                height="36"
+                                style="border: 0px; height: 36px;" />
+                        </a>
+                    </span>
+                    <span>
+                        <a target="_blank" href="https://ko-fi.com/S6S1MIEP">
+                            <img
+                                src="https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0"
+                                alt="Buy Me a Coffee at ko-fi.com"
+                                title="Buy Me a Coffee at ko-fi.com"                                
+                                data-toggle="tooltip" data-placement="top"
+                                data-original-title="Buy Me a Coffee at ko-fi.com"
+                                border="0"
+                                height="36"
+                                style="border: 0px; height: 36px;" />
+                        </a>
+                    </span>
+                </div>
             </div>
         </div>
     </footer>
