@@ -51,5 +51,14 @@ if( $ct_tv_cast > 0 )
             . "</em></strong>"
             . "<br /><strong>{$tCast_character}</strong>"
             . "</li>";            
-    }         
+    }
+
 }
+    
+// build Credits panel
+$creditsPerformancesTV = (string) Tools::panelCredits
+(
+    $ct_tv_cast,
+    'TV Performances',
+    $tv_performance
+);

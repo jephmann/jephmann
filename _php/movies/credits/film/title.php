@@ -196,3 +196,17 @@ $meta_querystring   = "?id={$id}";
  * according to Cast/Performance and Crew/Production
  */
 $credits = (array) $moviesAPI->getSubTopicData( $id, $topic, 'credits' );
+
+// build Overview panel
+$panelOverview = (string) Tools::panelOverview(
+    'Overview',
+    'TheMovieDB',
+    $overview[ 'text' ]
+);
+
+// build Overview panel
+$panelOverviewOpenMovie = (string) Tools::panelOverview(
+    'Overview',
+    'Open Movies',
+    $omdb_plot
+);

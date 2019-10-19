@@ -23,4 +23,11 @@ if( $ct_credits_cast > 0 )
             . "</li>";
     }        
 }
-
+    
+// build Credits panel
+$creditsPerformers = (string) Tools::panelCredits
+(
+    $ct_credits_cast,
+    'Performers',
+    $performance_credits
+);

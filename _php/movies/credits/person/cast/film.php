@@ -57,4 +57,13 @@ if( $ct_film_cast > 0 )
             . "<br /><strong>{$fCast_character}</strong>"
             . "</li>";        
     }
+
 }
+    
+// build Credits panel
+$creditsPerformancesFilm = (string) Tools::panelCredits
+(
+    $ct_film_cast,
+    'Film Performances',
+    $film_performance
+);

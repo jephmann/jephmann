@@ -11,24 +11,21 @@
     echo $overview[ 'countries' ];
 ?></div>
 
-<div class="col-lg-6 col-md-6 col-sm-6"><?php
+<div class="col-lg-6 col-md-6 col-sm-6">
+<?php
+
+    // optional Tagline
     echo $overview[ 'tagline' ];
-    if ( $overview[ 'text' ] ) : ;
-    ?>
-    <blockquote class="blockquote"><?php
-    echo $overview[ 'text' ]; ?>
-        <small>
-            from TheMovieDB (and not from Jeffrey Hartmann)
-        </small>
-    </blockquote>
-    <?php
-        endif;
-        
-        // "Additional Information"
-        $logo_title = $overview[ 'title' ];
-        //require_once $views_movies . 'logo-links.php';
-        require_once $views_movies . 'movie-links.php';
-    ?>
+
+    // TheMovieDB Overview
+    echo $panelOverview;
+
+    // "Additional Information"
+    $logo_title = $overview[ 'title' ];
+    //require_once $views_movies . 'logo-links.php';
+    require_once $views_movies . 'movie-links.php';
+
+?>
 </div>
 
 <div class="col-lg-12 col-md-12 col-sm-12"><?php

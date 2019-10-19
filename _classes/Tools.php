@@ -154,4 +154,94 @@ class Tools {
             
         return $result;
     }
+    
+    /*
+     * Use primaryPanel() to create overview/biography panels;
+     */
+    function panelOverview(
+        string $type,
+        string $source,
+        string $text
+    ) : string
+    {
+        $panelOverview  = '';
+        $title          = '';
+        $footer         = '';
+        if( strlen($text) )
+        {
+            $title          = "{$type} from {$source}";
+            $text           = "<p style=\"font-size: 1.2em;\">{$text}</p>";
+            $footer         = 'Click the heading above to show or hide the text.';
+            $panelOverview  = Tools::primaryPanel($title, $text, $footer, TRUE);            
+        }
+        return $panelOverview;
+    }
+    
+    /*
+     * Use primaryPanel() to create Credits panels;
+     */
+    function panelCredits(
+        int $count,    
+        string $type,
+        string $text
+    ) : string
+    {
+        $panelCredits   = '';
+        $title          = '';
+        $footer         = '';
+        if( $count )
+        {
+            $title          = "{$type}";
+            $text           = "<p style=\"font-size: 1.2em;\">{$text}</p>";
+            $footer         = 'Click the heading above to show or hide the list.';
+            $panelCredits   = Tools::primaryPanel($title, $text, $footer, TRUE);            
+        }
+        return $panelCredits;
+    }
+    
+    /*
+     * Create primary-panel with optional collapsibility
+     */
+    function primaryPanel(
+        string $title,
+        string $text,
+        string $footer,
+        bool $isCollapsible        
+    ) : string
+    {
+        $panelTitle     = $title;
+        $id             = '';
+        $idBody         = '';
+        $collapseClass  = '';
+        if( $isCollapsible )
+        {
+            $id             = preg_replace( '/\s+/', '', $title );
+            $panelTitle     = "<a data-toggle=\"collapse\" href=\"#{$id}\"
+                title=\"Click for {$title}\">{$title}</a>
+                <span class=\"caret\"></span>";
+            $collapseClass  = " panel-collapse collapse in";
+            $idBody         = " id=\"{$id}\"";
+        }
+                
+        $panelHeading   = "<div class=\"panel-heading\">"
+            . "<h3 class=\"panel-title\">{$panelTitle}</h3>"
+            . "</div>";
+        
+        $panelBody      = "<div{$idBody} class=\"panel-body{$collapseClass} credits-scroll\">{$text}</div>";
+        
+        $panelFooter    = "<div class=\"panel-footer\">"
+            . "<p style=\"font-size: 1.1em;\"></p>"
+            . "</div>";
+        
+        $panelFooter    = ( $footer )
+                        ? "<div class=\"panel-footer\">"
+                            . "<p style=\"font-size: 1.1em;\">{$footer}</p>"
+                            . "</div>"
+                        : '';
+            
+        $primaryPanel   = "<div class=\"panel panel-primary\">{$panelHeading}{$panelBody}{$panelFooter}</div>";
+        
+        return $primaryPanel;
+    }
+
 }

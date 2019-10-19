@@ -74,4 +74,13 @@ if( $ct_tv_crew > 0 )
 
         $tv_production .= "</p>";
     }
+
 }
+    
+// build Credits panel
+$creditsProductionTV = (string) Tools::panelCredits
+(
+    $ct_tv_crew,
+    'TV Production',
+    $tv_production
+);

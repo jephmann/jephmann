@@ -77,15 +77,19 @@
 
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <?php
-                    require_once $views_performance . 'film.php';
-                    require_once $views_performance . 'tv.php';
+                    echo $creditsPerformancesFilm;
+                    //require_once $test . 'name/cast.php';
+                    echo $creditsPerformancesTV;
+                    //require_once $test . 'name/cast_tv.php';
                 ?>
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <?php
-                    require_once $views_production . 'film.php';
-                    require_once $views_production . 'tv.php';
+                    echo $creditsProductionFilm;
+                    //require_once $test . 'name/crew.php';
+                    echo $creditsProductionTV;
+                    //require_once $test . 'name/crew_tv.php';
                 ?>
             </div>
 

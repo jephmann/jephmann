@@ -177,3 +177,10 @@ $film   = (array) $moviesAPI->getSubTopicData(
 $tv     = (array) $moviesAPI->getSubTopicData(
             $id, $topic, 'tv'
         );
+
+// build Biography panel
+$panelBiography = (string) Tools::panelOverview(
+    'Biography',
+    'TheMovieDB',
+    $overview[ 'text' ]
+);

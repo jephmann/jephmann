@@ -43,30 +43,22 @@
 
 <div class="col-lg-6 col-md-6 col-sm-6">
 <?php
+
+    // optional Tagline
     echo $overview[ 'tagline' ];
-    if ( $overview[ 'text' ] ) : ;
-    ?><blockquote class="blockquote"><?php
-        echo $overview[ 'text' ]; ?>
-        <small>
-            from TheMovieDB (and not from Jeffrey Hartmann)
-        </small>
-    </blockquote><?php
-    endif;
-    
-    // begin omdb "overview"
-    if ( ( $omdb_plot ) and $overview['text'] != $omdb_plot ) :
-    ?><blockquote class="blockquote"><?php
-    echo $omdb_plot; ?>
-        <small>
-            from Open Movies (and not from Jeffrey Hartmann)
-        </small>
-    </blockquote><?php
-    endif; // end omdb "overview"
-    
+
+    // TheMovieDB Overview
+    echo $panelOverview;
+
+    // omdb "overview" (if text does not match TheMovieDB Overview)
+    if ( ( $omdb_plot ) and $overview['text'] != $omdb_plot )
+        echo $panelOverviewOpenMovie;
+
     // "Additional Information"
     $logo_title = $overview[ 'title' ];
     //require_once $views_movies . 'logo-links.php';
     require_once $views_movies . 'movie-links.php';
+
 ?>
 </div>
 
