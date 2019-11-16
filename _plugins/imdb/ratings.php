@@ -7,10 +7,12 @@ $imdb = array(
 ?>
 <span class="imdbRatingPlugin" data-user="ur0826124" data-title="<?php echo $imdb[ 'id' ]; ?>" data-style="p1">
     <a target="_blank"
-       href="https://www.imdb.com/title/<?php echo $imdb[ 'id' ]; ?>/?ref_=plg_rt_1">
+        title="<?php echo $imdb[ 'title' ]; ?> (<?php echo $imdb[ 'date' ]; ?>) on IMDb"
+        data-toggle="tooltip" data-placement="bottom"
+        data-original-title="<?php echo $imdb[ 'title' ]; ?> (<?php echo $imdb[ 'date' ]; ?>) on IMDb"
+        href="https://www.imdb.com/title/<?php echo $imdb[ 'id' ]; ?>/?ref_=plg_rt_1">
         <img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"
-             title="<?php echo $imdb[ 'title' ]; ?> (<?php echo $imdb[ 'date' ]; ?>) on IMDb"
-             alt="<?php echo $imdb[ 'title' ]; ?> (<?php echo $imdb[ 'date' ]; ?>) on IMDb" />
+            alt="<?php echo $imdb[ 'title' ]; ?> (<?php echo $imdb[ 'date' ]; ?>) on IMDb" />
     </a>
 </span>
 <script>
