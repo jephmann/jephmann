@@ -172,7 +172,7 @@ class Tools {
             $title          = "{$type} from {$source}";
             $text           = "<p style=\"font-size: 1.2em;\">{$text}</p>";
             $footer         = 'Click the heading above to show or hide the text.';
-            $panelOverview  = Tools::primaryPanel($title, $text, $footer, TRUE);            
+            $panelOverview  = Tools::createPanel($title, $text, $footer, TRUE, 'default');            
         }
         return $panelOverview;
     }
@@ -194,19 +194,20 @@ class Tools {
             $title          = "{$type}";
             $text           = "<p style=\"font-size: 1.2em;\">{$text}</p>";
             $footer         = 'Click the heading above to show or hide the list.';
-            $panelCredits   = Tools::primaryPanel($title, $text, $footer, TRUE);            
+            $panelCredits   = Tools::createPanel($title, $text, $footer, TRUE, 'default');            
         }
         return $panelCredits;
     }
     
     /*
-     * Create primary-panel with optional collapsibility
+     * Create Bootstrap panel with optional collapsibility
      */
-    function primaryPanel(
+    function createPanel(
         string $title,
         string $text,
         string $footer,
-        bool $isCollapsible        
+        bool $isCollapsible,
+        string $style = 'default'   // default; primary; etc.    
     ) : string
     {
         $panelTitle     = $title;
@@ -239,7 +240,7 @@ class Tools {
                             . "</div>"
                         : '';
             
-        $primaryPanel   = "<div class=\"panel panel-primary\">{$panelHeading}{$panelBody}{$panelFooter}</div>";
+        $primaryPanel   = "<div class=\"panel panel-{$style}\">{$panelHeading}{$panelBody}{$panelFooter}</div>";
         
         return $primaryPanel;
     }
