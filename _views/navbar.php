@@ -22,7 +22,7 @@
                     title="Home"
                     data-toggle="tooltip" data-placement="bottom"
                     data-original-title="Home"
-                    href="<?php echo $path ?>">Jeffrey Hartmann</a>
+                    href="<?php echo $path ?>index.php">Jeffrey Hartmann</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">                
                 <ul class="nav navbar-nav">
@@ -88,9 +88,7 @@
                     </li>
                     <li>
                         <!-- Bootstrap "data" classes withheld as tooltip could block dropdown-menu -->
-                        <a title="Click for a list of technologies in use on this project"                           
-                            data-toggle="tooltip" data-placement="bottom"
-                            data-original-title="Click for a list of technologies in use on this project"
+                        <a title="Click for a list of technologies in use on this project"  
                             href="#" data-toggle="dropdown">Resources <span class="caret"></span></a>
                         <ul class="dropdown-menu">                            
                             <li>
