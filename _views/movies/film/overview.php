@@ -30,7 +30,7 @@
         foreach ( $omdb[ 'Ratings'] as $rating ) :
         ?><tr class="table-primary">
             <th scope="row"><?php echo $rating['Source']; ?></th>
-            <td><span class="badge"><?php echo $rating['Value']; ?></span></td>
+            <td><?php echo $rating['Value']; ?></td>
         </tr><?php endforeach;
     ?></table><?php
     endif;
