@@ -12,8 +12,7 @@
      */
     $meta_image         = 'http://jephmann.com/_images/me201708_LI.jpg';
     $meta_description   = date('F Y')
-            . ': Available for work,'
-            . ' in and out of web development/design.'
+            . ': Available for work.'
             . ' Please contact me privately for details. | ';
     $meta_querystring   = (string) NULL;
     /*
