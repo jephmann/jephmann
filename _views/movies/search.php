@@ -6,8 +6,11 @@
     <div class="panel-body">        
         <form method="post" action="./">
             <div class="form-group">
-               <input type="search" name="query" value="" required="required"
-                   placeholder="Enter a part of a name or title." />
+                <label for="query">Search (Enter a part of a name or title):</label>
+                <br />
+                <input type="search" name="query" id="query"
+                    value="" required="required"
+                    placeholder="Enter a part of a name or title." />
             </div>
 
             <!--
