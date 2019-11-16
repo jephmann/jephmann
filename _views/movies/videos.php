@@ -3,18 +3,15 @@
     $ctVideos = (int) count($videos_results);
     if( $ctVideos ):
 ?>
-<h3>
+<h3 style="border-top: silver dotted 1px; padding-top: 0.5em;">
     Video
 </h3>
-<p style="font-size: small;">    
-    Click each panel to show or hide.    
-    (Although TheMovieDB might provide a key to a YouTube video,
-    there is no guarantee that the video might be present at YouTube.)
+<p style="font-size: 1.0em;">    
+    Click each video panel to show or hide.
 </p>
 <?php
-        
-        (array) $video_types = $moviesAPI->video_types;
-    
+        $video_title = "";
+        (array) $video_types = $moviesAPI->video_types;    
         foreach ( $video_types as $vt ):
         {
             $ctVT = 0;
@@ -29,12 +26,13 @@
         }
         if ( $ctVT ):
             $idVT = preg_replace( '~ ~', '', strtolower( $vt ) );
+        $video_title = "Click for a {$vt} Video";
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">
             <a data-toggle="collapse" href="#<?php echo $idVT; ?>"
-               title="Click for <?php echo $vt; ?> video"><?php echo $vt; ?></a>
+               title="<?php echo $video_title; ?>"><?php echo $vt; ?></a>
             <span class="caret"></span>
         </h3>
     </div>
@@ -65,4 +63,10 @@
 <?php
     endif;      // ctVT
     endforeach; // video_types as vt
+?>
+<p style="font-size: 1.0em;">    
+    Although TheMovieDB might provide a key to a YouTube video,
+    there is no guarantee that the video might be present at YouTube.
+</p>
+<?php
     endif;      // ctVideos
