@@ -30,7 +30,7 @@
         if ( $ctVT ):
             $idVT = preg_replace( '~ ~', '', strtolower( $vt ) );
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">
             <a data-toggle="collapse" href="#<?php echo $idVT; ?>"
