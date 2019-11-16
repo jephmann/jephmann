@@ -18,7 +18,13 @@
                     data-toggle="tooltip" data-placement="bottom"
                     data-original-title="Go Back"                            
                     style="margin: 0.33em 0.75em;">&lt; BACK</a>                        
-                <a href="<?php echo $path ?>" class="navbar-brand">Jeffrey Hartmann</a>
+                <a class="navbar-brand"
+                    title="Home"
+                    accesskey=""
+                    contenteditable=""
+                    data-toggle="tooltip" data-placement="bottom"
+                    data-original-title="Home"
+                    href="<?php echo $path ?>">Jeffrey Hartmann</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">                
                 <ul class="nav navbar-nav">
@@ -62,26 +68,31 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a target="_blank" title="Jeffrey Hartmann's resume (PDF, opens in new window)"
+                        <a target="_blank"
+                            title="Jeffrey Hartmann's resume (PDF, opens in new window)"
                             data-toggle="tooltip" data-placement="bottom"
                             data-original-title="Jeffrey Hartmann's resume (PDF, opens in new window)"
-                           href="<?php echo $path ?>resume.pdf">My Resume</a>
+                            href="<?php echo $path ?>resume.pdf">My Resume</a>
                     </li>
                     <li>
-                        <a target="_blank" title="Jeffrey Hartmann's LinkedIn profile (opens in new window)"
+                        <a target="_blank"
+                            title="Jeffrey Hartmann's LinkedIn profile (opens in new window)"
                             data-toggle="tooltip" data-placement="bottom"
                             data-original-title="Jeffrey Hartmann's LinkedIn profile (opens in new window)"
-                           href="https://www.linkedin.com/in/jeffreyhartmann/">My LinkedIn</a>
+                            href="https://www.linkedin.com/in/jeffreyhartmann/">My LinkedIn</a>
                     </li>
                     <li>
-                        <a target="_blank" title="Jeffrey Hartmann's code samples on GitHub.com (opens in new window)"
+                        <a target="_blank"
+                            title="Jeffrey Hartmann's code samples on GitHub.com (opens in new window)"
                             data-toggle="tooltip" data-placement="bottom"
                             data-original-title="Jeffrey Hartmann's code samples on GitHub.com (opens in new window)"
                             href="https://github.com/jephmann">My GitHub</a>
                     </li>
                     <li>
                         <!-- Bootstrap "data" classes withheld as tooltip could block dropdown-menu -->
-                        <a title="Some of the technologies in use on this project"
+                        <a title="Click for a list of technologies in use on this project"                           
+                            data-toggle="tooltip" data-placement="bottom"
+                            data-original-title="Click for a list of technologies in use on this project"
                             href="#" data-toggle="dropdown">Resources <span class="caret"></span></a>
                         <ul class="dropdown-menu">                            
                             <li>
