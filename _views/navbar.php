@@ -5,6 +5,7 @@
                 <button class="navbar-toggle collapsed" type="button"
                         data-toggle="collapse"
                         data-target="#navbar-main"
+                        title="Navbar Toggle"
                         alt="Navbar Toggle">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -61,22 +62,22 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a target="_blank" title="Jeffrey Hartmann's resume (PDF)"
+                        <a target="_blank" title="Jeffrey Hartmann's resume (PDF, opens in new window)"
                             data-toggle="tooltip" data-placement="bottom"
-                            data-original-title="Jeffrey Hartmann's resume (PDF)"
+                            data-original-title="Jeffrey Hartmann's resume (PDF, opens in new window)"
                            href="<?php echo $path ?>resume.pdf">My Resume</a>
                     </li>
                     <li>
-                        <a target="_blank" title="Jeffrey Hartmann's LinkedIn profile"
+                        <a target="_blank" title="Jeffrey Hartmann's LinkedIn profile (opens in new window)"
                             data-toggle="tooltip" data-placement="bottom"
-                            data-original-title="Jeffrey Hartmann's LinkedIn profile"
+                            data-original-title="Jeffrey Hartmann's LinkedIn profile (opens in new window)"
                            href="https://www.linkedin.com/in/jeffreyhartmann/">My LinkedIn</a>
                     </li>
                     <li>
-                        <a target="_blank" title="Jeffrey Hartmann's code samples on GitHub.com"
+                        <a target="_blank" title="Jeffrey Hartmann's code samples on GitHub.com (opens in new window)"
                             data-toggle="tooltip" data-placement="bottom"
-                            data-original-title="Jeffrey Hartmann's code samples on GitHub.com"
-                           href="https://github.com/jephmann">My GitHub</a>
+                            data-original-title="Jeffrey Hartmann's code samples on GitHub.com (opens in new window)"
+                            href="https://github.com/jephmann">My GitHub</a>
                     </li>
                     <li>
                         <!-- Bootstrap "data" classes withheld as tooltip could block dropdown-menu -->
@@ -85,39 +86,68 @@
                         <ul class="dropdown-menu">                            
                             <li>
                                 <a target="_blank"
-                                   href="http://paper.li/JeffreyHartmann/1502334205#/">jephmann.companion</a>
+                                    title="paper.li: jephmann.companion (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="paper.li: jephmann.companion (opens in new window)"
+                                    href="http://paper.li/JeffreyHartmann/1502334205#/">jephmann.companion</a>
                             </li>                            
                             <li>
                                 <a target="_blank"
-                                   href="http://builtwithbootstrap.com/">Built With Bootstrap</a>
+                                    title="Built With Bootstrap (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="Built With Bootstrap (opens in new window)"
+                                    href="http://builtwithbootstrap.com/">Built With Bootstrap</a>
                             </li>
                             <li>
                                 <a target="_blank"
-                                   href="https://wrapbootstrap.com/?ref=bsw">WrapBootstrap</a>
+                                    title="WrapBootstrap (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="WrapBootstrap (opens in new window)"
+                                    href="https://wrapbootstrap.com/?ref=bsw">WrapBootstrap</a>
                             </li>
                             <li>
                                 <a target="_blank"
-                                   href="http://php.net/">PHP</a>
+                                    title="PHP (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="PHP (opens in new window)"
+                                    href="http://php.net/">PHP</a>
                             </li>
                             <li>
                                 <a target="_blank"
-                                   href="https://jquery.com/">jQuery</a>
+                                    title="jQuery (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="jQuery (opens in new window)"
+                                    href="https://jquery.com/">jQuery</a>
                             </li>
                             <li>
                                 <a target="_blank"
-                                   href="https://www.themoviedb.org/documentation/api">TheMovieDB API</a>
+                                    title="TheMovieDB API (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="TheMovieDB API (opens in new window)"
+                                    href="https://www.themoviedb.org/documentation/api">TheMovieDB API</a>
                             </li>
                             <li>
                                 <a target="_blank"
-                                   href="http://www.omdbapi.com/">OMDb API</a>
+                                    title="OMDb API (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="OMDb API (opens in new window)"
+                                    href="http://www.omdbapi.com/">OMDb API</a>
                             </li>
+                            <!-- SUSPENDED
                             <li>
                                 <a target="_blank"
-                                   href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">Weather Underground</a>
+                                    title="Weather Underground (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="Weather Underground (opens in new window)"
+                                    href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">Weather Underground</a>
                             </li>
+                            -->
                             <li>
                                 <a target="_blank"
-                                   href="http://www.fatcow.com/">FatCow</a>
+                                    title="FatCow (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="FatCow (opens in new window)"
+                                    href="http://www.fatcow.com/">FatCow</a>
                             </li>
                         </ul>
                     </li>
