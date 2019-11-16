@@ -10,11 +10,7 @@
      *  Custom (per page) meta
      */
     $meta_image         = 'http://jephmann.com/_images/me201708_LI.jpg';
-    $meta_description   = date('F Y')
-        . ': I am available for work,'
-        . ' in and out of web development/design.'
-        . ' Chicago is home; however, relocation is an option.'
-        . ' Please contact me privately for details. | ';
+    $meta_description   = (string) NULL;
     $meta_querystring   = (string) NULL;
 
     // autoload class files
