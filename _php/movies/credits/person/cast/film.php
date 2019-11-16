@@ -57,6 +57,7 @@ if( $ct_film_cast > 0 )
             . "<br /><strong>{$fCast_character}</strong>"
             . "</li>";        
     }
+    $film_performance = "<ul style=\"font-size: 1em;\">{$film_performance}</ul>";
 
 }
     

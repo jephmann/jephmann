@@ -192,7 +192,6 @@ class Tools {
         if( $count )
         {
             $title          = "{$type}";
-            $text           = "<ul style=\"font-size: 1em;\">{$text}</ul>";
             $footer         = 'Click the heading above to show or hide the list.';
             $panelCredits   = Tools::createPanel($title, $text, $footer, TRUE, 'default');            
         }

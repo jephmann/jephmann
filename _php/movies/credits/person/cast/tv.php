@@ -52,6 +52,7 @@ if( $ct_tv_cast > 0 )
             . "<br /><strong>{$tCast_character}</strong>"
             . "</li>";            
     }
+    $tv_performance = "<ul style=\"font-size: 1em;\">{$tv_performance}</ul>";
 
 }
     

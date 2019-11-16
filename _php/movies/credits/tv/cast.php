@@ -20,7 +20,8 @@ if( $ct_credits_cast > 0 )
             . "</strong>"
             . "<br /><strong>{$cast_character}</strong>"
             . "</li>";
-    }        
+    }
+    $performance_credits = "<ul style=\"font-size: 1em;\">{$performance_credits}</ul>";
 }
     
 // build Credits panel
