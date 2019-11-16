@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="pull-left navbar-toggle collapsed"
-                    title="Go Back" alt="Go Back"
+                    title="Go Back"
                     onclick="goBack()" href="#"
                     data-toggle="tooltip" data-placement="bottom"
                     data-original-title="Go Back"                            
