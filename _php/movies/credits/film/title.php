@@ -97,7 +97,7 @@ $overview               = array(
         ? $film_overview
         : '',
     'tagline'           => $film_tagline
-        ? '<p class="text-warning"><em>' . $film_tagline . '</em></p>'
+        ? '<h3 class="text-warning"><em>' . $film_tagline . '</em></h3>'
         : '',
     'title'             => $film_title,
     'title_original'    => $film_title_original

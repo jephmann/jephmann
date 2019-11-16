@@ -118,7 +118,7 @@ $overview               = array(
         ? $tv_overview
         : '',
     'tagline'           => $tv_tagline
-        ? '<p class="text-warning"><em>' . $tv_tagline . '</em></p>'
+        ? '<h3 class="text-warning"><em>' . $tv_tagline . '</em></h3>'
         : '',
     'title'             => $tv_title,
     'title_original'    => $tv_original_name
