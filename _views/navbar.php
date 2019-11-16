@@ -20,8 +20,6 @@
                     style="margin: 0.33em 0.75em;">&lt; BACK</a>                        
                 <a class="navbar-brand"
                     title="Home"
-                    accesskey=""
-                    contenteditable=""
                     data-toggle="tooltip" data-placement="bottom"
                     data-original-title="Home"
                     href="<?php echo $path ?>">Jeffrey Hartmann</a>
