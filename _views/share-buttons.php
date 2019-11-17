@@ -4,18 +4,7 @@
     $shared_title           = (string) $meta['title'];
     $encode_shared_title    = (string) urlencode( $shared_title );
     $simplesharebuttons     = 'https://simplesharebuttons.com/images/somacro/';
-?>
-<style type="text/css"> 
-    #share-buttons img
-    {
-        width: 35px;
-        padding: 5px;
-        border: 0;
-        box-shadow: 0;
-        display: inline;
-    } 
-</style>
-<?php
+
     $shareButtons = array(
         array(
             'toggle'    => TRUE,
