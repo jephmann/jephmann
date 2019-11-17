@@ -157,7 +157,7 @@
     <a href="<?php echo $sb_href ?>"<?php echo $shareTarget.$shareOnClick; ?>>
         <img src="<?php
             echo $sb_src; ?>.png" alt="<?php
-            echo $sb_alt; ?>" title="<?php
+            echo $sb_alt; ?>" title="Share: <?php
             echo $sb_alt; ?>" />
     </a>
     <?php
