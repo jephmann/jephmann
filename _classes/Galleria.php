@@ -15,6 +15,7 @@ class Galleria {
     {        
         return "\r\n<a href=\"{$image_path}\">"
             . "<img"
+            . "\r\n alt=\"{$data_title}\""
             . "\r\n src=\"{$image_path}\""
             . "\r\n data-big=\"{$image_path}\""
             . "\r\n data-title=\"{$data_title}\""
