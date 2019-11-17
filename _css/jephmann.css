@@ -53,6 +53,14 @@ footer
     width: 100%;
 }
 
+#ratingsTable caption
+{
+    font-weight: bold;
+    color: silver;
+    background-color: black;
+    text-align: center;
+}
+
 /* for/from simplesharebuttons.com */
 #share-buttons img
 {

@@ -23,16 +23,20 @@
     // begin bottom omdb section
     if ( $omdb_awards or array_key_exists( 'Ratings', $omdb ) ) :
     ?><div style="border-top: 1px silver dotted; padding-top: 1em;"><?php
-    if ( $omdb_awards )
-        echo $awardsWon;
     if( array_key_exists( 'Ratings', $omdb ) ):
     ?><table class="table" id="ratingsTable">
-        <caption style="color: silver; font-weight: bold;">Ratings / Reviews</caption><?php
+        <caption>Ratings and Honors</caption><?php
         foreach ( $omdb[ 'Ratings'] as $rating ) :
         ?><tr class="table-primary">
             <th scope="row"><?php echo $rating['Source']; ?></th>
             <td><?php echo $rating['Value']; ?></td>
         </tr><?php endforeach;
+        if( $omdb_awards ):
+        ?><tr class="table-primary">
+            <th scope="row">Awards Won:</th>
+            <td><?php echo $omdb_awards; ?></td>
+        </tr><?php
+        endif;
     ?></table><?php
     endif;
     ?></div><?php
