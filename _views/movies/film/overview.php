@@ -27,7 +27,7 @@
         echo $awardsWon;
     if( array_key_exists( 'Ratings', $omdb ) ):
     ?><table class="table" id="ratingsTable">
-        <caption><h4>Ratings / Reviews</h4></caption><?php
+        <caption style="color: silver; font-weight: bold;">Ratings / Reviews</caption><?php
         foreach ( $omdb[ 'Ratings'] as $rating ) :
         ?><tr class="table-primary">
             <th scope="row"><?php echo $rating['Source']; ?></th>
