@@ -6,6 +6,7 @@
     $simplesharebuttons     = 'https://simplesharebuttons.com/images/somacro/';
 
     $shareButtons = array(
+        /* "Bad value for attribute href"
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -14,6 +15,7 @@
             'src'       => 'buffer',
             'alt'       => 'Buffer',
         ),
+         */
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -56,6 +58,7 @@
             'src'       => 'pinterest',
             'alt'       => 'Pinterest',
         ),
+        /* "Bad value for attribute href"
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -64,6 +67,8 @@
             'src'       => 'reddit',
             'alt'       => 'Reddit',
         ),
+        */
+        /* "Bad value for attribute href"
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -72,6 +77,8 @@
             'src'       => 'stumbleupon',
             'alt'       => 'StumbleUpon',
         ),
+        */
+        /* "Bad value for attribute href"
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -80,6 +87,7 @@
             'src'       => 'tumblr',
             'alt'       => 'Tumblr',
         ),
+        */
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -96,6 +104,7 @@
             'src'       => 'vk',
             'alt'       => 'VK',
         ),
+        /* "Bad value for attribute href"
         array(
             'toggle'    => TRUE,
             'target'    => TRUE,
@@ -104,6 +113,7 @@
             'src'       => 'yummly',
             'alt'       => 'Yummly',
         ),
+        */
         array(
             'toggle'    => FALSE,
             'target'    => FALSE,
