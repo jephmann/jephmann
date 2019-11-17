@@ -50,7 +50,9 @@
         <!-- based on http://scotch.io -->
 
         <div class="embed-responsive embed-responsive-<?php echo $aspect_ratio ?>">
-            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<?php echo $video_key ?>"></iframe>
+            <iframe class="embed-responsive-item"
+                title="<?php echo $video_key ?>"
+                src="//www.youtube.com/embed/<?php echo $video_key ?>"></iframe>
         </div>
         <hr/>
         <?php
