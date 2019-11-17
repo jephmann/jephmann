@@ -22,7 +22,7 @@
                     title="Home"
                     data-toggle="tooltip" data-placement="bottom"
                     data-original-title="Home"
-                    href="<?php echo $path ?>index.php">Jeffrey Hartmann</a>
+                    href="<?php echo $path ?>index.php">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">                
                 <ul class="nav navbar-nav">
