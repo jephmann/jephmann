@@ -96,9 +96,7 @@ $overview               = array(
     'text'              => $film_overview
         ? $film_overview
         : '',
-    'tagline'           => $film_tagline
-        ? '<h3 class="text-warning"><em>' . $film_tagline . '</em></h3>'
-        : '',
+    'tagline'           => $film_tagline,
     'title'             => $film_title,
     'title_original'    => $film_title_original
         ? Tools::doForOverview( 'Original Title', $film_title_original )

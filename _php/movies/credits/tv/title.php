@@ -117,9 +117,7 @@ $overview               = array(
     'text'              => $tv_overview
         ? $tv_overview
         : '',
-    'tagline'           => $tv_tagline
-        ? '<h3 class="text-warning"><em>' . $tv_tagline . '</em></h3>'
-        : '',
+    'tagline'           => $tv_tagline,
     'title'             => $tv_title,
     'title_original'    => $tv_original_name
         ? Tools::doForOverview( 'Original Title', $tv_original_name )
