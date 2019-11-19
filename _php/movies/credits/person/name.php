@@ -160,7 +160,8 @@ $hashtag        = 'themoviedb,' . preg_replace('/[\s\W]+/', '', $name_name);
 
 //  Custom (per page) meta
 $meta_image         = $image_name;
-$meta_description   = htmlspecialchars( $overview[ 'text' ] )
+$meta_description   = htmlspecialchars( $name_name )
+                    . ' ' . htmlspecialchars( $born_died )
                     . ' | Data courtesy of TheMovieDB.com | ';
 $meta_querystring   = "?id={$id}";
 
