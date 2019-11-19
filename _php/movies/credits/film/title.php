@@ -180,12 +180,14 @@ $subtitle           = "{$overview[ 'title' ]} ({$overview[ 'release_year' ]}) | 
 
 $creditFooter       = "Click the heading above to show or hide the list.";
 
-//for Twitter sharebuttons (delimit with comma)
+// for Twitter sharebuttons (delimit with comma)
 $hashtag            = 'themoviedb,' . preg_replace( '/[\s\W]+/', '', $overview[ 'title' ] );
 
-//  Custom (per page) meta
+// Custom (per page) meta
 $meta_image         = $image_film;
-$meta_description   = htmlspecialchars( $film_overview )
+$meta_description   = htmlspecialchars( $film_title )
+                    . ' (' . htmlspecialchars( $release_year )
+                    . ') | ' . htmlspecialchars( $film_tagline )
                     . ' | Data courtesy of TheMovieDB.com | ';
 $meta_querystring   = "?id={$id}";
 

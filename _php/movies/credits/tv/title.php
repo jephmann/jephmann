@@ -171,7 +171,9 @@ $hashtag            = 'themoviedb,' . preg_replace( '/[\s\W]+/', '', $overview[ 
 
 // Custom (per page) meta
 $meta_image         = $image_tv;
-$meta_description   = htmlspecialchars( $tv_overview )
+$meta_description   = htmlspecialchars( $tv_title )
+                    . ' (' . htmlspecialchars( $release_year )
+                    . ') | ' . htmlspecialchars( $tv_tagline )
                     . ' | Data courtesy of TheMovieDB.com | ';
 $meta_querystring   = "?id={$id}";
 

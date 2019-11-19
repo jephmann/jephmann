@@ -50,8 +50,8 @@
 <?php
 
     // optional Tagline
-    if ( $overview[ 'tagline'] )
-        echo '<h3 class="text-warning"><em>' . $overview[ 'tagline'] . '</em></h3>';
+    if ( $overview[ 'tagline' ] )
+        echo "<h3 class=\"text-warning\"><em>{$overview[ 'tagline' ]}</em></h3>";
 
     // TheMovieDB Overview
     echo $panelOverview;
