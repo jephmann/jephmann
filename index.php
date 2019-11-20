@@ -25,6 +25,17 @@
 <div class="container">
 
     <div class="jumbotron">
+        
+        <div class="row">
+            
+            <div class="col-lg-12 col-md-12 col-sm-12">            
+                                
+                <h2>Welcome to my workshop!</h2>
+                
+            </div>
+            
+        </div>
+        
         <div class="row">
             
             <div class="col-lg-5 col-md-5 col-sm-5">
@@ -33,15 +44,13 @@
                      alt="Jeffrey Hartmann"
                      class="img100w" />
                 <blockquote class="blockquote-reverse">
-                    <p>August 2017</p>
-                    <small>My most recent photo</small>
+                    <h3>August 2017</h3>
+                    <small style="color: silver;">My most recent photo</small>
                 </blockquote>
 
             </div>
             
             <div class="col-lg-7 col-md-7 col-sm-7">
-                
-                <h2>Welcome to my workshop!</h2>
                 
                 <p>
                     For a far more verbose explanation of this project,
