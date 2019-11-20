@@ -99,7 +99,7 @@
                     technologies for me to learn and test in this workshop.
                 </p>                
                 
-                <p>BTW:</p>
+                <h3>BTW:</h3>
                 
                 <ul>
                     <li>
