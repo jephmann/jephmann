@@ -52,6 +52,8 @@
               content="<?php echo htmlentities( $meta['description'], ENT_QUOTES ); ?>">
         <meta property="og:image"
               content="<?php echo $meta['image']; ?>">
+        <meta property="og:image:alt"
+              content="<?php echo $meta['title']; ?>">
         <meta property="og:image:height" content="300" />
         <meta property="og:type" content="website" />
         <meta property="og:url"
