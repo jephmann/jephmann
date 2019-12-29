@@ -244,4 +244,38 @@ class Tools {
         return $primaryPanel;
     }
 
+    /*
+     * create a URL which might open a topic's Wikipedia page
+     */
+    function toWikipedia( string $topic, string $lang="en" ) : string
+    {
+        /*
+         * lang = 2-letter string denoting language Wikipedia might support (or not);
+         * default = en (as in English)
+         * 
+         * topic = an occasionally accurate search term
+         * which one might enter into a Wikipedia search form
+         * 
+         * Sometimes a Wikipedia page might not exist yet for a topic,
+         * and sometimes Wikipedia might remove a page completely for a topic;
+         * either may result in Wikipedia suggesting
+         * that a user create a new page if topic not found.
+         * 
+         * Wikipedia might also do the following with the url:
+         * post an error page
+         * suggest hints on a disambiguation page
+         * go to a topic page which might hint at at least one alternative
+         * go directly to the exact topic page. 
+         */
+        
+        // format topic string by replacing space characters with underscores
+        $wiki_topic = preg_replace( '/\s+/', '_', trim( $topic ) );
+        
+        // build WikiPedia URL
+        $url        = "http://{$lang}.wikipedia.org/wiki/{$wiki_topic}";
+        
+        // output URL    
+        return $url;
+    }
+    
 }
