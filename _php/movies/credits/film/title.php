@@ -123,6 +123,7 @@ $overview               = array(
         'Alternate Titles', $titles, 'title', '<br />'
     ),
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
+    'urlWikipedia'      => (string) Tools::toWikipedia( $film_title ),
     'imdb'              => $film_imdb,
     'urlIMDB'           => ( $film_imdb )
                         ? (string) $moviesIMDB->getTitleUrl( $film_imdb )

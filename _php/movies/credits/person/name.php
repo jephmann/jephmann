@@ -137,6 +137,7 @@ $overview           = array(
     'born_died'     => $born_died,
     'urlIMDB'       => $urlIMDB,
     'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'person' ),
+    'urlWikipedia'  => (string) Tools::toWikipedia( $name_name ),
     );
 
 if( $ct_aka > 0 )

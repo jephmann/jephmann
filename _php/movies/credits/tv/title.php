@@ -153,6 +153,7 @@ $overview               = array(
             'Alternate Titles', $titles, 'title', '<br />'
             ),
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'tv' ),
+    'urlWikipedia'      => (string) Tools::toWikipedia( $tv_title ),
     'urlIMDB'           => ( $tv_imdb )
         ? (string) $moviesIMDB->getTitleUrl( $tv_imdb )
         : ''
