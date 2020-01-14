@@ -61,9 +61,19 @@
         else // process the data
         {            
             /*
-            * e-mail version, awaiting email support
+            * prepare email message (common for either mailing function)
             */
-            //require_once '_email.php';
+            require_once '_message.php';
+                        
+            /*
+            * mail() version
+            */
+            //require_once '_mail.php';
+            
+            /*
+            * PHPMailer() version
+            */
+            //require_once '_mailer.php';
 
             /*
             * database version, in lieu of e-mail support
