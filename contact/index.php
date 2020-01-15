@@ -61,11 +61,6 @@
         else // process the data
         {            
             /*
-            * prepare email message (common for either mailing function)
-            */
-            require_once '_message.php';
-                        
-            /*
             * mail() version
             */
             //require_once '_mail.php';
