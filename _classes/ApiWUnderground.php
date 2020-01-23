@@ -1,9 +1,9 @@
 <?php
 
 class ApiWUnderground extends Api
-{
+{    
     /*
-     * Attributes
+     * Properties
      */
 
     private $key                    = "fa4a10d736578d22";

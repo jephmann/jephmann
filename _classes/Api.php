@@ -1,9 +1,9 @@
 <?php
 
 class Api
-{
+{    
     /*
-     * Attributes
+     * Properties
      */
     
     private $key = NULL;
