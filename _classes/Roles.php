@@ -3,7 +3,7 @@
 class Roles {
     
     /*
-     * properties
+     * Properties
      */
     
     protected $id;

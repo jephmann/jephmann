@@ -1,9 +1,9 @@
 <?php
 
 class ApiMovieDB extends Api implements iApiMovieDB
-{
+{    
     /*
-     * Attributes
+     * Properties
      */
 
     private $key            = iApiMovieDB::KEY;

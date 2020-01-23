@@ -3,7 +3,7 @@
 class IMDB {
     
     /*
-     * properties
+     * Properties
      */
     
     public $base_url = "http://www.imdb.com/";
