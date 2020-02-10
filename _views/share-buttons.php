@@ -133,8 +133,8 @@
     );
 ?>
 <!-- I got these buttons from simplesharebuttons.com -->
-<div id="share-buttons">
-    <p style="font-size: small;">Sharing:</p>
+<div id="share-buttons" style="text-align: right;">
+    
     <?php
         foreach ($shareButtons as $sButton):
             $sb_toggle = (boolean) $sButton['toggle'];
@@ -154,10 +154,13 @@
     ?>
     
     <!-- <?php echo $sb_alt; ?> -->
-    <a href="<?php echo $sb_href ?>"<?php echo $shareTarget.$shareOnClick; ?>>
+    <a
+        data-toggle="tooltip" data-placement="bottom"
+        data-original-title="Share to <?php echo $sb_alt; ?>" 
+        href="<?php echo $sb_href ?>"<?php echo $shareTarget.$shareOnClick; ?>>
         <img src="<?php
             echo $sb_src; ?>.png" alt="<?php
-            echo $sb_alt; ?>" title="Share: <?php
+            echo $sb_alt; ?>" title="Share to <?php
             echo $sb_alt; ?>" />
     </a>
     <?php

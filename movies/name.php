@@ -50,18 +50,16 @@
     </div>
     
     <div class="col-lg-4 col-md-4 col-sm-4">
-        
+
         <div class="panel panel-default">
-                      
-            <div class="panel-body">
-                <?php
-                    require_once $views_name . 'images.php';
-                ?>
-            </div>
-            
+
+            <div class="panel-body"><?php
+                require_once $views . 'share-buttons.php';
+                require_once $views_name . 'images.php';
+            ?></div>
+
         </div>
-        <?php require_once $views . 'share-buttons.php'; ?>
-        
+
     </div>
 
     <div class="col-lg-8 col-md-8 col-sm-8">
