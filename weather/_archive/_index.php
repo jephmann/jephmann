@@ -241,7 +241,7 @@
     ?>
 
     <script type="text/javascript"
-        src="<?php echo $path ?>_js/weather.js"></script>
+        src="<?php echo $path ?>_js/weather_u.js"></script>
 <?php
     require_once $views . 'load/google-analytics.php';
     require_once $views . 'foot.php';    

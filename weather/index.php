@@ -2,168 +2,147 @@
     declare( strict_types = 1 );
     // Session Variables
     session_start();
-    $_SESSION['Contact']['Success'] = FALSE;
+    $_SESSION[ 'Contact' ][ 'Success' ]     = FALSE;    
+    $_SESSION[ 'Weather' ][ 'Location' ]    = NULL;
+    $_SESSION[ 'Weather' ][ 'Forecast' ]    = NULL;
     // Page Variables
     $path       = '../';
-    $subtitle   = 'Weather (via Weather Underground)';
-
+    $subtitle   = 'Weather';
+    
     // autoload class files
-    require_once $path . '_php/autoload1.php';
-    $weatherAPI     = new ApiWUnderground;
-    $features       = (array) $weatherAPI->features;
-    $locations      = (array) $weatherAPI->locations;
-    $ctLocations    = (int) count( $locations );
+    require_once $path . '_php/autoload1.php'; 
     
-    // default
-    $city   = isset($_COOKIE['jephmann_weather_city'])
-            ? $_COOKIE['jephmann_weather_city']
-            : 'Chicago';
-    $state  = isset($_COOKIE['jephmann_weather_state'])
-            ? $_COOKIE['jephmann_weather_state']
-            : 'IL';
-    $zip    = isset($_COOKIE['jephmann_weather_zip'])
-            ? $_COOKIE['jephmann_weather_zip']
-            : '60613';
-    $eZip       = '';
-    $showZip    = '';
-       
-    if ( isset( $_POST[ 'wZIP' ] ) )
+    $post_weatherLocation   = '';
+    $post_weatherForecast   = '';
+    $eMessage               = '';
+    $eSuccess               = '';
+    $h2_result              = 'We await your data';
+    
+    if( !empty( $_POST ) )
     {
-        $zip        = (string) $_POST[ 'wZIP' ];
+        $post_weatherLocation   = (string) trim(
+            filter_input( INPUT_POST, 'weatherLocation' )
+        );
+        $post_weatherForecast   = (string) trim(
+            filter_input( INPUT_POST, 'weatherForecast' )
+        );
         
-        // server-side validation of ZIP code
-        if ( !preg_match( "/^[0-9]{5}(?:-[0-9]{4})?$/", $zip ))
-        {
-            $eZip   = "<p style='color:orange;font-size:small;'>"
-                    . "5-digit U.S. ZIP Code required."
-                    . "</p>";
-        }
-        else
-        {
-            $location   = $weatherAPI->getLocationViaZip( $zip );
-            // Cover if ZIP not in WU system.
-            if( empty($location[ 'city' ]) or empty($location[ 'state' ]))
-            {
-                $eZip   = "<p style='color:orange;font-size:small;'>"
-                        . "Please try a different U.S. ZIP Code."
-                        . "</p>";
-            }
-            else
-            {
-                // populate variables with values
-                $city       = (string) $location[ 'city' ];
-                $state      = (string) $location[ 'state' ];
-                $showZip    = "&nbsp;({$zip})";
-                // update cookies
-                $cookie_expire  = time() + (86400 * 30); // 30 days from now
-                setcookie(
-                    'jephmann_weather_city',
-                    $city,
-                    $cookie_expire,
-                    '/'
-                );
-                setcookie(
-                    'jephmann_weather_state',
-                    $state,
-                    $cookie_expire,
-                    '/'
-                );
-                setcookie(
-                    'jephmann_weather_zip',
-                    $zip,
-                    $cookie_expire,
-                    '/'
-                );
-            }
-        }
-    }
-       
-    if ( isset( $_POST[ 'wCity' ] ) )
-    {
-        $weatherCity    = (int) $_POST[ 'wCity' ];
-        $city           = (string) $locations[ $weatherCity ][ 'city' ];
-        $state          = (string) $locations[ $weatherCity ][ 'state' ];
-    }
-    
-    // alert feature
-    /*
-    $arrayAlerts    = (array) $weatherAPI->arrayReport(
-        'alerts', $city, $state
+        /*
+         * TODO: Server-side validation         * 
+         */
+        
+        $cookie_expire  = time() + (86400 * 30); // 30 days from now
+        setcookie(
+            'jephmann_weatherLocation',
+            $post_weatherLocation,
+            $cookie_expire,
+            '/'
         );
-    $alerts         = (array) $arrayAlerts[ 'alerts' ];
-    $ctAlerts       = (int) count( $alerts );
-     * 
-     */
-    
-    // conditions feature
-    /*
-    $arrayConditions   = (array) $weatherAPI->arrayReport(
-        'conditions', $city, $state
-        );    
-    $current                = (array) $arrayConditions['current_observation'];
-    $current_weather        = (string) $current[ 'weather' ];
-    $current_temperature    = (string) $current[ 'temperature_string' ];
-    $current_feel           = (string) $current[ 'feelslike_string' ];
-    $current_wind           = (string) $current[ 'wind_string' ];
-    $current_humidity       = (string) $current[ 'relative_humidity' ];
-    $current_precip         = (string) $current[ 'precip_today_string' ];
-    $current_icon           = (string) $current[ 'icon_url' ];
-    $current_icon_alt       = basename( $current_icon, '.gif' );
-     * 
-     */
-    
-    // almanac feature
-    /*
-    $arrayAlmanac   = (array) $weatherAPI->arrayReport(
-        'almanac', $city, $state
-        );    
-    $almanac                = (array) $arrayAlmanac['almanac'];    
-    $almanacHigh            = (array) $almanac['temp_high'];    
-    $almanacHighNormal      = (array) $almanacHigh['normal'];
-    $almanacHighNormalF     = (int) $almanacHighNormal['F'];
-    $almanacHighNormalC     = (int) $almanacHighNormal['C'];    
-    $almanacHighRecord      = (array) $almanacHigh['record'];
-    $almanacHighRecordF     = (int) $almanacHighRecord['F'];
-    $almanacHighRecordC     = (int) $almanacHighRecord['C'];    
-    $almanacHighRecordYear  = (int) $almanacHigh['recordyear'];    
-    $almanacLow             = (array) $almanac['temp_low'];    
-    $almanacLowNormal       = (array) $almanacLow['normal'];
-    $almanacLowNormalF      = (int) $almanacLowNormal['F'];
-    $almanacLowNormalC      = (int) $almanacLowNormal['C'];    
-    $almanacLowRecord       = (array) $almanacLow['record'];
-    $almanacLowRecordF      = (int) $almanacLowRecord['F'];
-    $almanacLowRecordC      = (int) $almanacLowRecord['C'];    
-    $almanacLowRecordYear   = (int) $almanacLow['recordyear'];
-     * 
-     */
+        setcookie(
+            'jephmann_weatherForecast',
+            $post_weatherForecast,
+            $cookie_expire,
+            '/'
+        );        
+        
+        $_SESSION[ 'Weather' ][ 'Location' ]    = (string) $post_weatherLocation;
+        $_SESSION[ 'Weather' ][ 'Forecast' ]    = (int) $post_weatherForecast;
 
-    // forecast feature
-    /*
-    $arrayForecast = $weatherAPI->arrayReport(
-        'forecast', $city, $state
+        // ensure data not resent during refresh
+        unset( $_POST );
+        header( 'Location:' . $_SERVER[ 'PHP_SELF' ] );
+    }
+    
+    $location   = isset( $_COOKIE[ 'jephmann_weatherLocation' ]  )
+                ? (string) $_COOKIE[ 'jephmann_weatherLocation' ]
+                : $_SESSION[ 'Weather' ][ 'Location' ];
+    $forecast   = isset( $_COOKIE[ 'jephmann_weatherForecast' ] )
+                ? (int) $_COOKIE[ 'jephmann_weatherForecast' ]
+                : $_SESSION[ 'Weather' ][ 'Forecast' ];
+    
+    if( $location )
+    {
+        // test
+        //$location = '63119';
+        //$forecast = 0;
+        
+        $myWeather      = new ApiWeather();
+        $dataWeather    = $myWeather->getWeatherJSON(
+            $location, $forecast
         );
-    $forecast       = (array) $arrayForecast[ 'forecast' ];
-    $forecastDay    = (array) $forecast['txt_forecast']['forecastday'];
-    $ctForecastDay  = (int) count( $forecastDay );
-     * 
-     */
-    
-    // radar
-    $urlRadar       = (string) $weatherAPI->urlRadar( $city, $state );
-    
-    // City/State/ZIP string
-    $csz = "{$city}, {$state}{$showZip}";
+
+        // THE ONE: main data
+        $aLocation          = array_key_exists( 'location', $dataWeather )
+                            ? $dataWeather[ 'location' ]
+                            : array();
+        $aCurrent           = array_key_exists( 'current', $dataWeather )
+                            ? $dataWeather[ 'current' ]
+                            : array();
+        $aCurrentCondition  = array_key_exists( 'condition', $aCurrent )
+                            ? $aCurrent[ 'condition' ]
+                            : array();
+        $aAlert             = array_key_exists( 'alert', $dataWeather )
+                            ? $dataWeather[ 'alert' ]
+                            : array();
+        
+        $locale             = $post_weatherLocation;
+        if($aLocation)
+        {
+            $locale         .= " {$aLocation[ 'country' ]}: {$aLocation[ 'name' ]}";
+            $locale         .= $aLocation[ 'region' ] 
+                            ? ", {$aLocation['region']}"
+                            : '';
+        }            
+            
+        $timeOfDay          = '';
+        $lastUpdated        = '';
+        $tempC              = '';
+        $tempF              = '';
+        $feelslikeC         = '';
+        $feelslikeF         = '';
+        $windKPH            = '';
+        $windMPH            = '';
+        if($aCurrent)
+        {
+            $timeOfDay      = $aCurrent[ 'is_day' ] ? 'Daytime' : 'Evening';
+            $lastUpdated    = $aCurrent[ 'last_updated' ];
+            $tempC          = "{$aCurrent[ 'temp_c' ]}&deg; C";
+            $tempF          = "{$aCurrent[ 'temp_f' ]}&deg; F";
+            $feelslikeC     = "{$aCurrent[ 'feelslike_c' ]}&deg; C";
+            $feelslikeF     = "{$aCurrent[ 'feelslike_f' ]}&deg; F";
+            $windKPH        = "{$aCurrent[ 'wind_kph' ]} kph,"
+                            . " gusting at {$aCurrent[ 'gust_kph' ]} kph";
+            $windMPH        = "{$aCurrent[ 'wind_mph' ]} mph,"
+                            . " gusting at {$aCurrent[ 'gust_mph' ]} mph";
+        }            
+
+        $conditionText      = '';
+        $conditionIcon      = '';            
+        if($aCurrentCondition)
+        {
+            $conditionText  = $aCurrentCondition[ 'text' ];
+            $conditionIcon  = $aCurrentCondition[ 'icon' ];
+        }
+        
+        if ($aCurrent)
+            $h2_result = $locale;
+        else
+            $h2_result = 'Please Try Again';
+
+        // THE MANY: forecasts if any
+        $aForecast  = array_key_exists( 'forecast', $dataWeather )
+                    ? $dataWeather[ 'forecast' ]
+                    : NULL;
+    }
     
     // paths
-    $views = $path . '_views/';
-    
-    
+    $views = $path . '_views/';  
 
     /*
      *  Custom (per page) meta
      */
     $meta_image         = 'http://jephmann.com/_images/logos/iw63kb1u.bmp';
-    $meta_description   = 'Weather data courtesy of WeatherUnderground.com | ';
+    $meta_description   = 'Weather data courtesy of WeatherAPI.com | ';
     $meta_querystring   = (string) NULL;
     /*
      *  HTML start
@@ -180,41 +159,375 @@
 
                 <h2>The Weather Section</h2>
                 
-                <h3>2017-2019</h3>
+                <?php if( $eMessage ) : ?>
+                
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close"
+                        data-dismiss="alert">&times;</button>
+                    <strong>Warning:</strong>
+                    <?php echo $eMessage; ?>
+                </div>
+                
+                <?php elseif( $_SESSION[ 'Contact'][ 'Success' ] ) : ?>
+                
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close"
+                        data-dismiss="alert">&times;</button>
+                    <strong>See Weather!</strong>
+                    <?php echo $eSuccess; ?>
+                </div>
+                
+                <?php endif; ?>
+                
+                <div id="weather"></div>
                 
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-8">
-                <h2>SECTION SUSPENDED</h2>
+            <div class="col-lg-8 col-md-8 col-sm-8">                
+                
+                <h2><?php echo $h2_result; ?></h2>
+                
+                <?php if( $aCurrent ) : ?>
+                
+                <h3>
+                    <img src="<?php echo $conditionIcon; ?>" />
+                    <?php echo $timeOfDay; ?>:
+                    <span class="text-success"><?php echo $conditionText; ?></span>;
+                    <span class="text-info"><?php echo $tempC; ?></span>
+                    /
+                    <span class="text-info"><?php echo $tempF; ?></span>
+                </h3>
+                
+                <?php if ($aAlert) : ?>                
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-danger"><?php
+                            echo $aAlert[ 'headline' ]; ?></h4>
+                        <h6 class="card-subtitle mb-2 text-warning"><?php
+                            echo $aAlert[ 'note' ]; ?></h6>
+                        <p class="card-text text-info" style="font-size:1em;">
+                            <?php echo $aAlert[ 'instruction' ]; ?>
+                        </p>
+                        <pre>
+                            <?php echo $aAlert[ 'desc' ]; ?>
+                        </pre>
+                        <ul>
+                            <li>Effective: <?php echo $aAlert[ 'effective' ]; ?></li>
+                            <li>Expires: <?php echo $aAlert[ 'expires' ]; ?></li>
+                        </ul>                        
+                    </div>
+                </div>                
+                <?php endif; ?>
+                
+                <table class="table table-hover">
+                    <tbody>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                Feels Like
+                            </th>
+                            <td class="text-info">
+                                <?php echo $feelslikeC; ?>
+                                
+                            </td>
+                            <td class="text-info">
+                                <?php echo $feelslikeF; ?>
+                            </td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                Wind
+                                <?php echo $aCurrent[ 'wind_dir' ]; ?>
+                                <?php echo $aCurrent[ 'wind_degree' ]; ?>
+                            </th>
+                            <td class="text-info">
+                                <?php echo $windKPH; ?>
+                                
+                            </td>
+                            <td class="text-info">
+                                <?php echo $windMPH; ?>
+                                
+                            </td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                Pressure
+                            </th>
+                            <td class="text-info">
+                                <?php echo $aCurrent[ 'pressure_mb' ]; ?> mb
+                            </td>
+                            <td class="text-info">
+                                <?php echo $aCurrent[ 'pressure_in' ]; ?>"Hg
+                            </td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                Precipitation
+                            </th>
+                            <td class="text-info">
+                                <?php echo $aCurrent[ 'precip_mm' ]; ?> mm
+                            </td>
+                            <td class="text-info">
+                                <?php echo $aCurrent[ 'precip_in' ]; ?> in
+                            </td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                Visibility
+                            </th>
+                            <td class="text-info">
+                                <?php echo $aCurrent[ 'vis_km' ]; ?> km
+                            </td>
+                            <td class="text-info">
+                                <?php echo $aCurrent[ 'vis_miles' ]; ?> miles
+                            </td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                Humidity
+                            </th>
+                            <td colspan="2" class="text-info">
+                                <?php echo $aCurrent[ 'humidity' ]; ?>%
+                            </td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                Cloudiness
+                            </th>
+                            <td colspan="2" class="text-info">
+                                <?php echo $aCurrent[ 'cloud' ]; ?>%
+                            </td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="row">
+                                UV Index
+                            </th>
+                            <td colspan="2" class="text-info">
+                                <?php echo $aCurrent[ 'uv' ]; ?>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                Last updated
+                                (<?php echo $aLocation[ 'name' ]; ?> time)
+                                <?php echo $lastUpdated; ?>
+                                
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <?php else : ?>
+                
                 <p>
-                    A few months back, the source of the weather data for this
-                    section announced changes to its API which originally would
-                    have resulted in shutting down this section back in December
-                    2018. After a reprieve of sorts, this shutdown has now come
-                    to pass.
+                    For today's weather, simply enter a location into the form:
+                </p>
+                <ul>
+                    <li>City Name</li>
+                    <li>US ZIP Code (5 digits)</li>
+                    <li>Canada postal code</li>
+                    <li>UK postcode</li>
+                    <li>IATA code
+                        (3-letter International Air Transport Association code
+                        prefixed with "iata:", no spaces)</li>
+                    <li>METAR code
+                        (prefixed with "metar:", no spaces)</li>
+                    <li>Decimal-degree Latitude and Longitude
+                        (latitude, comma, longitude; no spaces)</li>
+                    <li>IP Address (IPv4 and IPv6 supported)</li>
+                </ul>
+                <p>
+                    If you want additional forecasts for your location, simply
+                    select a number (in days) in the form.
                 </p>
                 <p>
-                    We still have the Movies section wherein I can still show
-                    people what I can do with an external API. Meanwhile I am
-                    open to other <em>free</em> sources of weather data so that
-                    I may try this again.
+                    No, I do not save any of the data.
+                    Yes, cookies may apply.
                 </p>
-                <p>
-                    I am also open to suggestions regarding other free APIs for
-                    me to play with. (Yes, I also can scrape other websites for
-                    data; the issue is whether I may.)
-                </p>
-                <p>
-                    As always, I am grateful for your time.
-                </p>
+                
+                
+                <?php endif; ?>
+                
             </div>                
         </div>
     </div>    
 
 <?php
     require_once $views . 'close-jumbotron.php';
+?>
+    
+<div class="container">
+    <div class="row">        
+        <div class="col-lg-12 col-md-12 col-sm-12">
+        
+            <?php if( $forecast ) : ?>
+            <h3>
+                Your <?php
+                    echo $forecast;
+                ?>-day Forecast for <?php
+                    echo $locale;
+                ?>:
+            </h3>
+            
+            <?php foreach( $aForecast['forecastday'] as $aDay) : 
+
+                $dailyDate      = new DateTime( $aDay[ 'date' ] );
+                $dailyWeekDay   = $dailyDate->format( 'l' );
+                $dailyMonthDay  = $dailyDate->format( 'M j' );
+                $daily          = $aDay[ 'day' ];
+                $dailyCondition = $daily[ 'condition' ][ 'text' ];
+                $dailyIcon      = $daily[ 'condition' ][ 'icon' ];
+                $tempHiF        = $daily[ 'maxtemp_f' ] . '&deg; F';
+                $tempHiC        = $daily[ 'maxtemp_c' ] . '&deg; C';
+                $tempLoF        = $daily[ 'mintemp_f' ] . '&deg; F';
+                $tempLoC        = $daily[ 'mintemp_c' ] . '&deg; C';
+                $tempAvF        = $daily[ 'avgtemp_f' ] . '&deg; F';
+                $tempAvC        = $daily[ 'avgtemp_c' ] . '&deg; C';
+                $windM          = $daily[ 'maxwind_mph' ] . ' mph';
+                $windK          = $daily[ 'maxwind_kph' ] . ' kph';
+                $precipM        = $daily[ 'totalprecip_mm' ] . ' mm';
+                $precipI        = $daily[ 'totalprecip_in' ] . ' in';
+                $visK           = $daily[ 'avgvis_km' ] . ' km';
+                $visM           = $daily[ 'avgvis_miles' ] . ' miles';
+            ?>
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <h4 style="text-align: center;">
+                    <?php echo $dailyWeekDay ?>,
+                    <?php echo $dailyMonthDay ?>
+                </h4>
+                <p style="text-align: center;">
+                <img src="<?php echo $dailyIcon ?>" />
+                </p>
+                <h5 class="text-success" style="text-align: center;">
+                    <?php echo $dailyCondition ?>
+                </h5>
+                <table class="table table-hover">
+                    <tr>
+                        <th colspan="2">
+                        Temps
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Hi</td>
+                        <td class="text-info">
+                            <?php echo $tempHiC; ?>
+                            /
+                            <?php echo $tempHiF; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lo</td>
+                        <td class="text-info">
+                            <?php echo $tempLoC; ?>
+                            /
+                            <?php echo $tempLoF; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Av</td>
+                        <td class="text-info">
+                            <?php echo $tempAvC; ?>
+                            /
+                            <?php echo $tempAvF; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                        Wind
+                        </th>
+                    </tr>
+                    <tr class="text-info">
+                        <td><?php echo $windK; ?></td>
+                        <td><?php echo $windM; ?></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                        Precipitation   
+                        </th>
+                    </tr>
+                    <tr class="text-info">
+                        <td><?php echo $precipM; ?></td>
+                        <td><?php echo $precipI; ?></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                        Visibility   
+                        </th>
+                    </tr>
+                    <tr class="text-info">
+                        <td><?php echo $visK; ?></td>
+                        <td><?php echo $visM; ?></td>
+                    </tr>
+
+
+                </table>
+            </div>
+
+            <?php endforeach; ?>        
+
+            <?php endif; ?>
+            
+            <div class="col-lg-3 col-md-3 col-sm-3">                
+                        
+                <h4>About the Weather Section</h4>
+            
+                <ul>
+                    <li>
+                        Data and links to images for the Weather section come
+                        from <a target="_blank"                       
+                        data-toggle="tooltip" data-placement="bottom"
+                        data-original-title="Free Weather API"
+                        href="https://www.weatherapi.com/"
+                        title="Free Weather API">Free Weather API</a>.
+                    </li>
+                    <li>
+                        As with the Contact form, this Weather form uses ReactJS
+                        and Babel.
+                    </li>
+                    <li>
+                        Live since February 2020, this section replaces a
+                        previous version which, from Spring 2017 through early
+                        2019, used a completely different free API until it was
+                        no longer free. (No, I don't know whether I can add a
+                        "radar" image like before. We shall see.)
+                    </li>
+                    <li>
+                        As I write this (2020.02.09), this page is still a
+                        little buggy in my view. As this project is a
+                        "workshop", it's kind of the idea anyhow, as this is
+                        where I stay in practice working on such things.
+                    </li>
+                </ul>
+                
+                <h4 style="text-align: center; background-color: #336633;">
+                    Powered by: <a                        
+                    data-toggle="tooltip" data-placement="bottom"
+                    data-original-title="Free Weather API"
+                    href="https://www.weatherapi.com/"
+                    title="Free Weather API"><img
+                    src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png'
+                    alt="Weather data by WeatherAPI.com"
+                    border="0"></a>
+                </h4>
+                
+            </div>
+            
+        </div>        
+    </div>
+</div>
+
+<?php
     require_once $views . 'footer.php';
     require_once $views . 'load/jquery.php';
     require_once $views . 'load/bootstrap.php';
+    require_once $path . '_views/load/reactJS.php';
+?>
+
+    <script type="text/babel"
+        src="<?php echo $path; ?>_js/weather.js"></script>
+<?php
     require_once $views . 'load/google-analytics.php';
     require_once $views . 'foot.php';    
     /*

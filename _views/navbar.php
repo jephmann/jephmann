@@ -38,25 +38,12 @@
                             data-original-title="Experiments with data regarding movies"
                             href="<?php echo $path ?>movies">Movies</a>
                     </li>
-                    <!--
-                    <li>
-                        <a title="Experiments with data regarding movies"
-                            href="#" data-toggle="dropdown">Movies <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo $path ?>movies">Introduction</a></li>
-                            <li><a href="<?php echo $path ?>movies/api">TheMovieDB Version</a></li>
-                            <li><a href="<?php echo $path ?>movies/db">Database Version</a></li>
-                        </ul>
-                    </li>
-                    -->
-                    <!--
                     <li>
                         <a title="Experiments with data regarding weather"
                             data-toggle="tooltip" data-placement="bottom"
                             data-original-title="Experiments with data regarding weather"
                             href="<?php echo $path ?>weather">Weather</a>
                     </li>
-                    -->
                     <li>
                         <a title="Contact me"
                             data-toggle="tooltip" data-placement="bottom"
@@ -128,6 +115,20 @@
                             </li>
                             <li>
                                 <a target="_blank"
+                                    title="ReactJS (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="ReactJS (opens in new window)"
+                                    href="https://reactjs.org/">ReactJS</a>
+                            </li>
+                            <li>
+                                <a target="_blank"
+                                    title="Babel (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="Babel (opens in new window)"
+                                    href="https://babeljs.io/">Babel</a>
+                            </li>
+                            <li>
+                                <a target="_blank"
                                     title="TheMovieDB API (opens in new window)"
                                     data-toggle="tooltip" data-placement="left"
                                     data-original-title="TheMovieDB API (opens in new window)"
@@ -140,15 +141,20 @@
                                     data-original-title="OMDb API (opens in new window)"
                                     href="http://www.omdbapi.com/">OMDb API</a>
                             </li>
-                            <!-- SUSPENDED
                             <li>
                                 <a target="_blank"
-                                    title="Weather Underground (opens in new window)"
+                                    title="Free Weather API (opens in new window)"
                                     data-toggle="tooltip" data-placement="left"
-                                    data-original-title="Weather Underground (opens in new window)"
-                                    href="https://www.wunderground.com/?apiref=aa64dd3c5f156d74">Weather Underground</a>
+                                    data-original-title="Free Weather API (opens in new window)"
+                                    href="https://www.weatherapi.com/">Free Weather API</a>
                             </li>
-                            -->
+                            <li>
+                                <a target="_blank"
+                                    title="VisiBone Color Lab (opens in new window)"
+                                    data-toggle="tooltip" data-placement="left"
+                                    data-original-title="VisiBone Color Lab (opens in new window)"
+                                    href="http://visibone.com/colorlab/">VisiBone Color Lab</a>
+                            </li>
                             <li>
                                 <a target="_blank"
                                     title="FatCow (opens in new window)"
