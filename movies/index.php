@@ -87,8 +87,8 @@
     <div class="row">
 
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <h2 style="border-bottom: 1px silver dotted;">
-                The Movie Section: TheMovieDB Version
+            <h2>
+                The Movie Section
             </h2>    
         </div>
 
