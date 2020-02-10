@@ -141,7 +141,7 @@
     /*
      *  Custom (per page) meta
      */
-    $meta_image         = 'http://jephmann.com/_images/logos/iw63kb1u.bmp';
+    $meta_image         = 'http://jephmann.com/_images/me201708_LI.jpg';
     $meta_description   = 'Weather data courtesy of WeatherAPI.com | ';
     $meta_querystring   = (string) NULL;
     /*
