@@ -182,7 +182,7 @@ $subtitle           = "{$overview[ 'title' ]} ({$overview[ 'release_year' ]}) | 
 $creditFooter       = "Click the heading above to show or hide the list.";
 
 // for Twitter sharebuttons (delimit with comma)
-$hashtag            = 'themoviedb,' . preg_replace( '/[\s\W]+/', '', $overview[ 'title' ] );
+$hashtag            = 'themoviedb,' . Tools::hashTitle( $overview[ 'title' ] );
 
 // Custom (per page) meta
 $meta_image         = $image_film;

@@ -278,4 +278,56 @@ class Tools {
         return $url;
     }
     
+    /*
+     * replace ampersands, for spaceless hashtags
+     */
+    function ampAnd( $string ) : string
+    {
+        return preg_replace( '~[&]+~', 'And', $string );
+    }
+    
+    /*
+     * and a half (replace representations of half, for spaceless hashtags)
+     */
+    function andAHalf( $string ) : string
+    {
+        /* 
+         * TODO: this may not work with
+         * "1/2 Bright, 1/2 Open, 1/2 Withered, 1/2 Lumpy (1967)",
+         * which might just want "half".
+         * TODO: Find a more elegant way than this.
+         */
+        $half = 'AndAHalf';
+        $half1 = preg_replace( '~[\½]+~', $half, $string );
+        $half2 = preg_replace( '~[1\/2]+~', $half, $half1 );
+        return $half2;
+    }
+    
+    /*
+     * and a third (replace representations of third, for spaceless hashtags)
+     */
+    function andAThird( $string ) : string
+    {
+        /*
+         * TODO: stumped re '1/3'
+         */
+        return preg_replace( '~[\⅓]+~', 'AndAThird', $string );
+    }
+    
+    /*
+     * prepare titles for hashtags re sharing
+     */
+    function hashTitle( $string ) : string
+    {
+        $amp    = Tools::ampAnd( $string );
+        $half   = Tools::andAHalf( $amp );
+        $third  = Tools::andAThird( $half );
+        // replace $ (TODO: Refine if needed)
+        $dollars = preg_replace( '~[\$]+~', 'Dollars', $third );
+        // trim spaces
+        $result = preg_replace( '~[\s\W]+~', '', $dollars );
+        // output result
+        return $result;
+    }
+    
 }
