@@ -81,6 +81,30 @@
                     Thanks for visiting!
                 </p>
                 
+                <div>
+                    <h4 style="text-align: right;">
+                        <a title="Jeffrey Hartmann: About"
+                        data-toggle="tooltip" data-placement="top"
+                        data-original-title="About this project"
+                        href="about/">About</a>
+                        |
+                        <a title="Jeffrey Hartmann: Movies"
+                        data-toggle="tooltip" data-placement="top"
+                        data-original-title="Movies"
+                        href="movies/">Movies</a>
+                        |
+                        <a title="Jeffrey Hartmann: Weather"
+                        data-toggle="tooltip" data-placement="top"
+                        data-original-title="Weather"
+                        href="weather/">Weather</a>
+                        |
+                        <a title="Jeffrey Hartmann: Contact"
+                        data-toggle="tooltip" data-placement="top"
+                        data-original-title="Contact Jeffrey Hartmann"
+                        href="contact/">Contact</a>
+                    </h4>
+                </div>
+                
             </div> 
             
         </div>        
