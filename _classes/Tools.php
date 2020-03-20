@@ -291,16 +291,10 @@ class Tools {
      */
     function andAHalf( $string ) : string
     {
-        /* 
-         * TODO: this may not work with
-         * "1/2 Bright, 1/2 Open, 1/2 Withered, 1/2 Lumpy (1967)",
-         * which might just want "half".
-         * TODO: Find a more elegant way than this.
+        /*
+         * TODO: stumped re '1/2'
          */
-        $half = 'AndAHalf';
-        $half1 = preg_replace( '~[\½]+~', $half, $string );
-        $half2 = preg_replace( '~[1\/2]+~', $half, $half1 );
-        return $half2;
+        return preg_replace( '~[\½]+~', 'AndAHalf', $string );
     }
     
     /*
