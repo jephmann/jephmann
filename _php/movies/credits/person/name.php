@@ -157,7 +157,7 @@ $subtitle       = "{$overview[ 'name' ]} {$overview[ 'born_died' ]} | {$subtitle
 $creditFooter   = "Click the heading above to show or hide the list.";
 
 //for Twitter sharebuttons (delimit with comma)
-$hashtag        = 'themoviedb,' . preg_replace('/[\s\W]+/', '', $name_name);
+$hashtag        = 'themoviedb,' . Tools::hashNameTitle( $name_name );
 
 //  Custom (per page) meta
 $meta_image         = $image_name;
