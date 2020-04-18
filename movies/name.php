@@ -10,6 +10,7 @@
     $php_movies             = "{$path}_php/movies/";
     $test                   = "{$php_movies}pre/";
     $credits_person         = "{$php_movies}credits/person/";
+    $afi_data               = "{$php_movies}afi/lists.php";
     $credits_person_cast    = "{$credits_person}cast/";
     $credits_person_crew    = "{$credits_person}crew/";
     $views_name             = "{$views_movies}name/";
@@ -33,6 +34,7 @@
     require_once $credits_person_crew . 'film.php';
     require_once $credits_person_cast . 'tv.php';
     require_once $credits_person_crew . 'tv.php';
+    require_once $afi_data;
     
     /*
      *  HTML start
@@ -71,36 +73,31 @@
     <?php require_once $views . 'close-jumbotron.php'; ?>
 
     <div class="container">
-        <div class="row">            
+        <div class="row">
 
-            <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <?php
                     echo $creditsPerformancesFilm;
                     //require_once $test . 'name/cast.php';
-                    echo $creditsPerformancesTV;
-                    //require_once $test . 'name/cast_tv.php';
+                    echo $creditsProductionFilm;
+                    //require_once $test . 'name/crew.php';
                 ?>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <?php
-                    echo $creditsProductionFilm;
-                    //require_once $test . 'name/crew.php';
+                    echo $creditsPerformancesTV;
+                    //require_once $test . 'name/cast_tv.php';
                     echo $creditsProductionTV;
                     //require_once $test . 'name/crew_tv.php';
                 ?>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4">                
-                <?php
-                    require_once $views_movies . 'search.php';
-                ?>                
             </div>
 
         </div>        
     </div>
 
 <?php
+    require_once $views . 'movies/ankle.php';
     require_once $views . 'footer.php';
     require_once $views . 'load/jquery.php';
     require_once $views . 'load/bootstrap.php';                    

@@ -48,12 +48,12 @@ footer
     overflow-y:     scroll;
 }
 
-#ratingsTable
+table
 {
     width: 100%;
 }
 
-#ratingsTable caption
+caption
 {
     font-weight: bold;
     color: silver;

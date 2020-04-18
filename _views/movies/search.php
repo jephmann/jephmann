@@ -6,7 +6,7 @@
     <div class="panel-body">        
         <form method="post" action="./">
             <div class="form-group">
-                <label for="query">Search (Enter a part of a name or title):</label>
+                <label for="query">Enter all or part of a name or title:</label>
                 <br />
                 <input type="search" name="query" id="query"
                     value="" required="required"
@@ -35,14 +35,6 @@
             </div>
 
        </form>
-    </div>
-    <div class="panel-footer">
-        <p style="font-size:small;">            
-            For issues regarding data and images, please contact
-            <a target="_blank"
-                title="The Movie Database"
-                href="https://www.themoviedb.org">TheMovieDB</a>.
-        </p>
     </div>
 </div>
 

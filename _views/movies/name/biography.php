@@ -4,6 +4,7 @@
         echo $overview[ 'birthplace' ];
         echo $overview[ 'birthday' ];
         echo $overview[ 'deathday' ];
+        require_once $views_movies . 'afiTable.php';
     ?>
 </div>
 
@@ -17,7 +18,8 @@
     $logo_title = $name_name;
     //require_once $views_movies . 'logo-links.php';
     require_once $views_movies . 'movie-links.php';
-
+    
+    require_once $views_movies . 'search.php';
 ?>
 </div>
 

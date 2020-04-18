@@ -135,6 +135,7 @@ $overview           = array(
                     ? Tools::doForOverview( 'Died', $deathdate )
                     : '',
     'born_died'     => $born_died,
+    'imdb'          => $name_imdb,
     'urlIMDB'       => $urlIMDB,
     'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'person' ),
     'urlWikipedia'  => (string) Tools::toWikipedia( $name_name ),

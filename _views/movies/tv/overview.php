@@ -25,6 +25,8 @@
     $logo_title = $overview[ 'title' ];
     //require_once $views_movies . 'logo-links.php';
     require_once $views_movies . 'movie-links.php';
+    
+    require_once $views_movies . 'search.php';
 
 ?>
 </div>

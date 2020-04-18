@@ -37,6 +37,11 @@ $backdrops      = (array) $images[ 'backdrops' ];
 $ct_posters     = (int) count( $posters );
 $ct_backdrops   = (int) count( $backdrops );
 
+//IMDB
+$urlIMDB                = ( $film_imdb )
+                        ? $moviesIMDB->getTitleUrl( $film_imdb )
+                        : '';
+
 // videos
 $videos         = (array) $moviesAPI->getSubTopicData( $id, $topic, 'videos' );
 
@@ -122,12 +127,10 @@ $overview               = array(
     'titles'            => (string) Tools::listForMovies(
         'Alternate Titles', $titles, 'title', '<br />'
     ),
+    'imdb'              => $film_imdb,
+    'urlIMDB'           => $urlIMDB,
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
     'urlWikipedia'      => (string) Tools::toWikipedia( $film_title ),
-    'imdb'              => $film_imdb,
-    'urlIMDB'           => ( $film_imdb )
-                        ? (string) $moviesIMDB->getTitleUrl( $film_imdb )
-                        : '',
     //'certifications'    => (array) $release_certifications,
     'certifications'    => (string) $list_certifications,
     'certifications_us' => (string) $release_certifications_us,
