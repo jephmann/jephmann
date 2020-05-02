@@ -10,6 +10,7 @@
     $test           = "{$php_movies}pre/";
     $credits_film   = "{$php_movies}credits/film/";
     $afi_data       = "{$php_movies}afi/lists.php";
+    $bfi_data       = "{$php_movies}bfi/lists.php";
     $views_movies   = "{$views}movies/";
     $views_credits  = "{$views_movies}film/credits/";
     $subtitle       = 'Movies';
@@ -29,6 +30,7 @@
     require_once $credits_film . 'cast.php';
     require_once $credits_film . 'crew.php';
     require_once $afi_data;
+    require_once $bfi_data;
     
     /*
      *  HTML start
@@ -59,13 +61,6 @@
             ?></div>
 
         </div>
-        
-        <?php
-    // begin bottom omdb section
-    require_once $views_movies . 'omdbRatings.php';
-    // end bottom omdb section    
-    require_once $views_movies . 'afiTable.php';
-        ?>
 
     </div>
 
@@ -80,14 +75,26 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+        
+                <?php
+                    // begin bottom omdb section
+                    require_once $views_movies . 'omdbRatings.php';
+                    // end bottom omdb section    
+                    require_once $views_movies . 'afiTable.php';   
+                    require_once $views_movies . 'bfiTable.php';
+                ?>
+                
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
                 <?php
                     echo $creditsPerformers;
                     //require_once $test . 'cast.php';
                 ?>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-4">
                 <?php
                     echo $creditsProduction;
                     //require_once $test . 'crew.php';

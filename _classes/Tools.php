@@ -396,4 +396,28 @@ class Tools {
         return $result;
     }
     
+    /*
+     * seeks a match from an indexed array
+     */
+    function getArrayValue ( array $array, string $index ) : string
+    {
+        $result = '';
+        foreach( $array as $key => $value )
+        {
+            if( $index == $key )
+            {
+                $result = $value;
+            }
+            else
+            {
+                continue;
+            }
+            
+            return $result;
+        }
+    }
+    
+    
+    
+    
 }

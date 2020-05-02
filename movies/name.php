@@ -11,6 +11,7 @@
     $test                   = "{$php_movies}pre/";
     $credits_person         = "{$php_movies}credits/person/";
     $afi_data               = "{$php_movies}afi/lists.php";
+    $bfi_data               = "{$php_movies}bfi/lists.php";
     $credits_person_cast    = "{$credits_person}cast/";
     $credits_person_crew    = "{$credits_person}crew/";
     $views_name             = "{$views_movies}name/";
@@ -35,6 +36,7 @@
     require_once $credits_person_cast . 'tv.php';
     require_once $credits_person_crew . 'tv.php';
     require_once $afi_data;
+    require_once $bfi_data;
     
     /*
      *  HTML start
@@ -75,7 +77,14 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <?php
+                    require_once $views_movies . 'afiTable.php';
+                    require_once $views_movies . 'bfiTable.php';
+                ?>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
                 <?php
                     echo $creditsPerformancesFilm;
                     //require_once $test . 'name/cast.php';
@@ -84,7 +93,7 @@
                 ?>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-4">
                 <?php
                     echo $creditsPerformancesTV;
                     //require_once $test . 'name/cast_tv.php';

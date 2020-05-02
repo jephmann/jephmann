@@ -26,7 +26,7 @@
     $joinAFI    = $qAFI->tableJoin( 'i',
         'afilists', 'id', 'afimovies', 'id_afilist'
         );
-    $sortAFI    = 'year ASC, title ASC';
+    $sortAFI    = 'year ASC, title ASC, rank ASC';
     
     $sqlTopAFI  = $qAFI->readSome( $joinAFI, array( 'imdb' ), $sortAFI );
     $topAFIs    = $cnAFI->prepare( $sqlTopAFI );
@@ -83,5 +83,5 @@
     }
     
     // disconnect
-    $cnAFI = null;
+    $cnAFI = NULL;
     

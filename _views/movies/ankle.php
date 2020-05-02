@@ -23,17 +23,37 @@
                 While much of the above data are retrieved directly from outside
                 APIs and other such sources, data from 
                 <a target="_blank" href="https://www.afi.com/">American Film
-                Institute (AFI)</a>
-                was manually entered the old fashioned way into a MySQL database.
+                Institute (AFI)</a> and
+                <a target="_blank" href="https://www.bfi.org.uk/">British Film
+                Institute (BFI)</a>
+                were manually entered the old fashioned way into a MySQL database.
+                Re BFI I took the following liberties:
+                <ul>
+                    <li>
+                        I added "runners up" to Top 10 lists, treating them as
+                        ties where applicable and numbering them accordingly at
+                        the bottom of each list.
+                    </li>
+                    <li>
+                        Regarding those polls wherein "franchise" movies were
+                        submitted as one project until BFI's policy changed to
+                        regard them separately, I treated them as ties and
+                        renumbered the affected lists accordingly (e.g. the
+                        Godfather films).
+                    </li>
+                </ul>
             </p>
             <p>
                 Data are -- <em>hey, it's a plural</em> -- subject to the
                 limitations of their sources. (For example, TMDB search results
-                currently max out at 20.)
+                currently max out at 20.) I am limiting myself to free data
+                sources for now.
             </p>
             <p>
                 Filtering is applied here to film projects flagged as "adult" by
-                TheMovieDB.
+                TheMovieDB. Pending "popular demand" I am contemplating a login
+                and profile system with preferences (such as whether to allow
+                adult images to appear) and permissions (such as data entry).
             </p>
             <p>
                 Whereas the overall purpose of this website is to serve as a

@@ -5,8 +5,8 @@
             require_once $path . '_plugins/imdb/ratings.php';
         
         if( array_key_exists( 'Ratings', $omdb ) ):
-            ?><h4>Rankings and Honors</h4>
-                <table class="table table-hover"><?php
+            ?><table class="table table-hover">
+                <caption><h4>Rankings and Honors</h4></caption><?php
                 foreach ( $omdb[ 'Ratings'] as $rating ) :
                     ?><tr class="table-primary">
                         <th scope="row"><?php echo $rating['Source']; ?></th>

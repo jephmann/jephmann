@@ -4,7 +4,6 @@
         echo $overview[ 'birthplace' ];
         echo $overview[ 'birthday' ];
         echo $overview[ 'deathday' ];
-        require_once $views_movies . 'afiTable.php';
     ?>
 </div>
 
