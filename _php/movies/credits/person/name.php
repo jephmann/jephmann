@@ -139,6 +139,7 @@ $overview           = array(
     'urlIMDB'       => $urlIMDB,
     'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'person' ),
     'urlWikipedia'  => (string) Tools::toWikipedia( $name_name ),
+    'urlBFI'        => '', // populated via MySQL where applicable
     );
 
 if( $ct_aka > 0 )

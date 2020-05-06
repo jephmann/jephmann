@@ -131,6 +131,7 @@ $overview               = array(
     'urlIMDB'           => $urlIMDB,
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
     'urlWikipedia'      => (string) Tools::toWikipedia( $film_title ),
+    'urlBFI'            => '', // populated via MySQL where applicable
     //'certifications'    => (array) $release_certifications,
     'certifications'    => (string) $list_certifications,
     'certifications_us' => (string) $release_certifications_us,

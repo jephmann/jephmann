@@ -154,6 +154,7 @@ $overview               = array(
             ),
     'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'tv' ),
     'urlWikipedia'      => (string) Tools::toWikipedia( $tv_title ),
+    'urlBFI'            => '', // populated via MySQL where applicable
     'urlIMDB'           => ( $tv_imdb )
         ? (string) $moviesIMDB->getTitleUrl( $tv_imdb )
         : ''

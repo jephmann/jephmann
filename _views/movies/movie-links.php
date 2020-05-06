@@ -4,10 +4,11 @@
         <ul style="font-size: 1em;">
         <?php    
             $infoLinks = array();
-            $infoLinks[ 'The Movie Database' ]      = $overview[ 'urlMovieDB' ];
-            $infoLinks[ 'Internet Movie Database' ] = $overview[ 'urlIMDB' ];
-            $infoLinks[ 'Wikipedia' ]               = $overview[ 'urlWikipedia' ];
-            $infoLinks[ 'Home' ]                    = $overview[ 'homepage' ];
+            $infoLinks[ 'The Movie Database' ]              = $overview[ 'urlMovieDB' ];
+            $infoLinks[ 'Internet Movie Database' ]         = $overview[ 'urlIMDB' ];
+            $infoLinks[ 'British Film Institute (BFI)' ]    = $overview[ 'urlBFI' ];
+            $infoLinks[ 'Wikipedia' ]                       = $overview[ 'urlWikipedia' ];
+            $infoLinks[ 'Home' ]                            = $overview[ 'homepage' ];
             
             foreach( $infoLinks as $infoTopic => $infoLink ):
                 if( !empty( $infoLink ) ):

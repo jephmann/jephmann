@@ -34,15 +34,15 @@
         1952, 1962, 1972, 1982, 1992, 2002, 2012, 2014
     );
     
-    $joinBFI    = $qBFI->tableJoin( 'i',
-        'bfilists', 'id', 'bfimovies', 'id_bfilist'
-    );
-    $sortBFI    = 'year ASC, type ASC, subtype ASC, title ASC';
-    $sqlBFI     = $qBFI->readSome( $joinBFI, array( 'imdb' ), $sortBFI );
-    $movieLists = $cnBFI->prepare( $sqlBFI );
-    $movieLists->execute( $valuesBFI );
+    // old-school triple table join, no Queries class
+    $sqlListMoviesBFI   = "SELECT * FROM bfilists"
+        . " INNER JOIN bfimovies ON bfilists.id = bfimovies.id_bfilist"
+        . " INNER JOIN bfi ON bfimovies.id_bfi = bfi.id"
+        . " WHERE bfi.imdb = '{$overview[ 'imdb' ]}'"
+        . " ORDER BY year ASC, type ASC, subtype ASC, title ASC";
+    $movieLists     = $cnBFI->query( $sqlListMoviesBFI );
 
-    $rowListBFI    = array();
+    $rowListBFI     = array();
     foreach ($movieLists as $mlist) {
 
         $mlistType      = Tools::getArrayValue( $aTypes, $mlist['type'] );            
@@ -68,6 +68,18 @@
         );
         array_push( $rowListBFI, $dataListBFI );
     }
+    
+    // retrieve url for BFI name/title
+    // ("Queries::readOne" not called for here,
+    // as we're calling for a different unique column to retrieve an "id"
+    // instead of using an "id" to retrieve other column(s).)
+    $sqlBFIid = "SELECT id FROM bfi"
+        . " WHERE imdb = '{$overview[ 'imdb' ]}'"
+        . " LIMIT 1";
+    $urlBFIid = $cnBFI->query( $sqlBFIid )->fetchColumn();
+    $overview[ 'urlBFI' ]   = $urlBFIid
+        ? "{$urlBFI}films-tv-people/{$urlBFIid}" 
+        : '';
     
     // disconnect
     $cnBFI = NULL;
