@@ -40,10 +40,12 @@ $images                 = (array) $moviesAPI->getSubTopicData(
 $images_profiles        = (array) $images[ 'profiles' ];
 $ct_profiles            = (int) count( $images_profiles );
 
-//IMDB
-$urlIMDB                = ( $name_imdb )
-                        ? $moviesIMDB->getNameUrl( $name_imdb )
-                        : '';
+// urls
+$urlTMDB        = (string) $moviesAPI->getPublicUrl( $id, 'person' );
+$urlIMDB        = (string) Movies::getIMDBurl( $name_imdb );
+$urlBFI         = (string) Movies::getBFIurl( $name_imdb );
+$urlAFI         = (string) Movies::getAFIurl( $name_imdb );
+$urlWikipedia   = (string) Tools::toWikipedia( $name_name );
 
 // dates
 $birthdate              = '';
@@ -126,20 +128,21 @@ $overview           = array(
                     ? preg_replace( '/\n/', '&nbsp;', $name_biography )
                     : '',
     'birthplace'    => !empty( $name_place_of_birth )
-                    ? Tools::doForOverview( 'Birthplace', $name_place_of_birth )
+                    ? Movies::doForOverview( 'Birthplace', $name_place_of_birth )
                     : '',
     'birthday'      => $birthdate
-                    ? Tools::doForOverview( 'Born', $birthdate )
+                    ? Movies::doForOverview( 'Born', $birthdate )
                     : '',
     'deathday'      => $deathdate
-                    ? Tools::doForOverview( 'Died', $deathdate )
+                    ? Movies::doForOverview( 'Died', $deathdate )
                     : '',
     'born_died'     => $born_died,
     'imdb'          => $name_imdb,
+    'urlMovieDB'    => $urlTMDB,
     'urlIMDB'       => $urlIMDB,
-    'urlMovieDB'    => (string) $moviesAPI->getPublicUrl( $id, 'person' ),
-    'urlWikipedia'  => (string) Tools::toWikipedia( $name_name ),
-    'urlBFI'        => '', // populated via MySQL where applicable
+    'urlAFI'        => $urlAFI,
+    'urlBFI'        => $urlBFI,
+    'urlWikipedia'  => $urlWikipedia,
     );
 
 if( $ct_aka > 0 )
@@ -147,7 +150,7 @@ if( $ct_aka > 0 )
     sort( $aka );
     $unique_aka         = array_unique( $aka );
     $akas               = implode( ' <br /> ', $unique_aka );
-    $overview[ 'aka' ]  = Tools::doForOverview( 'Alias', $akas );
+    $overview[ 'aka' ]  = Movies::doForOverview( 'Alias', $akas );
 }
 
 /*

@@ -12,7 +12,6 @@
     $credits_person         = "{$php_movies}credits/person/";
     $afi_data               = "{$php_movies}afi/lists.php";
     $bfi_data               = "{$php_movies}bfi/lists.php";
-    $bfi_url                = "{$php_movies}bfi/url.php";
     $credits_person_cast    = "{$credits_person}cast/";
     $credits_person_crew    = "{$credits_person}crew/";
     $views_name             = "{$views_movies}name/";
@@ -26,7 +25,6 @@
 
     $id                     = (string) $_GET[ 'id' ];
     $moviesAPI              = new ApiMovieDB;
-    $moviesIMDB             = new IMDB;
     
     /*
      * Retrieve Data
@@ -38,7 +36,6 @@
     require_once $credits_person_crew . 'tv.php';
     require_once $afi_data;
     require_once $bfi_data;
-    require_once $bfi_url;
     
     /*
      *  HTML start

@@ -1,8 +1,5 @@
 <?php
-
-    // base AFI url    
-    $urlAFI     = 'https://www.afi.com/';
-    
+   
     /*
      * imdb IDs are more unique across names and titles than tmdb IDs
      * To be bound in the processes below.
@@ -13,6 +10,10 @@
     $dbAFI      = new Database;
     $qAFI       = new Queries;
     
+    /*
+     * AFI top 100 and top 10
+     */
+    
     // connect to MySQL via PDO
     $cnAFI      = $dbAFI->connect();
     $cnAFI->setAttribute(
@@ -20,17 +21,9 @@
         PDO::ERRMODE_EXCEPTION
     );
     
-    /*
-     * AFI top 100 and top 10
-     */
-    $joinAFI    = $qAFI->tableJoin( 'i',
-        'afilists', 'id', 'afimovies', 'id_afilist'
-        );
-    $sortAFI    = 'year ASC, title ASC, rank ASC';
-    
-    $sqlTopAFI  = $qAFI->readSome( $joinAFI, array( 'imdb' ), $sortAFI );
-    $topAFIs    = $cnAFI->prepare( $sqlTopAFI );
-    $topAFIs->execute( $valuesAFI );
+    // stored procedure
+    $sqlTopAFI  = "CALL sp_displayAFI('{$overview[ 'imdb' ]}')";
+    $topAFIs    = $cnAFI->query($sqlTopAFI);
         
     $rowTopAFI  = array();
     foreach( $topAFIs as $topAFI )
@@ -45,14 +38,12 @@
                 break;
         }
 
-        $topURL = "{$urlAFI}{$topAFI[ 'url' ]}/";
-
         // to be looped into an HTML table
         $dataTopAFI = array(
             'type'      => $topAFI[ 'type' ],
             'listType'  => $topType,
-            'url'       => $topAFI[ 'url' ],
-            'urlFull'   => $topURL,
+            'url'       => $topAFI[ 'listurl' ],
+            'urlFull'   => Movies::getAFIurlList( $topAFI[ 'listurl' ] ),
             'title'     => $topAFI[ 'title' ],
             'subtitle'  => $topAFI[ 'subtitle' ],
             'year'      => $topAFI[ 'year' ],
@@ -62,26 +53,34 @@
         array_push( $rowTopAFI, $dataTopAFI );
     }
     
+    // disconnect
+    $cnAFI = NULL;
+    
     /*
      * AFI Life Achievement Awards
      */
-    // base AFI/LAA url
-    $urlLifeAFI = "{$urlAFI}laa/";
     
-    $sqlLifeAFI = $qAFI->readSome( 'afilife', array( 'imdb' ) );
-    $lifeAFIs   = $cnAFI->prepare( $sqlLifeAFI );
-    $lifeAFIs->execute( $valuesAFI );
+    // connect to MySQL via PDO
+    $cnAFILife      = $dbAFI->connect();
+    $cnAFILife->setAttribute(
+        PDO::ATTR_ERRMODE,
+        PDO::ERRMODE_EXCEPTION
+    );
+    
+    // stored procedure
+    $sqlLifeAFI = "CALL sp_displayAFI_Lifetime('{$overview[ 'imdb' ]}')";
+    $lifeAFIs   = $cnAFILife->query($sqlLifeAFI);
     
     $rowLifeAFI = array();
     foreach( $lifeAFIs as $lifeAFI )
     {
         $dataLifeAFI = array(
-            'url'   => "{$urlLifeAFI}{$lifeAFI[ 'url' ]}/",
+            'url'   => Movies::getAFIurlLife( $lifeAFI[ 'url' ] ),
             'year'  => $lifeAFI[ 'year' ],
         );
         array_push( $rowLifeAFI, $dataLifeAFI );
     }
     
     // disconnect
-    $cnAFI = NULL;
+    $cnAFILife = NULL;
     

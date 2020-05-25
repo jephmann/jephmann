@@ -37,10 +37,13 @@ $backdrops      = (array) $images[ 'backdrops' ];
 $ct_posters     = (int) count( $posters );
 $ct_backdrops   = (int) count( $backdrops );
 
-//IMDB
-$urlIMDB                = ( $film_imdb )
-                        ? $moviesIMDB->getTitleUrl( $film_imdb )
-                        : '';
+// urls
+$urlTMDB        = (string) $moviesAPI->getPublicUrl( $id, 'movie' );
+$urlIMDB        = (string) Movies::getIMDBurl( $film_imdb );
+$urlBFI         = (string) Movies::getBFIurl( $film_imdb );
+$urlAFI         = (string) Movies::getAFIurl( $film_imdb );
+$urlWikipedia   = (string) Tools::toWikipedia( $film_title );
+
 
 // videos
 $videos         = (array) $moviesAPI->getSubTopicData( $id, $topic, 'videos' );
@@ -104,34 +107,35 @@ $overview               = array(
     'tagline'           => $film_tagline,
     'title'             => $film_title,
     'title_original'    => $film_title_original
-        ? Tools::doForOverview( 'Original Title', $film_title_original )
+        ? Movies::doForOverview( 'Original Title', $film_title_original )
         : '',
     'release'           => $release_date
-        ? Tools::doForOverview( 'Release Date', $release_date )
+        ? Movies::doForOverview( 'Release Date', $release_date )
         : '',
     'release_year'      => $release_year
         ? $release_year
         : '????',
     'runtime'           => $film_runtime
-        ? Tools::doForOverview( 'Runtime', $film_runtime, FALSE )
+        ? Movies::doForOverview( 'Runtime', $film_runtime, FALSE )
         : '',
-    'genres'            => (string) Tools::listForMovies(
+    'genres'            => (string) Movies::listForMovies(
         'Genres', $genres, 'name'
     ),
-    'companies'         => (string) Tools::listForMovies(
+    'companies'         => (string) Movies::listForMovies(
         'Production Companies', $production_companies, 'name', '<br />'
     ),
-    'countries'         => (string) Tools::listForMovies(
+    'countries'         => (string) Movies::listForMovies(
         'Production Countries', $production_countries, 'name'
     ),
-    'titles'            => (string) Tools::listForMovies(
+    'titles'            => (string) Movies::listForMovies(
         'Alternate Titles', $titles, 'title', '<br />'
     ),
     'imdb'              => $film_imdb,
+    'urlMovieDB'        => $urlTMDB,
     'urlIMDB'           => $urlIMDB,
-    'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'movie' ),
-    'urlWikipedia'      => (string) Tools::toWikipedia( $film_title ),
-    'urlBFI'            => '', // populated via MySQL where applicable
+    'urlAFI'            => $urlAFI,
+    'urlBFI'            => $urlBFI,
+    'urlWikipedia'      => $urlWikipedia,
     //'certifications'    => (array) $release_certifications,
     'certifications'    => (string) $list_certifications,
     'certifications_us' => (string) $release_certifications_us,
@@ -160,22 +164,22 @@ $omdb_plot      = array_key_exists( 'Plot', $omdb )
 $omdb_actors    = array_key_exists( 'Actors', $omdb )
                 ? $openMoviesAPI->nullNA( trim( $omdb[ 'Actors' ] ) )
                 : '';
-$featuring      = Tools::doForOverview( 'Featuring', $omdb_actors, TRUE );
+$featuring      = Movies::doForOverview( 'Featuring', $omdb_actors, TRUE );
 
 $omdb_writer    = array_key_exists( 'Writer', $omdb )
                 ? $openMoviesAPI->nullNA( trim( $omdb[ 'Writer' ] ) )
                 : '';
-$writtenBy      = Tools::doForOverview( 'Written by', $omdb_writer, TRUE );
+$writtenBy      = Movies::doForOverview( 'Written by', $omdb_writer, TRUE );
 
 $omdb_director  = array_key_exists( 'Director', $omdb )
                 ? $openMoviesAPI->nullNA( trim( $omdb[ 'Director' ] ) )
                 : '';
-$directedBy     = Tools::doForOverview( 'Directed by', $omdb_director, TRUE );
+$directedBy     = Movies::doForOverview( 'Directed by', $omdb_director, TRUE );
 
 $omdb_awards    = array_key_exists( 'Awards', $omdb )
                 ? $openMoviesAPI->nullNA( trim( $omdb[ 'Awards' ] ) )
                 : '';
-$awardsWon     = Tools::doForOverview( 'Awards', $omdb_awards, TRUE );
+$awardsWon     = Movies::doForOverview( 'Awards', $omdb_awards, TRUE );
 
 /*
  * Additional per-page variables

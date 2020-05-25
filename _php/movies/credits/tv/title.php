@@ -28,6 +28,13 @@ $tv_tagline             = ''; // *
 $tv_imdb                = ''; // *
 // * -- yet to find related index in TheMovieDB
 
+// urls
+$urlTMDB        = (string) $moviesAPI->getPublicUrl( $id, 'tv' );
+$urlIMDB        = (string) Movies::getIMDBurl( $tv_imdb );
+$urlBFI         = (string) Movies::getBFIurl( $tv_imdb );
+$urlAFI         = (string) Movies::getAFIurl( $tv_imdb );
+$urlWikipedia   = (string) Tools::toWikipedia( $tv_title );
+
 // alternate titles
 $titles = (array) $moviesAPI->getSubTopicData( $id, $topic, 'titles' )['results'];
 
@@ -120,44 +127,43 @@ $overview               = array(
     'tagline'           => $tv_tagline,
     'title'             => $tv_title,
     'title_original'    => $tv_original_name
-        ? Tools::doForOverview( 'Original Title', $tv_original_name )
+        ? Movies::doForOverview( 'Original Title', $tv_original_name )
         : '',  
     'release'           => $release_date
-        ? Tools::doForOverview( 'Premiere', $release_date )
+        ? Movies::doForOverview( 'Premiere', $release_date )
         : '',
     'release_year'      => $release_year ? $release_year : '????',
     'cancel'            => $cancel_date
-        ? Tools::doForOverview( 'Finale', $cancel_date )
+        ? Movies::doForOverview( 'Finale', $cancel_date )
         : '',
     'cancel_year'       => $cancel_year ? $cancel_year : '????',
     'release_cancel'    => $release_cancel,
     'creators'          => $creators
-        ? Tools::doForOverview( 'Creators', $creators )
+        ? Movies::doForOverview( 'Creators', $creators )
         : '',
     'ct_episodes'       => $tv_ct_episodes > 0
-        ? Tools::doForOverview( '# of Episodes', $tv_ct_episodes, FALSE )
+        ? Movies::doForOverview( '# of Episodes', $tv_ct_episodes, FALSE )
         : '',
     'ct_seasons'        => $tv_ct_seasons > 0
-        ? Tools::doForOverview( '# of Seasons', $tv_ct_seasons, FALSE )
+        ? Movies::doForOverview( '# of Seasons', $tv_ct_seasons, FALSE )
         : '',
-    'genres'            => (string) Tools::listForMovies(
+    'genres'            => (string) Movies::listForMovies(
             'Genres', $genres, 'name'
             ),
-    'companies'         => (string) Tools::listForMovies(
+    'companies'         => (string) Movies::listForMovies(
             'Production Companies', $production_companies, 'name', '<br />'
             ),
     'countries'         => $countries
-        ? Tools::doForOverview( 'Countries', $countries )
+        ? Movies::doForOverview( 'Countries', $countries )
         : '',
-    'titles'            => (string) Tools::listForMovies(
+    'titles'            => (string) Movies::listForMovies(
             'Alternate Titles', $titles, 'title', '<br />'
             ),
-    'urlMovieDB'        => (string) $moviesAPI->getPublicUrl( $id, 'tv' ),
-    'urlWikipedia'      => (string) Tools::toWikipedia( $tv_title ),
-    'urlBFI'            => '', // populated via MySQL where applicable
-    'urlIMDB'           => ( $tv_imdb )
-        ? (string) $moviesIMDB->getTitleUrl( $tv_imdb )
-        : ''
+    'urlMovieDB'        => $urlTMDB,
+    'urlIMDB'           => $urlIMDB,
+    'urlAFI'            => $urlAFI,
+    'urlBFI'            => $urlBFI,
+    'urlWikipedia'      => $urlWikipedia,
 );
 
 /*

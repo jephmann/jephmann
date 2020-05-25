@@ -19,7 +19,6 @@
 
     $id         = (string) $_GET[ 'id' ];
     $moviesAPI  = new ApiMovieDB;
-    $moviesIMDB = new IMDB;
     
     /*
      * Retrieve and Format Data

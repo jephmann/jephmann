@@ -1,9 +1,7 @@
-<?php
-    // base BFI url    
-    $urlBFI     = 'https://www.bfi.org.uk/';
-    
+<?php   
     /*
      * imdb IDs are more unique across names and titles than tmdb IDs
+     * To be bound in the processes below.
      */
     $valuesBFI  = array( ':imdb' => $overview[ 'imdb' ] );
     
@@ -39,11 +37,12 @@
         $mlistSubType   = Tools::getArrayValue( $aSubTypes, $mlist['subtype'] );
 
         $urlList        = $mlist['url']
-                ? "{$urlBFI}{$mlist['url']}/"                   
-                : $urlBFI;
+                ? Movies::getBFIurlList( $mlist['url'] )                   
+                : Movies::$urlBFI;
 
         $titleList      = "{$mlistType} {$mlist[ 'title' ]}";
 
+        // to be looped into an HTML table
         $dataListBFI        = array(
             'type'          => $mlist[ 'type' ],
             'listType'      => $mlistType,

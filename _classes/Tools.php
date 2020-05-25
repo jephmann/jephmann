@@ -56,66 +56,6 @@ class Tools {
         return json_decode( $html, true );
     }
     
-    // Returns a string of array items delimited by ' | '
-    // if the array has at least one item.
-    function listForMovies(
-        string $subject,
-        array $array,
-        string $key,
-        string $delimiter = ' | '
-    ) : string
-    {
-        //print_r($array);
-        $result = '';
-        if( count( $array ) > 0 )
-        {
-            // create new simple array
-            $newArray = array();
-            // populate new array with values from original array
-            foreach ( $array as $a )
-            {
-                $string = trim( (string) $a[ $key ] );
-                $newArray[] = $string;
-            }
-            // sort new array
-            sort( $newArray );
-            // remove duplicates
-            $uniqueArray = array_unique( $newArray );
-            // format data
-            $data = implode( $delimiter, $uniqueArray );
-            // build paragraph
-            $result = '<p style="font-size: 1em"><strong>'
-                . $subject
-                . ':</strong><br />'
-                . implode( $delimiter, $uniqueArray )
-                . '</p>';
-            $result = Tools::doForOverview( $subject, $data );
-        }    
-        return $result;
-    }
-    
-    /*
-     * TODO:
-     * Move this function to ApiMovieDB class;
-     * recode accordingly
-     */
-    function doForOverview(
-            string $subject,
-            string $data,
-            bool $break = TRUE            
-            ) : string
-    {
-        $result = '<p style="font-size: 1em;">'
-            . '<strong>' . $subject . ':</strong>';
-        if( $break )
-            $result .= '<br />';
-        else
-            $result .= '&nbsp;';
-        $result .= $data . '</p>';
-        
-        return $result;
-    }
-    
     // Returns a pop-up alert;
     // mostly for testing.
     function alertThis( string $text ) : string

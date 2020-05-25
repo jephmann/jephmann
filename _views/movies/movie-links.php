@@ -4,8 +4,9 @@
         <ul style="font-size: 1em;">
         <?php    
             $infoLinks = array();
-            $infoLinks[ 'The Movie Database' ]              = $overview[ 'urlMovieDB' ];
-            $infoLinks[ 'Internet Movie Database' ]         = $overview[ 'urlIMDB' ];
+            $infoLinks[ 'The Movie Database (TMDB)' ]              = $overview[ 'urlMovieDB' ];
+            $infoLinks[ 'Internet Movie Database (IMDB)' ]         = $overview[ 'urlIMDB' ];
+            $infoLinks[ 'American Film Institute (AFI)' ]   = $overview[ 'urlAFI' ];
             $infoLinks[ 'British Film Institute (BFI)' ]    = $overview[ 'urlBFI' ];
             $infoLinks[ 'Wikipedia' ]                       = $overview[ 'urlWikipedia' ];
             $infoLinks[ 'Home' ]                            = $overview[ 'homepage' ];
