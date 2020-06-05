@@ -78,6 +78,8 @@
 
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <?php
+                    $egotTable = Movies::buildEGOTtable( $overview[ 'imdb' ] );
+                    echo $egotTable;
                     require_once $views_movies . 'afiTable.php';
                     require_once $views_movies . 'bfiTable.php';
                 ?>
