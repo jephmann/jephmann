@@ -1,124 +1,38 @@
 <?php
+
     /*
-     * For now I am using the mail() function at its most basic,
-     * "as is" for the live webhost.
-     * (This may not work in localhost.)
+     * re e-mail headers:
+     * Host currently uses PHP 7.1 which limits headers to \r\n-delimited strings.
+     * From 7.2 onward, PHP also allows header arrays.
      */
 
-    class Outgoing
-    {
-
-        /*
-         * properties
-         */
-        
-        protected $me = array(
-            'name'      => "Jeffrey Hartmann",
-            'mail'      => "jephmann@gmail.com"
-        );
-        protected $confirm = array(
-            'subject'   => "Email Confirmation from jephmann",
-            'body'      => "Simply confirming your email message, re:<br />{}<br />Thanks!"
-        );
-    
-        /*
-         * methods
-         */
-    
-        private function mailHeaders(
-            bool $html,
-            string $fromName,
-            string $fromMail,
-            string $toName,
-            string $toMail            
-        ) : string
-        {
-            // One sender is assumed always
-            $arr[] = "From: {$fromName} <{$fromMail}>";
-            // One recipient is assumed for this function
-            $arr[] = "To: {$toName} <{$toMail}";
-            // No Cc or Bcc
-
-            // Required if HTML is TRUE
-            if( $html )
-            {
-                // To send HTML mail, the Content-type header must be set
-                $arr[] = 'MIME-Version: 1.0';
-                $arr[] = 'Content-type: text/html; charset=iso-8859-1';        
-            }
-
-            // convert to string for the mail() function
-            $result = implode( "\r\n", $arr );
-            return $result;    
-        }
-
-        private function compose_HTML(
-            string $fromName,
-            string $fromMail,
-            string $subject,
-            string $body
-        ) : string
-        {
-            // TODO: Shop for templates
-            $html   = "<html>"
-                . "<head>"
-                . "<title>jephmann: {$subject}</title>"
-                . "</head>"
-                . "<body>"
-                . "<table>"
-                . "<tr><td>From:</td><td>{$fromName}<br />{$fromMail}</td></tr>"
-                . "<tr><td>Subject:</td><td>{$subject}</td></tr>"
-                . "</table>"
-                . "<div>"
-                . "<p>{$body}</p>"
-                . "</div>"
-                . "</body>"
-                . "</html>";
-
-            return $html;
-        }
-        
-        public function send_stuff(
-                bool $html,
-                string $fromName,
-                string $fromMail,
-                string $toName,
-                string $toMail,
-                string $subject,
-                string $body                
-        ) : bool
-        {
-            $message = $this->compose_HTML($fromName, $fromMail, $subject, $body);
-            $headers = $this->mailHeaders($html, $fromName, $fromMail, $toName, $toMail);
-            $result = mail( $toMail, $subject, $message, $headers );
-            return $result;
-        }
-    }    
-
-    $eContact = (bool) $Outgoing::send_stuff(
-        TRUE,
-        $post_contactName,
-        $post_contactEmail,
-        $Outgoing::me['name'],
-        $Outgoing::me['mail'],
-        $post_contactSubject,
-        $post_contactBody
+    // my copy
+    $incoming               = array();
+    $incoming[ 'from' ]     = $email;
+    $incoming[ 'to' ]       = "Jeffrey P. Hartmann <jephmann@gmail.com>";
+    $incoming[ 'subject' ]  = "jephmann | {$subject}";
+    $incoming[ 'message' ]  = wordwrap( $body, 80 );
+    $incoming[ 'headers' ]  = "from: {$name} <{$email}>\r\n"
+                            . "reply-to: {$name} <{$email}>\r\n";
+    mail(
+        $incoming[ 'to' ],
+        $incoming[ 'subject' ],
+        $incoming[ 'message' ],
+        $incoming[ 'headers' ]
     );
-    $resultContact = $eContact ? "Sent" : "Failed";
-
-    $eConfirm = (bool) $Outgoing::send_stuff(
-        TRUE,
-        $Outgoing::me['name'],
-        $Outgoing::me['mail'],
-        $post_contactName,
-        $post_contactEmail,
-        $Outgoing::confirm['subject'],
-        $Outgoing::confirm['body']
-    );
-    $resultConfirm = $eConfirm ? "Arriving" : "Failed";
     
-    $resultMail = "<p>"
-        . "Contact Mail {$resultContact}"
-        . "<br />Confirmation Mail {$resultConfirm}"
-        . "</p>";
-    echo $resultMail;
+    // user's copy
+    $confirmation           = "Message received!\r\n\r\n{$body}";
+    $confirm                = array();
+    $confirm[ 'from' ]      = "jephmann@gmail.com";
+    $confirm[ 'to' ]        = "{$name} <{$email}>";
+    $confirm[ 'subject' ]   = "jephmann | Confirmation ({$subject})";
+    $confirm[ 'message' ]   = wordwrap( $confirmation, 80 );
+    $confirm[ 'headers' ]   = "from: Jeffrey P. Hartmann <jephmann@gmail.com>\r\n"
+                            . "reply-to: Jeffrey P. Hartmann <jephmann@gmail.com>\r\n";
+    mail(
+        $confirm[ 'to' ],
+        $confirm[ 'subject' ],
+        $confirm[ 'message' ],
+        $confirm[ 'headers' ]
+    );

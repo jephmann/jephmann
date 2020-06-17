@@ -59,12 +59,7 @@
             $eMessage       = "<ul>{$eMessage}</ul>";
         }
         else // process the data
-        {            
-            /*
-            * mail() version
-            */
-            //require_once '_mail.php';
-            
+        {
             /*
             * PHPMailer() version
             */
@@ -74,6 +69,11 @@
             * database version, in lieu of e-mail support
             */
             require_once '_mysql.php';
+            
+            /*
+            * mail() version
+            */
+            require_once '_mail.php';
 
             // ensure data not resent during refresh
             unset($_POST);
