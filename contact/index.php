@@ -112,11 +112,16 @@
                         ReactJS and Babel enable those aspects of this form.
                     </li>
                     <li>
-                        In lieu of e-mail support, I am inserting data from this
-                        form into a database table.
+                        This form has both server-side and client-side
+                        validation.
                     </li>
                     <li>
-                        Validation both server-side and client-side.
+                        Via the form, you may receive an e-mail confirmation of
+                        your message.
+                    </li>
+                    <li>
+                        For back-up, I am inserting data from this form into a
+                        database table.
                     </li>
                 </ul>
                 
