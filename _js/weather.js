@@ -86,7 +86,7 @@ class WeatherForm extends React.Component {
                 <div className="form-group">                
                     <label htmlFor="weatherForecast"
                         className="form-control-label">
-                        Forecast in Days (optional, up to 7):
+                        Forecast in Days (optional, up to 3):
                     </label>
                     <select
                         name="weatherForecast"
@@ -98,10 +98,6 @@ class WeatherForm extends React.Component {
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
                     </select>
                 </div>
                 

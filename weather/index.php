@@ -60,6 +60,10 @@
                 ? (int) $_COOKIE[ 'jephmann_weatherForecast' ]
                 : $_SESSION[ 'Weather' ][ 'Forecast' ];
     
+    $aCurrent           = array();
+    $aCurrentCondition  = array();
+    $aAlert             = array();
+    
     if( $location )
     {
         // test
