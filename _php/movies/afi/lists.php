@@ -39,10 +39,12 @@
         }
 
         // to be looped into an HTML table
+        if( $topAFI[ 'entity'] === $afiEntity ) :
         $dataTopAFI = array(
             'type'      => $topAFI[ 'type' ],
             'listType'  => $topType,
             'url'       => $topAFI[ 'listurl' ],
+            'entity'    => $topAFI[ 'entity' ],
             'urlFull'   => Movies::getAFIurlList( $topAFI[ 'listurl' ] ),
             'title'     => $topAFI[ 'title' ],
             'subtitle'  => $topAFI[ 'subtitle' ],
@@ -51,6 +53,7 @@
             'text'      => $topAFI[ 'text' ],
         );
         array_push( $rowTopAFI, $dataTopAFI );
+        endif;
     }
     
     // disconnect

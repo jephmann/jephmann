@@ -18,6 +18,7 @@
     $views_performance      = "{$views_name}performance/";
     $views_production       = "{$views_name}production/";
     $subtitle               = 'Movies';
+    $afiEntity              = 'P';
     // set up future Adult toggling
     $allow_adult            = FALSE;
 

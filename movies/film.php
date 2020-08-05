@@ -14,6 +14,7 @@
     $views_movies   = "{$views}movies/";
     $views_credits  = "{$views_movies}film/credits/";
     $subtitle       = 'Movies';
+    $afiEntity      = 'F';
     // set up future Adult toggling
     $allow_adult    = FALSE;
 
