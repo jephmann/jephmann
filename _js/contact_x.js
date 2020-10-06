@@ -12,6 +12,7 @@ class ContactForm extends React.Component {
             requireEmail: '',
             maxEmail: '',
             requireSubject: '',
+            maxSubject: '',
             requireBody: '',
             maxBody: '',
             matchEmail: '',
@@ -43,7 +44,9 @@ class ContactForm extends React.Component {
         const { contactSubject } = this.state;
         this.setState({
             requireSubject:
-                contactSubject.length > 0 ? null : 'Required'
+                contactSubject.length > 0 ? null : 'Required',
+            maxSubject:
+                contactSubject.length < 250 ? null : 'Limit 250 characters'
         });
     };
 
@@ -110,6 +113,11 @@ class ContactForm extends React.Component {
         if ( this.state.requireSubject !== null )
         {
             this.state.message += '\n- Subject Required.';
+        }
+        
+        if ( this.state.maxSubject !== null )
+        {
+            this.state.message += '\n- Subject limit: 250 characters.';
         }
         
         if ( this.state.requireBody !== null )
@@ -181,24 +189,19 @@ class ContactForm extends React.Component {
                         Subject:
                         <span className="invalid-feedback">
                             &nbsp;{this.state.requireSubject}
+                            &nbsp;{this.state.maxSubject}
                         </span>
                     </label>
                     <input type="text"
-                        list="subjectSuggestions"
                         required="required"
-                        data-error="Please enter a subject"
+                        data-error="Please enter your name"
                         name="contactSubject"
                         id="contactSubject"
                         className="form-control"
-                        placeholder="Enter subject. (Or, select a suggestion.)"
+                        placeholder="Enter subject"
                         value={this.state.contactSubject}
                         onBlur={this.validateSubject}
                         onChange={this.handleSubjectChange} />
-                    <datalist id="subjectSuggestions">
-                        <option value="About Your Website">(Suggestion)</option>
-                        <option value="I May Have A Job For You">(Suggestion)</option>
-                        <option value="I Miss You">(Suggestion)</option>
-                    </datalist>
                 </div>
                 <div className="form-group required">
                     <label htmlFor="contactBody"

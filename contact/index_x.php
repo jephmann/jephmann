@@ -139,10 +139,7 @@
                     <?php echo $eMessage; ?>
                 </div>
                 
-                <?php
-                    elseif( array_key_exists('Contact', $_SESSION )) :
-                        if( $_SESSION['Contact']['Success'] ) :
-                ?>
+                <?php elseif( $_SESSION['Contact']['Success'] ) : ?>
                 
                 <div class="alert alert-dismissible alert-success">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -150,10 +147,7 @@
                     <?php echo $eSuccess; ?>
                 </div>
                 
-                <?php
-                        endif;
-                    endif;
-                ?>
+                <?php endif; ?>
                
                 <div id="contact"></div>
                     
