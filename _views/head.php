@@ -13,14 +13,16 @@
     $thisMonthYear  = $date->format('F Y');
     $thisYear       = $date->format('Y');
     
+    // Add 's' to canonical URL if "https" version is called
+    $secured        = !empty($_SERVER['HTTPS']) ? 's' : '';
+    
     // Social Meta
     $meta = array(
-        'title'         => $subtitle
-            . ' | Jeffrey Hartmann',
+        'title'         => "{$subtitle} | Jeffrey Hartmann",
         'description'   => $meta_description
             . 'Jeffrey Hartmann\'s personal workshop and demo project',
         'image'         => $meta_image,
-        'canonical'     => "http://{$server_url}{$meta_querystring}",
+        'canonical'     => "http{$secured}://{$server_url}{$meta_querystring}",
     );
 ?>
 <!DOCTYPE html>
