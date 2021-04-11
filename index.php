@@ -7,10 +7,19 @@
     $path       = '';
     $subtitle   = date('F Y') . ': Available for Work';
 
+    // autoload class files
+    spl_autoload_register(
+        function ( $class_name )
+        {
+            include "_classes/{$class_name}.php";
+        }
+    );
+
     /*
      *  Custom (per page) meta
      */
-    $meta_image         = 'http://jephmann.com/_images/me201708_LI.jpg';
+    $isS = Tools::isHttpS();
+    $meta_image         = "http{$isS}://jephmann.com/_images/me201708_LI.jpg";
     $meta_description   = date('F Y')
             . ': Available for work.'
             . ' Please contact me privately for details. | ';

@@ -357,7 +357,12 @@ class Tools {
         }
     }
     
-    
-    
+    // Returns 's' if "https" version is called
+    // (to be appended to this project's URLs)
+    function isHttpS() : string
+    {
+        $result = !empty($_SERVER['HTTPS']) ? 's' : '';
+        return $result;
+    }    
     
 }

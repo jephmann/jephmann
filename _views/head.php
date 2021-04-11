@@ -7,22 +7,20 @@
     $server_http_host   = (string) $_SERVER['HTTP_HOST'];
     $server_request_uri = (string) parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
     $server_url         = $server_http_host . $server_request_uri;
+    $s                  = (string) Tools::isHttpS();
      
     // Dates    
     $date           = new DateTime;
     $thisMonthYear  = $date->format('F Y');
     $thisYear       = $date->format('Y');
     
-    // Add 's' to canonical URL if "https" version is called
-    $secured        = !empty($_SERVER['HTTPS']) ? 's' : '';
-    
     // Social Meta
-    $meta = array(
+    $meta   = array(
         'title'         => "{$subtitle} | Jeffrey Hartmann",
         'description'   => $meta_description
             . 'Jeffrey Hartmann\'s personal workshop and demo project',
         'image'         => $meta_image,
-        'canonical'     => "http{$secured}://{$server_url}{$meta_querystring}",
+        'canonical'     => "http{$s}://{$server_url}{$meta_querystring}",
     );
 ?>
 <!DOCTYPE html>
