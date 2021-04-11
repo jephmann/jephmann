@@ -18,6 +18,7 @@
     // set up future Adult toggling
     $allow_adult    = FALSE;
 
+    // autoload class files
     require_once $path . '_php/autoload1.php';
 
     $id         = (string) $_GET[ 'id' ];

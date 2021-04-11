@@ -13,6 +13,7 @@
     // set up future Adult toggling
     $allow_adult    = FALSE;
 
+    // autoload class files
     require_once $path . '_php/autoload1.php';
     
     /*
@@ -59,10 +60,10 @@
          * 
          */
 
-        // autoload class files
-        require_once $path . '_php/autoload.php';
-        $moviesAPI          = new ApiMovieDB;
+        // create object for MovieDB
+        $moviesAPI = new ApiMovieDB;
         
+        // show results (if any)
         require_once $search . 'film.php';
         require_once $search . 'tv.php';        
         require_once $search . 'person.php';
