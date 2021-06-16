@@ -6,6 +6,9 @@
     // Page Variables
     $path       = '../';
     $subtitle   = "About This Project";
+
+    // autoload class files
+    require_once $path . '_php/autoload1.php';
     
     /*
      *  Custom (per page) meta
