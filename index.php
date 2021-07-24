@@ -19,7 +19,7 @@
      *  Custom (per page) meta
      */
     $isS = Tools::isHttpS();
-    $meta_image         = "http{$isS}://jephmann.com/_images/me201708_LI.jpg";
+    $meta_image         = "http{$isS}://jephmann.com/_images/me20210606.jpg";
     $meta_description   = date('F Y')
             . ': Available for work.'
             . ' Please contact me privately for details. | ';
@@ -49,11 +49,11 @@
             
             <div class="col-lg-5 col-md-5 col-sm-5">
 
-                <img src="_images/me201708.jpg"
+                <img src="_images/me20210606.jpg"
                      alt="Jeffrey Hartmann"
                      class="img100w" />
                 <blockquote class="blockquote-reverse">
-                    <h3>August 2017</h3>
+                    <h3>June 2021</h3>
                     <small style="color: silver;">My most recent photo</small>
                 </blockquote>
 
