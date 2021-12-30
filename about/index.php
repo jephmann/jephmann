@@ -126,7 +126,7 @@
 
 <p>
     Assuming that my basic strengths may not be enough to suit prospective
-    employers, I also need to demonstrate my abilty to learn new skills.
+    employers, I also need to demonstrate my ability to learn new skills.
 </p>
 <p>
     For several years I got by as a self-taught, learn-on-the-job developer.
